@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Git VSC</title>
+	<link rel="stylesheet" type="text/css" href="external/css/bootstrap.css">
+	<script type="text/javascript" src="external/js/bootstrap.js" rel="javascript"></script>
+    <script type="text/javascript" src="external/js/jquery.min.js" rel="javascript"></script>
+
+    
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Courier+Prime&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<meta charset="utf-8">
+    <!--meta http-equiv="refresh" content="3.9"-->
+</head>
+<body>
+        
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Phil Full-Stack Notes</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+        
+      <li class="nav-item">
+        <a class="nav-link" href="terminal.html">Terminal</a>
+      </li>
+        
+        <li class="nav-item">
+        <a class="nav-link" href="git.html">Git VCS</a>
+      </li>
+        
+         <li class="nav-item">
+        <a class="nav-link" href="database.html">Database</a>
+      </li>
+        
+         <li class="nav-item">
+        <a class="nav-link" href="tools.html">Tools</a>
+      </li>
+        
+         <li class="nav-item">
+        <a class="nav-link" href="github.html">Git Hub</a>
+      </li>
+        
+    </ul>
+      
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+    
+<div class="jumbotron">
+<div>
+	<h1>GIT VCS NOTES</h1>
+	<h3 class="notes">These are some of the most fundamental notes that l have created while l was taling the Fullstack course with Udacity</h3>
+	</div>
+		
+		<div class="card text-white bg-secondary mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">>_.
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$What is a Version Control System"</h5>
+		     <p class="card-text">
+            VCS Info </p>
+            
+                 <p>
+            There are a number of Version Control Systems out there. This alone should prove that version control is incredibly important. Three of the most popular version control systems are:
+
+            </p>
+            <ul>
+                <li> Git</li>
+                <li> Subversion</li>
+                <li>Mercurial</li>
+            </ul>
+                 <p>
+There are two main types of version control system models:
+
+the centralized model - all users connect to a central, master repository
+the distributed model - each user has the entire repository on their computer
+Further Research
+<ul>
+    <li>Centralized vs. DVCS from the Atlassian Blog</li>
+    <li>Distributed version control on Wikipedia</li>
+                 </ul>
+                 <p>
+Recap
+Remember that the main point of a version control system is to help you maintain a detailed history of the project as well as the ability to work on different versions of it. Having a detailed history of a project is important because it lets you see the progress of the project over time. If needed, you can also jump back to any point in the project to recover data or files.</p>
+
+                 <p>
+In this course, we'll be using Git which is a distributed version control system. You might be surprised to discover that you're already using version control all the time!</p>
+             
+            <div class="theButton">  <button type="button" class="btn-lg btn-danger active "aria-pressed="true"><a href="terminal.html" class="theButton">Terminal Notes</a></button> </div>
+                
+		</div>
+	</div>
+
+    <h1>Terminology</h1>
+
+	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Commit
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git commit -m "short Descrpt of the Commit" </h5>
+		     <p class="card-text">Git thinks of its data like a set of snapshots of a mini filesystem. Every time you commit (save the state of your project in Git), it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. You can think of it as a save point in a game - it saves your project's files and any information about them.</p>
+                 
+            <p>Everything you do in Git is to help you make commits, so a commit is the fundamental unit in Git.</p>
+		</div>
+	</div>
+
+	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Repository / repo 
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$the Git Repo </h5>
+		     <p class="card-text ">A repository is a directory which contains your project work, as well as a few files (hidden by default on Mac OS X) which are used to communicate with Git. Repositories can exist either locally on your computer or as a remote copy on another computer. A repository is made up of commits..</p>
+		</div>
+	</div>
+		
+		<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Working Directory 
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$Working Directory </h5>
+		     <p class="card-text">The Working Directory is the files that you see in your computer's file system. When you open your project files up on a code editor, you're working with files in the Working Directory.</p>
+
+                 <p>This is in contrast to the files that have been saved (in commits!) in the repository.</p>
+
+                 <p>When working with Git, the Working Directory is also different from the command line's concept of the current working directory which is the directory that your shell is "looking at" right now.</p>
+
+		      <p class="card-text"><strong>Syntax</strong>
+		      ($mv fileName/*nameEnding theDestinationFolder)</p>
+			</div>
+		</div>
+		
+		<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Checkout 
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">git checkout </h5>
+
+		      <p class="card-text">A checkout is when content in the repository has been copied to the Working Directory.</p>
+		</div>
+	</div>
+
+	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Staging Area / Staging Index / Index
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">git Staging Area </h5>
+		     <p class="card-text">A file in the Git directory that stores information about what will go into your next commit. You can think of the staging area as a prep table where Git will take the next commit. Files on the Staging Index are poised to be added to the repository.</p>
+
+			</div>
+		</div>
+
+		<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">SHA
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$rm sillyFile.txt </h5>
+		     <p class="card-text">TA SHA is basically an ID number for each commit. Here's what a commit's SHA might look like: <strong class="theCode"> e2adf8ae3e2e4ed40add75cc44cf9d0a869afeb6</strong> </p>
+                 
+                 <p>AIt is a 40-character string composed of characters (0–9 and a–f) and calculated based on the contents of a file or directory structure in Git. "SHA" is shorthand for "Secure Hash Algorithm".</p>
+
+			</div>
+		</div>
+		
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Branch
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$Branch </h5>
+             <h5 class="card-title theCode">$git branch </h5>
+		     <p class="card-text"> <strong class="theCode">A branch  </strong>  is when a new line of development is created that diverges from the main line of development. This alternative line of development can continue without altering the main line. </p>
+
+                <p>Going back to the example of save point in a game, you can think of a branch as where you make a save point in your game and then decide to try out a risky move in the game. If the risky move doesn't pan out, then you can just go back to the save point. The key thing that makes branches incredibly powerful is that you can make save points on one branch, and then switch to a different branch and make save points there, too.</p>
+
+			</div>
+		</div>
+
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">First Time Git Configuration
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$var=2 ; echo $var </h5>
+		     <p class="card-text">VBefore you can start using Git, you need to configure it. Run each of the following lines on the command line to make sure everything is set up.</p>
+
+                <p><strong class="theCode">git config --global user.name "&#40;Your-Full-Name&#41;"</strong></p>  
+                 <p><strong class="theCode">git config --global user.email"&#40;your-email-address&#41;"</strong></p>  
+                 <p><strong class="theCode">git config --global color.ui auto</strong></p>  
+                 <p><strong class="theCode">git config --global merge.conflictstyle diff3</strong></p>  
+                 <p><strong class="theCode">git config --list</strong></p>  
+                 <p><strong class="theCode">git config --global core.editor "atom --wait"</strong></p>  
+
+			</div>
+		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Git Init
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git init </h5>
+		     <p class="card-text">Before you can make commits or do anything else with a git repository, the repository needs to actually exist. To create a new repository with Git, we'll use the <strong class="theCode">git init </strong>command.</p>
+
+                 <p>The <strong class="theCode">init</strong> subcommand is short for "initialize", which is helpful because it's the command that will do all of the initial setup of a repository.</p>
+
+                 <p class="card-text"><strong>Git Init's Effect</strong></p>
+		          <p>Running the <strong class="theCode">git init</strong> command sets up all of the necessary files and directories that Git will use to keep track of everything. All of these files are stored in a directory called <strong class="theCode">.git</strong> (notice the <strong class="theCode">.</strong> at the beginning - that means it'll be a hidden directory on Mac/Linux). This <strong class="theCode">.git</strong> directory is the "repo"! This is where git records all of the commits and keeps track of everything!</p>
+
+			</div>
+		</div>
+     
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">.Git Directory Contents
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">.Git Directory Contents</h5>
+		     <p class="card-text">Here's a brief synopsis on each of the items in the .git directory:
+
+                 <strong class="theCode">config file</strong> - where all project specific configuration settings are stored.</p>
+                 <p><strong class="theCode">From the Git Book:</strong>Git looks for configuration values in the configuration file in the Git directory (.git/config) of whatever repository you’re currently using. These values are specific to that single repository.</p>
+
+                 <p>For example, let's say you set that the global configuration for Git uses your personal email address. If you want your work email to be used for a specific project rather than your personal email, that change would be added to this file.</p>
+
+                 <p><strong class="theCode">description file</strong> - this file is only used by the GitWeb program, so we can ignore it</p>
+                 <p><strong class="theCode">hooks directory</strong> - this is where we could place client-side or server-side scripts that we can use to hook into Git's different lifecycle events
+                     <p><strong class="theCode">info directory</strong> - contains the global excludes file</p>
+                     <p><strong class="theCode">objects directory</strong> - this directory will store all of the commits we make</p>
+                     <p><strong class="theCode">refs directory </strong>- this directory holds pointers to commits (basically the "branches" and "tags")</p>
+<p>Remember, other than the "hooks" directory, you shouldn't mess with pretty much any of the content in here. The "hooks" directory can be used to hook into different parts or events of Git's workflow, but that's a more advanced topic that we won't be getting into in this course.</p>
+
+                    <p>You can learn more from the <a class="theCode" href="https://www.atlassian.com/git/tutorials/syncing" >>_.git init Tutorial</a> </p>
+                     
+			</div>
+		</div>
+    
+        <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Git Clone
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git clone "http://github.com/..." </h5>
+		     <p class="card-text">The cloning is for making <strong class="theCode"> an identical copy </strong>. You can see all your Shotcuts by just typing <strong class="theCode">$alias </strong>. This command will show all the different Aliases saved in your .bash_profile</p>
+
+		      <p class="card-text"><strong>Syntax</strong>
+		      ($ alias shortCutName='the full Command in single qoutes')</p>
+
+			</div>
+		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Git log
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git log --oneline" </h5>
+                 <p class="card-text">By default, this command displays:</p>
+                 <ul>
+                 <li class="theCode"> the SHA</li>
+                 <li class="theCode"> the author</li>
+                 <li class="theCode"> the date</li>
+                 <li class="theCode"> the message</li>
+                 </ul>
+                 <p>...of every commit in the repository</p>
+
+                 <p><strong class="theCode">git log --stat</strong> this Command:</p>
+                 <ul>
+                 <li> display the file(s) that have been modified</li>
+                 <li> display the number of lines that have been added/removed</li>
+                 <li> display a summary line with the total number of modified files and lines that have been added/removed</li>
+                 </ul>
+			</div>
+		</div>
+    
+         <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Project Setup
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <p>create an<strong class="theCode"> index.html</strong> file</p>
+             <p>create a<strong class="theCode"> js</strong> directory</p>
+             <p>create a<strong class="theCode"> css</strong> directory</p>
+             <p>create an<strong class="theCode"> img</strong> directory</p>
+             <p>create<strong class="theCode"> app.css</strong> in the css directory</p>
+             <p>create<strong class="theCode"> app.js</strong> in the js directory</p>
+             <p>add starter HTML code in <strong class="theCode"> index.html</strong></p>
+             <p>add configuration files for<strong class="theCode"> linting </strong>(validating code syntax) </p>
+
+                 <ul>
+                        <li><a  class="theCode" href="https://htmlhint.com/">HTML linting</a></li>
+                        <li><a  class="theCode" href="https://stylelint.io/">CSS linting</a></li>
+                        <li><a  class="theCode" href="https://eslint.org/">JavaScript linting</a></li>
+                 
+                 </ul>
+                
+            <p>You can learn more from these sites for Bash </p>
+            <p><a class="theCode" href="http://bashrcgenerator.com/" >>_.bashrc PS1 generator</a> </p>
+            <p><a class="theCode" href="https://www.bash.academy/" >>_.The Bash Academy</a> </p>
+            <p><a class="theCode" href="http://www.tldp.org/LDP/Bash-Beginners-Guide/html/" >>_.TBash Guide for Beginners</a> </p>
+            <p><a class="theCode" href="http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html" >>_.BASH Programming</a> </p>
+            <p><a class="theCode" href="https://regexr.com/" >>_.Regexr-Learn regular Expressions</a> </p>
+
+			</div>
+		</div>
+    
+     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Git Log --PATCH
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git log -p --stat / $ git log -p fdf5493</h5>
+		     <p class="card-text"><strong class="theCode">git log -p -w </strong> will show the patch information, but will not highlight lines where only whitespace changes have occurred.</p>
+
+                 <ul>
+                        <li>displays the files that have been modified</li>
+                        <li>displays the location of the lines that have been added/removed</li>
+                        <li>displays the actual changes that have been made</li>
+                 
+                 </ul>
+			</div>
+		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Git Add .
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git add file.ext / git add .</h5>
+		     <p class="card-text">The<strong class="theCode"> git add </strong> will The  command is used to move files from the Working Directory to the Staging Index.</p>
+                 <p>This command: </p>
+
+                 <ul>
+                        <li>takes a space-separated list of file names</li>
+                     <li>alternatively, the period <strong class="theCode"> . </strong>can be used in place of files to tell GIt to add the current directory (and all nested files).</li>
+                 
+                 </ul>
+			</div>
+		</div>
+    
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Git Commit -m "Commit Description"
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git commit -m "Initial Commit"</h5>
+		     <p class="card-text">The<strong class="theCode"> git commit </strong> command takes files from the Staging Index and saves them in the repository.</p>
+                 <p>This command: </p>
+
+                 <ul>
+                        <li>will open the code editor that is specified in your configuration</li>
+                     <li class="theCode"> git config --global core.editor subl </li>
+                     <p>inside the editor:</p>
+                     <li>a commit message must be supplied</li>
+                     <li>lines that start with a # are comments and will not be recorded</li>
+                     <li>save the fuke after adding a commit message</li>
+                     <li>close the editor to make the commit</li>
+                     <p>Then, use <strong class="theCode"> git log </strong>to review the commit that was just made!</p>
+                 </ul>
+			</div>
+		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Git Diff"
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git diff"</h5>
+		     <p class="card-text">The<strong class="theCode"> git diff </strong> command is used to see changes that have been made but haven't been committed, yet.</p>
+                 <p>This command displays: </p>
+
+                 <ul>
+                     <li>the files that have been modified</li>
+                     <li>the location of the lines that have been added/removed</li>
+                     <li>the actual changes that have been made</li>
+                 </ul>
+			</div>
+		</div>
+    
+    
+     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Git Ignore"
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$touch .gitignore"</h5>
+		     <p class="card-text">If you want to keep a file in your project's directory structure but make sure it isn't accidentally committed to the project, you can use the specially named file, <strong class="theCode"> .gitignore  </strong> (note the dot at the front, it's important!). Add this file to your project in the same directory that the hidden <strong class="theCode"> .git  </strong> directory is located. All you have to do is list the names of files that you want Git to ignore (not track) and it will ignore them.</p>
+			</div>
+		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Globbing"
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git diff"</h5>
+		     <p class="card-text">Globbing lets you use special characters to match patterns/characters. In the <strong class="theCode"> .gitignore </strong> file, you can use the following:</p>
+                 
+                 <ul>
+                     <li>blank lines can be used for spacing</li>
+                     <li><strong class="theCode"> # </strong> - marks line as a comment</li>
+                     <li><strong class="theCode"> * </strong> - matches 0 or more characters</li>
+                     <li><strong class="theCode"> ? </strong> - matches 1 character</li>
+                     <li><strong class="theCode"> [ abc ] </strong> - matches a, b, _or_ c </li>
+                     <li><strong class="theCode"> ** </strong> - matches nested directories - <strong class="theCode"> a/**/z </strong> matches
+                     
+                     <div>
+                         <ul>
+                     <li><strong class="theCode"> a/z </strong></li>
+                     <li><strong class="theCode"> a/b/z </strong></li>
+                     <li><strong class="theCode"> a/b/c/z </strong></li>
+                             </ul>
+                     </div>
+                     </li>
+                     
+                 </ul>
+                 
+                 <p>Further Research</p>
+                  <div>
+                         <ul>
+                     <li><strong class="theCode"><a href="https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository#Ignoring-Files"> ignoring files</a> </strong> from the Git Book </li>
+                    
+                    <li><strong class="theCode"><a href="https://git-scm.com/docs/gitignore#_pattern_format"> gitignore</a> </strong> from the Git Docs </li>
+                             
+                    <li><strong class="theCode"><a href="https://help.github.com/en/github/using-git/ignoring-files"> gitignore</a> </strong> from the Git Docs </li>  
+                
+                    <li><strong class="theCode"><a href="https://www.gitignore.io/"> gitignore.io</a> </strong> Create useful .gitignore files</li>
+                             
+                     
+                             </ul>
+                     </div>
+			</div>
+		</div>
+    
+     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Git Tag
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$ git tag -a v1.0 </h5>
+                 <p>The <strong class="theCode"> git tag </strong> command is used to add a marker on a specific commit. The tag does not move around as new commits are added.</p>
+                 <h5 class="theCode">$ git tag -a beta </h5>
+                 <p>This command will</p>
+                 <ul>
+                     <li>add a tag the most recent commit</li>
+                     <li>add a tag to a specific commit if a SHA is passed</li>
+                 </ul>
+                 
+                 <p class="card-text">Pay attention to what's shown (just the SHA and the commit message)</p>
+                <p>
+                The command we'll be using to interact with the repository's tags is the git tag command:<strong class="theCode"> $ git tag -a v1.0 </strong> Git Tag Command
+                </p>
+                 <p>Annoted tags are recommended because they include a lot of extra information such as : </p>
+
+                 <ul>
+                     <li>the person who made the tag</li>
+                     <li>the date the tag was made</li>
+                     <li>a message for the tag</li>
+                 </ul>
+                 
+                 <h5 class="card-title theCode">$ git log --decorate </h5> 
+                 <h5 class="card-title theCode">$ git tag -d v1.0 </h5>
+                 <h5 class="card-title theCode">$ git tag --delete v1.0 </h5>
+			</div>
+		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Git Branch"
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git branch branchName"</h5>
+		     <h5 class="card-title theCode">$git checkout branchName"</h5>
+             <h5 class="card-title theCode">$git checkout master"</h5>
+             <h5 class="card-title theCode">$git branch"</h5>
+		     <p class="card-text">To create a branch, all you have to do is use git branch and provide it the name of the branch you want it to create. <strong class="theCode"> $git checkout branchName </strong> Remember that when a commit is made that it will be added to the current branch. So even though we created the new sidebar, no new commits will be added to it since we haven't switched to it, yet. If we made a commit right now, that commit would be added to the master branch, not the sidebar branch.</p>
+                 
+           <h5 class="theCode"> $ git log --oneline --decorate</h5>
+           <h5 class="theCode"> $ git branch -d sidebar </h5>
+           <h5 class="theCode"> $ git checkout -b phils-branch-changes </h5>
+
+                 
+                 
+                <ul>
+                     <li>the person who made the tag</li>
+                     <li>the date the tag was made</li>
+                     <li>a message for the tag</li>
+                 </ul>
+                 
+			</div>
+		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Git Merge"
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git branch branchName</h5>
+		     <h5 class="card-title theCode">$git checkout branchName</h5>
+             <h5 class="card-title theCode">$git checkout master"</h5>
+             <h5 class="card-title theCode">$git branch</h5>
+             <h5 class="card-title theCode">$git merge "name-of-branch-to-merge-in"</h5>
+                 
+		     <p class="card-text">A branch is used to do development or make a fix to the project that won't affect the project (since the changes are made on a branch). Once you make the change on the branch, you can combine that branch into the master branch (this "combining of branches" is called  <strong class="theCode"> "merging". </strong> After a branch's changes have been merged, you probably won't need the branch anymore. If you want to delete the branch, you'd use the -d flag. The command below includes the -d flag which tells Git to delete the provided branch. </p>
+                 
+           <h5 class="theCode"> $ git branch -d sidebar</h5>
+                 <p>One thing to note is that you can't delete a branch that you're currently on. So to delete the sidebar branch, you'd have to switch to either the <strong class="theCode"> master </strong> branch or create and switch to a new branch.
+                 </p>         
+                 
+            <p>To force deletion, you need to use a capital D flag - </p>
+           <h5 class="theCode"> $ git branch -D sidebar </h5>
+
+                 
+                 
+                <ul>
+                     <li> <strong class="theCode">$ git branch </strong> list out local branches</li>
+                     <li> <strong class="theCode">$ git branch footer-fix </strong> create new branches</li><li> <strong class="theCode">$ git reset --hard HEAD^ </strong> reset the head of the master branch</li>
+                     <li> <strong class="theCode">$ git branch -d footer-fix </strong> remove branches</li>
+                     <li> <strong class="theCode">$ git log --oneline --decorate --graph --all
+ </strong> the --graph flag adds the bullets and lines to the leftmost part of the output. This shows the actual branching that's happening. The --all flag is what displays all of the branches in the repository.</li>
+                     
+                 </ul>
+                 
+                 <h3>Further Research</h3>
+                 
+                  <ul>
+                     <li><a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging"></a> Git Branching and Merging from Git Docs</li>
+                      
+                      <li><a href="https://learngitbranching.js.org/"></a> Learn Git Branching</li>
+                      
+                      <li><a href="https://www.atlassian.com/git/tutorials/using-branches"></a> Git Branching from BitBucket</li>
+                     
+                     
+                 </ul>
+                 
+                 <h5 class="theCode"> $git merge "name-of-branch-to-merge-in" </h5>
+                 <h3> The Merge Command will: </h3>
+                 
+                <ul>
+                     <li>look at the branches that it's going to merge</li>
+                     <li>look back along the branch's history to find a single commit that both branches have in thier commit history</li>
+                     <li>combine the lines of code that were changed on rge separate branches together</li>
+                     <li>makes a commit to record the merge</li>
+                 </ul>
+            
+			</div>
+		</div>
+    
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Fast-forward Merge"
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git diff"</h5>
+		     <p class="card-text">The<strong class="theCode">"merge in" </strong>  is important; when a merge is performed, the other branch's changes are brought into the branch that's currently checked out.</p>
+                 
+            <p>When we merge, we're merging some other branch into the current (checked-out) branch. We're not merging two branches into a new branch. We're not merging the current branch into the other branch.</p>
+                 
+            <p>Most of the time Git will be able to merge branches together without any problem. However, there are instances when a merge cannot be fully performed automatically. When a merge fails, it's called a <strong class="theCode"> merge conflict. </strong></p>
+                 
+            <p>If a merge conflict does occur, Git will try to combine as much as it can, but then it will leave special markers <strong class="theCode">(e.g. >>> and <<<) </strong>that tell you where you (yep, you the programmer!) needs to manually fix.</p>
+                 
+                 <p>This command displays: </p>
+
+                 <ul>
+                     <li>the files that have been modified</li>
+                     <li>the location of the lines that have been added/removed</li>
+                     <li>the actual changes that have been made</li>
+                 </ul>
+			</div>
+		</div>    
+    
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Resolving A Merge Conflict
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git merge conflict error"</h5>
+		     <h5 class="card-title theCode">$git log --oneline --decorate --graph --all</h5>
+		     
+            <p>Git is using the <strong class="theCode"> merge conflict indicators </strong> to show you what lines caused the merge conflict on the two different branches as well as what the original line used to have. So to resolve a merge conflict, you need to:</p>
+
+                 <ul>
+                     <li>choose which line(s) to keep </li>
+                     <li>remove all lines with indicators</li>
+                 </ul>
+                 
+                 
+                 <h3>Commit the Merge Conflict</h3>
+                 <p>
+                     Once you've removed all lines with merge conflict indicators and have selected what heading you want to use, just save the file, add it to the staging index, and commit it! Just like with a regular merge, this will pop open your code editor for you to supply a commit message. Just like before, it's common to use the provided merge commit message, so after the editor opens, just close it to use the provided commit message.</p>
+                 
+                 <p>
+                     And that's it! Merge conflicts really aren't all that challenging once you understand what the merge conflict indicators are showing you.</p>
+                 
+                 <h3>Recap Merge Conflict</h3>
+                 
+                 <p>A merge conflict happens when the same line or lines have been changed on different branches that are being merged. Git will pause mid-merge telling you that there is a conflict and will tell you in what file or files the conflict occurred. </p>
+                 <p>To resolve the conflict in a file:</p>
+                 <ul>
+                    <li>locate and remove all lines with merge conflict indicators</li>
+                    <li>determine what to keep</li>
+                    <li>save the file(s)</li>
+                    <li>stage the file(s)</li>
+                    <li>make a commit</li>
+                 </ul>
+                 
+                 <p>Be careful that a file might have merge conflicts in multiple parts of the file, so make sure you check the entire file for merge conflict indicators - a quick search for <<< should help you locate all of them.</p>
+			</div>
+		</div>
+    
+     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Changing The Last Commit
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git commit --amend</h5>
+		     <h5 class="card-title theCode">$git checkout branchName"</h5>
+             <h5 class="card-title theCode">$git checkout master"</h5>
+             <h5 class="card-title theCode">$git branch"</h5>
+		     <p class="card-text">You've already made plenty of commits with the git commit command. Now with the <strong> --amend </strong> flag, you can alter the most-recent commit.</p>
+                 
+                 <p>
+                     If your Working Directory is clean (meaning there aren't any uncommitted changes in the repository), then running <strong class="theCode">git commit --amend </strong> will let you provide a new commit message. Your code editor will open up and display the original commit message. Just fix a misspelling or completely reword it! Then save it and close the editor to lock in the new commit message.</p>
+                 
+                 <h3>Add Forgotten Files To Commit</h3>
+                 
+                 <p>Alternatively, <strong class="theCode">git commit --amend </strong> will let you include files (or changes to files) you might've forgotten to include. Let's say you've updated the color of all navigation links across your entire website. You committed that change and thought you were done. But then you discovered that a special nav link buried deep on a page doesn't have the new color. You could just make a new commit that updates the color for that one link, but that would have two back-to-back commits that do practically the exact same thing (change link colors).</p>
+                 
+                 <p>Instead, you can amend the last commit (the one that updated the color of all of the other links) to include this forgotten one. To do get the forgotten link included, just:</p>
+                 
+                 <ul>
+                     <li>edit the file(s)</li>
+                     <li>save the file(s)</li>
+                     <li>stage the file(s)</li>
+                     <li>and run <strong>git commit --amend</strong></li>
+                 
+                 
+                 </ul>
+                 
+           <h5 class="theCode"> $ git log --oneline --decorate</h5>
+           
+                 
+			</div>
+		</div>
+    
+       <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">What is a Revert"
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git revert SHA-of-commit-to-revert </h5>
+                 
+		     <p class="card-text"> 
+                 When you tell Git to revert a specific commit, Git takes the changes that were made in commit and does the exact opposite of them. Let's break that down a bit. If a character is added in commit A, if Git reverts commit A, then Git will make a new commit where that character is deleted. It also works the other way where if a character/line is removed, then reverting that commit will add that content back!</p>
+                 
+                 <p>This command: </p>
+
+                 <ul>
+                     <li>will undo changes that were made by the provided commit</li>
+                     <li>creates a new commit to record the change</li>
+                 </ul>
+			</div>
+		</div>        
+    
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Reset vs Revert
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$git revert SHA-of-commit-to-revert </h5>
+                 
+		     <p class="card-text"> 
+                 Relative Commit References
+                 You already know that you can reference commits by their SHA, by tags, branches, and the special HEAD pointer. Sometimes that's not enough, though. There will be times when you'll want to reference a commit relative to another commit. For example, there will be times where you'll want to tell Git about the commit that's one before the current commit...or two before the current commit. There are special characters called "Ancestry References" that we can use to tell Git about these relative references. Those characters are:</p>
+                 <ul>
+                     <li> ^ – indicates the parent commit </li>
+                     <li> ~ – indicates the first parent commit </li>
+                 </ul>
+                 
+                <h3>Here's how we can refer to previous commits: </h3>
+
+                 <p> the parent commit – the following indicate the parent commit of the current commit </p>
+                 
+                 <ul>
+                 <li> HEAD^ </li>
+                 <li> HEAD~ </li>
+                 <li> HEAD~1 </li>
+                 
+                 </ul>
+
+
+
+                 <p>the grandparent commit – the following indicate the grandparent commit of the current commit </p>
+                 
+                 <ul>
+                 <li> HEAD^^ </li>
+                 <li> HEAD~2 </li>
+                 </ul>
+
+                 <p>the great-grandparent commit – the following indicate the great-grandparent commit of the current commit</p>
+                 
+                 <ul>
+                    <li> HEAD^^^ </li>
+                    <li> HEAD~3 </li>
+                 </ul>
+                 
+                 <p>The main difference between the ^ and the ~ is when a commit is created from a merge. A merge commit has two parents. With a merge commit, the ^ reference is used to indicate the first parent of the commit while ^2 indicates the second parent. The first parent is the branch you were on when you ran git merge while the second parent is the branch that was merged in.</p>
+
+                 <ul>
+                     <li>will undo changes that were made by the provided commit</li>
+                     <li>creates a new commit to record the change</li>
+                 </ul>
+			</div>
+		</div>   
+    
+    
+           <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">The Git Reset Command
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>
+                 The git reset command is used to reset (erase) commits:
+
+                 </p>
+		     <h5 class="card-title theCode">$ git reset reference-to-commit </h5>
+                
+                 
+                 <p>It can be used to: </p>
+
+                 <ul>
+                     <li>move the HEAD and current branch to the referenced commit</li>
+                     <li>erase commits</li>
+                     <li>move commited changes to the staging Index</li>
+                     <li>unstage commited changes</li>
+                 </ul>
+			</div>
+		</div>        
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Git Reset Flags
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>
+                 The way that Git determines if it erases, stages previously committed changes, or unstages previously committed changes is by the flag that's used. The flags are:
+                 </p>                
+                 
+                 <ul>
+                 <li class="theCode"> --mixed </li>
+                 <li class="theCode"> --soft </li>
+                 <li class="theCode"> --hard </li>
+                
+                 
+                 </ul>
+                 
+                <ul>
+                 <li> move the HEAD and current branch pointer to the referenced commit </li>
+                 <li> erase commits with the --hard flag </li>
+                 <li> moves committed changes to the staging index with the --soft flag </li>
+                 <li> unstages committed changes --mixed flag </li>
+                 
+                 
+                 </ul>
+                     
+
+
+                 <p>
+                     Typically, ancestry references are used to indicate previous commits. The ancestry references are:
+                 </p>
+
+                 <ul>
+                     <li> ^ – indicates the parent commit</li>
+                     <li> ~ – indicates the first parent commit</li>
+                </ul> 
+                 
+                 <h3>References</h3>
+                 
+                 <ul>
+                     <li> <a href="https://git-scm.com/docs/git-reset"> Reset - Git Docs </a></li>
+                     <li> <a href="https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified"> Reset - Demystified </a></li>
+                     <li> <a href="https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection#Ancestry-References"> Reset - Ancestry References </a></li>
+                </ul>
+			</div>
+		</div>        
+    
+</div>
+    
+        <script type="text/javascript" src="external/js/jquery.min.js" rel="javascript"></script>
+
+</body>
+</html>

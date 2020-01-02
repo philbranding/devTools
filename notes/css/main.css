@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "SF Display";
+  font-weight: 100;
+  src: url("https://sf.abarba.me/SF-UI-Display-Ultralight.otf");
+}
+
+@font-face {
+  font-family: "SF Display";
+  font-weight: 800;
+  src: url("https://sf.abarba.me/SF-UI-Display-Heavy.otf");
+}
+
+
+
+
+body{
+	font: SF Display,sans-serif;
+	font-weight: 100;
+
+}
+
+.card{
+	border-radius: 8px;
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 80%;
+}
+
+.theCode{
+	font-size: 16px;
+	font-family: 'Courier Prime', monospace;
+	color: rgb(255, 214,10); 
+}
+
+
+.notes{
+	font-weight: 100;
+	margin: 0 0 50px;
+}
+
+
+.theIcon01{
+	color: rgb(50, 215, 75); 
+	float: right;
+	padding: 4px;
+}
+
+.theIcon02{
+	color: rgb(255, 214,10); 
+	float: right;
+	padding: 4px;
+}
+
+
+.theIcon03{
+	color: rgb(255, 69, 58); 
+	float: right;
+	padding: 4px;
+}
+
+a {
+    color: ghostwhite;
+}
+
+  a:hover{
+        text-decoration: none;
+        color: orange;
+    }
+
+.theButton{
+    width: 180px;
+}
+
+.theHero{
+    color: white;
+    background-color: black;
+    
+    
+}
