@@ -992,6 +992,40 @@ In this course, we'll be using Git which is a distributed version control system
 		</div>        
     
     
+     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">The Git PULL
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>
+                 If there are changes in a remote repository that you'd like to include in your local repository, then you want to pull in those changes. To do that with Git, you'd use the <strong class="theCode"> git pull </strong> command. You tell Git the shortname of the remote you want to get the changes from and then the branch that has the changes you want:
+                 </p>
+                 
+		     <h5 class="card-title theCode">$ git pull origin master </h5>
+                
+                 <p> My remote's shortname is origin and the commits that I want to push are on the master branch. So I'll use the following command to send my commits to the remote repository on GitHub:
+                 </p>
+                 
+                 <p class="theCode"> git push origin master </p>
+                 
+                 <p> A tracking branch's name includes the shortname of the remote repository as well as the name of the branch. So the tracking branch origin/master is telling us that the remote origin has a master branch that points to commit </p>
+                 
+                 <p>One very important thing to know is that this <strong class="theCode"> origin/master </strong> tracking branch is not a live representation of where the branch exists on the remote repository. If a change is made to the remote repository not by us but by someone else, the <strong class="theCode"> origin/master </strong> tracking branch in our local repository will not move. We have to tell it to go check for any updates and then it will move. </p>
+
+                 <p> When <strong class="theCode"> git pull </strong> is run, the following things happen: </p>
+                 <ul>
+                     <li> the <strong class="theCode"> commits(s) </strong> on the remote branch are copied to the local repository </li>
+                     <li> the local tracking branch <strong class="theCode"> (origin/master)</strong> is moved to point to the most recent commit</li>
+                    <li> the local tracking branch <strong class="theCode"> (origin/master)</strong> is merged into the local branch (master)</li>
+                    
+                 </ul>
+			</div>
+		</div>        
+    
     
 </div>
     <script type="text/javascript" src="external/js/jquery.min.js" rel="javascript"></script>
