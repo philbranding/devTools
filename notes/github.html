@@ -936,19 +936,21 @@ In this course, we'll be using Git which is a distributed version control system
 		     </div>
 		 	 <div class="card-body">
              <p>
-                 The git reset command is used to reset (erase) commits:
+                 The output of <strong class="theCode"> git remote </strong> is just the word origin. Well that's weird. The word <strong class="theCode"> "origin" </strong>, here, is referred to as a "shortname". A shortname is just a short and easy way to refer to the location of the remote repository. A shortname is local to the current repository (as in, your local repository). The word "origin" is the defacto name that's used to refer to the main remote repository. It's possible to rename this to something else, but typically it's left as "origin".
 
                  </p>
-		     <h5 class="card-title theCode">$ git reset reference-to-commit </h5>
+		     <h5 class="card-title theCode">$ git remote -v  </h5>
                 
+                 <p class="theCode"> $ git remote add origin https://github.com/user-name/my-travel-plans.git </p>
                  
-                 <p>It can be used to: </p>
+                 <p> The <striong> git remote add  </striong> was used to create a shortname of <strong class="theCode"> origin </strong> that points at the project hosted on GitHub </p>
+                 <p>running the command <strong class="theCode"> git remote -v </strong> displays both the shortname and URL </p>
 
                  <ul>
-                     <li>move the HEAD and current branch to the referenced commit</li>
-                     <li>erase commits</li>
-                     <li>move commited changes to the staging Index</li>
-                     <li>unstage commited changes</li>
+                     <li>it possible to have links to multiple different remote repositories</li>
+                     <li> A shortname is a name that is used to refere to a remote repository's location. Typically the location is a URL, but it could be file path that is on the same computer </li>
+                     <li><strong class="theCode">git remote add </strong> is used to add a connection to a new remote repository </li>
+                     <li><strong class="theCode">git remote -v </strong> </li>
                  </ul>
 			</div>
 		</div>        
