@@ -1040,7 +1040,7 @@ In this course, we'll be using Git which is a distributed version control system
                  <strong class="theCode"> Git fetch </strong> is used to retrieve commits from a remote repository's branch but it does not automatically merge the local branch with the remote tracking branch after those commits have been received.
                  </p>
                  
-		     <h5 class="card-title theCode">$ git pull origin master </h5>
+		     <h5 class="card-title theCode">$ git fetch origin master </h5>
                 
                  <p> My remote's shortname is origin and the commits that I want to push are on the master branch. So I'll use the following command to send my commits to the remote repository on GitHub:
                  </p>
@@ -1052,6 +1052,33 @@ In this course, we'll be using Git which is a distributed version control system
                      <li>The important thing to note is that the local branch does not change at all.</li> 
                      <li>You can think of <strong class="theCode"> git fetch </strong> as half of a <strong class="theCode"> git pull </strong>. The other half of <strong class="theCode"> git pull </strong> is the merging aspect.</li> 
                      
+                    
+                 </ul>
+			</div>
+		</div>        
+    
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">The Git Repo Reviews for Projects
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>
+                 The <strong class="theCode"> git log </strong> command is extremely powerful, and you can use it to discover a lot about a repository. But it can be especially helpful to discover information about a repository that you're collaborating on with others. </p>
+                 
+                 <p>
+                 You can use <strong class="theCode"> git log </strong> to:
+                 </p>
+                <ul>
+                    <li> group commits by author with <strong class="theCode">$ git shortlog </strong></li> 
+                    <li> filter commits with the <strong class="theCode">  $ git log --author="Richard Kalehoff" </strong></li> 
+                    <li> filter commits using the <strong class="theCode">    $ git log --grep="border radius issue in Safari"</strong></li> 
+                    
+                    
                     
                  </ul>
 			</div>
