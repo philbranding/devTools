@@ -948,14 +948,48 @@ In this course, we'll be using Git which is a distributed version control system
 
                  <ul>
                      <li>it possible to have links to multiple different remote repositories</li>
-                     <li> A shortname is a name that is used to refere to a remote repository's location. Typically the location is a URL, but it could be file path that is on the same computer </li>
+                     <li> A shortname is a name that is used to refere to a remote repository's location. Typically the location is a <strong class="theCode"> URL </strong>, but it could be file path that is on the same computer </li>
                      <li><strong class="theCode">git remote add </strong> is used to add a connection to a new remote repository </li>
                      <li><strong class="theCode">git remote -v </strong> </li>
                  </ul>
+                 
+                 <p class="theCode"> $ git log --oneline --graph --decorate --all </p>
 			</div>
 		</div>        
     
     
+         <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">The Git PUSH
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>
+                 To send local commits to a remote repository you need to use the <strong class="theCode"> git push </strong> command. You provide the remote short name and then you supply the name of the branch that contains the commits you want to push:
+
+                 </p>
+		     <h5 class="card-title theCode">$ $ git push &lt;remote-shortname&gt; &lt;branch&gt;</h5>
+                
+                 <p> My remote's shortname is origin and the commits that I want to push are on the master branch. So I'll use the following command to send my commits to the remote repository on GitHub:
+                 </p>
+                 
+                 <p class="theCode"> git push origin master </p>
+                 
+                 <p> A tracking branch's name includes the shortname of the remote repository as well as the name of the branch. So the tracking branch origin/master is telling us that the remote origin has a master branch that points to commit </p>
+                 
+                 <p>One very important thing to know is that this <strong class="theCode"> origin/master </strong> tracking branch is not a live representation of where the branch exists on the remote repository. If a change is made to the remote repository not by us but by someone else, the <strong class="theCode"> origin/master </strong> tracking branch in our local repository will not move. We have to tell it to go check for any updates and then it will move. </p>
+
+                 <p> The <strong class="theCode"> git push </strong>command takes:</p>
+                 <ul>
+                     <li>the shortname of the remote repository you want to send commits to </li>
+                     <li>the name of the branch that has the commits you want to send</li>
+                    
+                 </ul>
+			</div>
+		</div>        
     
     
     
