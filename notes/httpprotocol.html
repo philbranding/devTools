@@ -275,37 +275,73 @@
 
 	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Parts of URI
+		  	<div class="card-header">Scheme
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">Parts of a URI </h5>
-		     <p class="card-text">A web address is also called a URI for Uniform Resource Identifier. You've seen plenty of these before. From a web user's view, a URI is a piece of text that you put into your web browser that tells it what page to go to. From a web developer's view, it's a little bit more complicated.</p>
-                 
-                 <blockquote class="blockquote">You've probably also seen the term URL or Uniform Resource Locator. These are pretty close to the same thing; specifically, a URL is a URI for a resource on the network. Since URI is slightly more precise, we'll use that term in this course. But don't worry too much about the distinction.</blockquote>
+		     <h5 class="card-title theCode">The SCHEME Parts of a URI </h5>
+		     <p class="card-text">The first part of a URI is the scheme, which tells the client how to go about accessing the resource. Some URI schemes you've seen before include http, https, and file. File URIs tell the client to access a file on the local filesystem. HTTP and HTTPS URIs point to resources served by a web server.</p>
 
-		     <p class="card-text">A URI is a name for a resource — such as this lesson page, or a Wikipedia article, or a data source like the Google Maps API. URIs are made out of several different parts, each of which has its own syntax. Many of these parts are optional, which is why URIs for different services look so different from one another.</p>
-
-		      <p class="card-text"><strong>This URI has three visible parts, separated by a little bit of punctuation:</strong>
+                 <p>HTTP and HTTPS URIs look almost the same. The difference is that when a client goes to access a resource with an HTTPS URI, it will use an encrypted connection to do it. Encrypted Web connections were originally used to protect passwords and credit-card transactions, but today many sites use them to help protect users' privacy.
 		      </p>
                  
-                <a class="theCode" target="_blank" href="https://en.wikipedia.org/wiki/Fish" > https://en.wikipedia.org/wiki/Fish </a>
+                <a class="theCode" target="_blank" href="http://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml" > Uniform Resource Identifier (URI) Schemes </a>
 
                  
-                 <ul>
-                     <li> <strong class="theCode"> https</strong> is the <strong> scheme;</strong></li>
-                    <li><strong class="theCode"> en.wikipedia.org </strong> is the <strong>hostname;</strong></li>
-                     <li>and <strong class="theCode">/wiki/Fish</strong> is the <strong> path. </strong></li>
+                 <blockquote class="blockquote">
+                     mailto is used for links to email addresses. data is used to put a piece of hardcoded data directly into a web page, for instance a small image. magnet is used for links to some file-sharing services such as BitTorrent. However, there is no such thing as a postal URI; if you want to send postal mail from the Web you still need to print it out and put it in the mailbox yourself.
                  
-                 </ul>
+                 </blockquote>
 
 			</div>
 		</div>
     
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Hostname
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">The HOSTNAME Parts of a URI </h5>
+		     <p class="card-text">In an HTTP URI, the next thing that appears after the scheme is a hostname — something like www.udacity.com or localhost. This tells the client which server to connect to.</p>
+
+                <p>You'll often see web addresses written as just a hostname in print. But in the HTML code of a web page, you can't write <strong class="theCode">&lt;a href="www.google.com"&gt;this&lt;/a&gt;</strong> and get a working link to Google. A hostname can only appear after a URI scheme that supports it, such as http or https. In these URIs, there will always be a :// between the scheme and hostname.</p>
+
+                 <p>We'll see more about hostnames later on in the lesson. By the way, not every URI has a hostname. For instance, a mailto URI just has an email address: <strong class="theCode">mailto:spam@example.net</strong> is a well-formed mailto URI. This also reveals a bit more about the punctuation in URIs: the : goes after the scheme, but the // goes before the hostname. Mailto links don't have a hostname part, so they don't have a //.
+		      </p>
+                 
+                
+
+			</div>
+		</div>
     
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Path
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">The PATH Parts of a URI </h5>
+		     <p class="card-text">In an HTTP URI, the next thing that appears after the scheme is a hostname — something like www.udacity.com or localhost. This tells the client which server to connect to.</p>
+
+                <p>You'll often see web addresses written as just a hostname in print. But in the HTML code of a web page, you can't write <strong class="theCode">&lt;a href="www.google.com"&gt;this&lt;/a&gt;</strong> and get a working link to Google. A hostname can only appear after a URI scheme that supports it, such as http or https. In these URIs, there will always be a :// between the scheme and hostname.</p>
+
+                 <p>We'll see more about hostnames later on in the lesson. By the way, not every URI has a hostname. For instance, a mailto URI just has an email address: <strong class="theCode">mailto:spam@example.net</strong> is a well-formed mailto URI. This also reveals a bit more about the punctuation in URIs: the : goes after the scheme, but the // goes before the hostname. Mailto links don't have a hostname part, so they don't have a //.
+		      </p>
+                 
+                
+
+			</div>
+		</div>
     
 </div>
 
