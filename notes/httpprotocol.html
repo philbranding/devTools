@@ -104,15 +104,23 @@
 		
     	<div class="card text-white bg-info mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">>_.
+		  	<div class="card-header">>_. Software Needed for HTTP
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">$echo "Hello, World!"</h5>
-		     <p class="card-text">These are the fundamental notes on Bash. How to navigate the directories and many other essential skills.</p>
+                 <h2> Python 3</h2>
+		     <h5 class="card-title theCode"> $sudo apt-get install python3</h5>
+             <h5 class="card-title theCode"> $brew install python3</h5>
+             <hr>
+                 <h2>ncat from nmap</h2>
+             <h5 class="card-title theCode"> $sudo apt-get install nmap </h5>
+             <h5 class="card-title theCode"> $brew install nmap </h5>
+            
+                 <hr>
+		     <p class="card-text">To check whether <strong class="theCode">ncat</strong> is installed and working, open up two terminals. In one of them, run <strong class="theCode">ncat -l 9999 </strong>then in the other, <strong class="theCode"> ncat localhost 9999 </strong>. Then type something into each terminal and press Enter. You should see the message on the opposite terminal.</p>
              
             <div class="theButton">  <button type="button" class="btn-lg btn-danger active "aria-pressed="true"><a href="http://fsprojects.github.io/SQLProvider/core/crud.html" class="theButton" target="_blank">CRUD SAMPLE </a></button> </div>
                 
@@ -125,15 +133,25 @@
     
 		<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Echo
+		  	<div class="card-header">HTTP Transaction
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">$echo "Hello, World!"</h5>
-		     <p class="card-text">This a command that is used almost the same as the print("hello World") in python or in JavaScript.</p>
+		     <h5 class="card-title theCode">$Webserver and Client</h5>
+		     <p class="card-text"> An Http Transcaction always involve a Client and a Server. The Browser is a Client that sends request from a WebServer </p>
+                 
+            <p> The WebServer send a response for every request that it receives from a Cleint (Browser)</p>
+                 
+            <p>HTTP was originally created to serve hypertext documents, but today is used for much more. As a user of the web, you're using HTTP all the time.</p>
+                 
+            <p>Applications that you use in a web browser, and mobile services, are both likely to use HTTP. But low-level network tests such as <strong class="theCode">ping </strong> do not.</p>
+                 
+            <p>A lot of smartphone apps use HTTP under the hood to send requests and receive data. Web browsers are just the most common — and complicated — user interface for web technology.</p>
+
+            <p>But browsers are not the only web client around. HTTP is powerful and widely supported in software, so it's a common choice for programs that need to talk to each other across the network, even if they don't look anything like a web browser.</p>
 		</div>
 	</div>
 
@@ -141,15 +159,17 @@
 
 	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Change Directory (cd) & Less (ls)
+		  	<div class="card-header">Exercise: Running a Web Server
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">$cd  Desktop ; ls </h5>
-		     <p class="card-text">This two commands are used to navigate through Directories (Folders).</p>
+		     <h5 class="card-title theCode">$python3 -m http.server 8000</h5>
+		     <p class="card-text">Well, it turns out that a web server can actually be a lot simpler than a browser. Browsers have all this user interface and animation and graphics stuff going on. A server just needs to do one thing: handle incoming requests.</p>
+                 
+             <p>The Python http.server module, can run a built-in web server on your computer. It's not a web app you'd publish to the world; it's a demonstration of Python's HTTP abilities. </p>
 		</div>
 	</div>
 
