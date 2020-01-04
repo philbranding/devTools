@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>GitHub</title>
+    <head>
+	<title>Tools</title>
 	<link rel="stylesheet" type="text/css" href="external/css/bootstrap.css">
-	<script type="text/javascript" src="external/js/bootstrap.js" rel="javascript"></script>
+	<script type="text/javascript" src="./external/js/bootstrap.js" rel="javascript"></script>
     <script type="text/javascript" src="external/js/jquery.min.js" rel="javascript"></script>
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Courier+Prime&display=swap" rel="stylesheet">
@@ -13,7 +18,8 @@
     <!--meta http-equiv="refresh" content="3.9"-->
 </head>
 <body>
-        
+
+
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Phil Full-Stack Notes</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,9 +45,17 @@
         <a class="nav-link" href="database.html">Database</a>
       </li>
         
-         <li class="nav-item">
-        <a class="nav-link" href="tools.html">Tools</a>
-      </li>
+        <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Tools
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="sql.html">SQL </a>
+        <a class="dropdown-item" href="#">Boostrap 4</a>
+        <a class="dropdown-item" href="#">Javascript</a>
+      </div>
+    </li>
         
          <li class="nav-item">
         <a class="nav-link" href="github.html">Git Hub</a>
@@ -61,7 +75,14 @@
 	<h1>GITHUB NOTES</h1>
 	<h3 class="notes">These are some of the most fundamental notes that l have created while l was taling the Fullstack course with Udacity</h3>
 	</div>
+    
+    <div class="note"> 
+        
+        <h2> Projects to get involved in  </h2>
+        <button type="button" class="btn-lg btn-danger active "aria-pressed="true"> <a href="https://up-for-grabs.net/#/" class="theButton" > PROJECT </a></button>
+    </div>
 		
+    <hr class="hr">
 		<div class="card text-white bg-secondary mb-3" style="max-width: 30rem;">
 		  <div class=" ">
 		  	<div class="card-header">>_.
