@@ -1081,8 +1081,125 @@ In this course, we'll be using Git which is a distributed version control system
                     
                     
                  </ul>
+                 
+                 <h3>ON CONTRIBUTING</h3>
+                 <p>
+                    Before you start doing any work, make sure to look for the project's CONTRIBUTING.md file.</p>
+
+                   <p>   Next, it's a good idea to look at the GitHub issues for the project</p>
+
+                    <p>  look at the existing issues to see if one is similar to the change you want to contribute</p>
+                    <p>  if necessary create a new issue</p>
+                     <p> communicate the changes you'd like to make to the project maintainer in the issue</p>
+                 <p>When you start developing, commit all of your work on a topic branch:</p>
+
+                     <p>do not work on the master branch</p>
+                     <p>make sure to give the topic branch clear, descriptive name</p>
+                     <h3>As a general best practice for writing commits:</h3>
+
+                     <ul>
+                    <li>make frequent, smaller commits</li> 
+                    <li>use clear and descriptive commit messages</li> 
+                    <li>update the README file, if necessary</li> 
+                    </ul>
+
+			</div>
+		</div>       
+    
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">The Git PULL REQUEST
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>
+                A <strong class="theCode">  pull request </strong> is a request to the original or source repository's maintainer to include changes in their project that you made in your fork of their project. You are requesting that they pull in changes you've made.
+                 </p>
+                 
+		     <h5 class="card-title theCode">$ git remote add upstream url.git </h5>
+		     <h5 class="card-title theCode">$ git fetch upstream master </h5>
+                
+                 <p> Using git fetch upstream master pulled in the changes from the master branch on the upstream remote repository.
+                 </p>
+                 
+                 <p># to make sure I'm on the correct branch for merging</p>
+                 <p class="theCode">$ git checkout master</p>
+
+                 <p># merge in Lam's changes</p>
+                 <p class="theCode">$ git merge upstream/master</p>
+
+                 <p># send Lam's changes to *my* remote </p>
+                 <p class="theCode">$ git push origin master</p>
+                 
+                 <h2> Recap</h2>
+                 <p>When working with a project that you've forked. The original project's maintainer will continue adding changes to their project. You'll want to keep your fork of their project in sync with theirs so that you can include any changes they make.</p>
+
+                 <p>To get commits from a source repository into your forked repository on GitHub you need to:</p>
+                 <ul>
+                    <li>get the cloneable URL of the source repository</li> 
+                    <li>create a new remote with the git remote add command</li> 
+                        <ul>
+                            <li> use the shortname upstream to point to the source repository </li>
+                            <li> provide the URL of the source repository </li>
+                        </ul>
+                     <li> fetch the new upstream remote </li> 
+                     <li> merge the upstream's branch int the local branch </li> 
+                     <li> push the newly updated local branch to your origin repo </li> 
+                 </ul>
+                 
+                 
+                 <h2> PULL REQUESTS On Projects </h2>
+                 <p>As simple as at may seem, working on an active pull request is mostly about communication!</p>
+
+                  <p>If the project's maintainer is requesting changes to the pull request, then:</p>
+                 
+                 <ul>
+                     <li> make any necessary commits on the same branch in your local repository that your pull request is based on </li> 
+                     <li> push the branch to the your folk of the source repository</li> 
+                     <li> be kind - the project's maintainer is a regular person just like you </li> 
+                     <li> be patient - they will respond as soon as they are able </li> 
+                 </ul>
+			</div>
+		</div>       
+    
+    
+     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">The Git Rebase
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>
+                 <strong class="theCode"> Git fetch </strong> is used to retrieve commits from a remote repository's branch but it does not automatically merge the local branch with the remote tracking branch after those commits have been received.
+                 </p>
+                 
+		     <h5 class="card-title theCode">$ git fetch origin master </h5>
+                
+                 <p> My remote's shortname is origin and the commits that I want to push are on the master branch. So I'll use the following command to send my commits to the remote repository on GitHub:
+                 </p>
+                 
+                 <p> When <strong class="theCode"> git pull </strong> is run, the following things happen: </p>
+                 <ul>
+                    <li>the commit(s) on the remote branch are copied to the local repository</li> 
+                    <li>the local tracking branch (e.g. origin/master) is moved to point to the most recent commit</li> 
+                     <li>The important thing to note is that the local branch does not change at all.</li> 
+                     <li>You can think of <strong class="theCode"> git fetch </strong> as half of a <strong class="theCode"> git pull </strong>. The other half of <strong class="theCode"> git pull </strong> is the merging aspect.</li> 
+                     
+                    
+                 </ul>
 			</div>
 		</div>        
+    
+    
+    
+    
     
     
 </div>
