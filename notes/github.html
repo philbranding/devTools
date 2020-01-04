@@ -1177,12 +1177,12 @@ In this course, we'll be using Git which is a distributed version control system
 		     </div>
 		 	 <div class="card-body">
              <p>
-                 <strong class="theCode"> Git fetch </strong> is used to retrieve commits from a remote repository's branch but it does not automatically merge the local branch with the remote tracking branch after those commits have been received.
+                 <strong class="theCode"> Git rebase : </strong> To squash commits together, we're going to use the extremely powerful git rebase command.
                  </p>
                  
-		     <h5 class="card-title theCode">$ git fetch origin master </h5>
+		     <h5 class="card-title theCode">$ $ git rebase -i HEAD~3 </h5>
                 
-                 <p> My remote's shortname is origin and the commits that I want to push are on the master branch. So I'll use the following command to send my commits to the remote repository on GitHub:
+                 <p> The -i in the command stands for "interactive". You can perform a rebase in a non-interactive mode. While you're learning how to rebase, though, I definitely recommend that you do interactive rebasing.
                  </p>
                  
                  <p> When <strong class="theCode"> git pull </strong> is run, the following things happen: </p>
