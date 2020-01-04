@@ -1195,7 +1195,15 @@ In this course, we'll be using Git which is a distributed version control system
                                 <li> remove content or files</li>
                                 <li> alter the content that was going to be committed</li>
                             </ul>
+                     <li> use s or squash - to combine this commit's changes into the previous commit (the commit above it in the list)</li>
+                     <li> use f or fixup - to combine this commit's change into the previous one but drop the commit message </li>
+                     <li> use x or exec - to run a shell command </li>
+                     <li> use d or drop - to delete the commit </li>
                  </ul>
+                 
+                 <p>Whenever you rebase commits, Git will create a new SHA for each commit! This has drastic implications. To Git, the SHA is the identifier for a commit, so a different identifier means it's a different commit, regardless if the content has changed at all. </p>
+
+                 <p>So you should not rebase if you have already pushed the commits you want to rebase. If you're collaborating with other developers, then they might already be working with the commits you've pushed. If you then use git rebase to change things around and then force push the commits, then the other developers will now be out of sync with the remote repository. They will have to do some complicated surgery to their Git repository to get their repo back in a working state...and it might not even be possible for them to do that; they might just have to scrap all of their work and start over with your newly-rebased, force-pushed commits</p>
 			</div>
 		</div>        
     
