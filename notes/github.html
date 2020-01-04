@@ -1185,14 +1185,16 @@ In this course, we'll be using Git which is a distributed version control system
                  <p> The -i in the command stands for "interactive". You can perform a rebase in a non-interactive mode. While you're learning how to rebase, though, I definitely recommend that you do interactive rebasing.
                  </p>
                  
-                 <p> When <strong class="theCode"> git pull </strong> is run, the following things happen: </p>
+                 <p> Let's take another look at the different commands that you can do with <strong class="theCode">git rebase</strong>: </p>
                  <ul>
-                    <li>the commit(s) on the remote branch are copied to the local repository</li> 
-                    <li>the local tracking branch (e.g. origin/master) is moved to point to the most recent commit</li> 
-                     <li>The important thing to note is that the local branch does not change at all.</li> 
-                     <li>You can think of <strong class="theCode"> git fetch </strong> as half of a <strong class="theCode"> git pull </strong>. The other half of <strong class="theCode"> git pull </strong> is the merging aspect.</li> 
-                     
-                    
+                     <li> use p or pick - to keep the commit as is </li> 
+                     <li> use r or reward - to keep the commit's content but alter the commit message </li> 
+                     <li> use e or edit - to keep the commit's content but stop before committing so that you can: </li>
+                            <ul>
+                                <li> add new content or files</li>
+                                <li> remove content or files</li>
+                                <li> alter the content that was going to be committed</li>
+                            </ul>
                  </ul>
 			</div>
 		</div>        
