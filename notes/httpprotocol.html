@@ -378,10 +378,87 @@
                 <li> <a class="card-title theCode" href="https://en.wikipedia.org/wiki/Oxygen#Discovery" target="_blank"> https://en.wikipedia.org/wiki/Oxygen#Discovery </a></li>
                  </u>
 		     <p class="card-text">If you follow these links in your browser, it will fetch the same page from Wikipedia's web server. But the second one displays the page scrolled to the section about the discovery of oxygen. The part of the URI after the <strong class="theCode">#</strong> sign is called a <strong class="theCode">fragment</strong>. The browser doesn't even send it to the web server. It lets a link point to a specific named part of a resource; in HTML pages it links to an element by id.</p>
-
-
+                 
+                 <p>In contrast, consider this Google Search URI:</p>
+                 
+                 <ul>
+                     <li> <a href="https://www.google.com/search?q=fish" target="_blank" class="theCode">https://www.google.com/search?q=fish  </a></li>
+                 </ul>
+                 <p>The <strong class="theCode">?q=fish</strong> is a query part of the URI. This does get sent to the server.</p>
+                 
+                 <p>There are a few other possible parts of a URI. For way more detail than you need for this course, take a look at this Wikipedia article:</p>
+                 
+                 <ul>
+                     <li> <a href="hhttps://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Generic_syntax" target="_blank" class="theCode">Uniform_Resource_Identifier#Generic_syntax </a></li>
+                 </ul>
 			</div>
 		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Hostname and Ports
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+            <h5 class="card-title theCode">Hostnames </h5>
+                 
+                 <p>A full HTTP or HTTPS URI includes the hostname of the web server, like  <strong class="theCode">www.udacity.com </strong>or  <strong class="theCode">www.un.int </strong>or <strong class="theCode">www.cheeseboardcollective.coop</strong> (my favorite pizza place in the world, in Berkeley CA). A hostname in a URI can also be an IP address: for instance, if you put <a class="theCode" href="http://216.58.194.174/" target="_blank">http://216.58.194.174/</a> in your browser, you'll end up at Google.</p>
+                 
+                 <blockquote class="blockquote">Why is it called a hostname? In network terminology, a host is a computer on the network; one that could host services.</blockquote>
+                 
+                 
+		     <p class="card-text">The Internet tells computers apart by their <strong class="theCode">IP Addresses</strong>; every piece of network traffic on the Internet is labeled with the IP addresses of the sending and receiving computers. In order to connect to a web server such as www.udacity.com, a client needs to translate the hostname into an IP address. Your operating system's network configuration uses the Domain Name Service (DNS) — a set of servers maintained by Internet Service Providers (ISPs) and other network users — to look up hostnames and get back IP addresses.</p>
+                 
+                 <p class="theCode">$ host www.google.com</p>
+                 <p class="theCode">$ nslookup www.google.com</p>
+                 
+                 <ul>
+                     <li> <a href="https://www.google.com/search?q=fish" target="_blank" class="theCode">https://www.google.com/search?q=fish  </a></li>
+                 </ul>
+                 <p><strong class="theCode">$ nslookup localhost </strong></p>
+                 
+                 <p>Localhost is 127.0.0.1. Well, that's IPv4 localhost, anyway. IPv6 localhost is ::1, which is short for 0000:0000:0000:0000:0000:0000:0000:0001.</p>
+                 
+                 <h2>IPv4 or IPv6</h2>
+                 
+                 <p>IP addresses come in two different varieties: the older IPv4 and the newer IPv6. When you see an address like 127.0.0.1 or 216.58.194.164, those are IPv4 addresses. IPv6 addresses are much longer, such as 2607:f8b0:4005:804::2004, although they can also be abbreviated.</p>
+                 
+                 <h2>Localhost</h2>
+                 
+                 <p> The IPv4 address 127.0.0.1 and the IPv6 address ::1 are special addresses that mean "this computer itself" — for when a client (like your browser) is accessing a server on your own computer. The hostname localhost refers to these special addresses.</p>
+                 
+                 <p>When you run the demo server, it prints a message saying that it's listening on 0.0.0.0. This is not a regular IP address. Instead, it's a special code for "every IPv4 address on this computer". That includes the localhost address, but it also includes your computer's regular IP address.</p>
+                 
+                 <blockquote class="blockquote">A single web server can have lots of different web sites running on it, each with their own hostname. When a client asks the server for a resource, it has to specify what hostname it intends to be talking to. </blockquote>
+                 
+                 <h2>Ports</h2>
+                 
+                 <p>When you told your browser to connect to the demo server, you gave it the URI http://localhost:8000/. This URI has a port number of 8000. But most of the web addresses you see in the wild don't have a port number on them. This is because the client usually figures out the port number from the URI scheme.</p>
+                 
+                 <p>For instance, HTTP URIs imply a port number of 80, whereas HTTPS URIs imply a port number of 443. Your Python demo web server is running on port 8000. Since this isn't the default port, you have to write the port number in URIs for it.</p>
+                 
+                 <p> <strong class="theCode">What's a port number, anyway?</strong> To get into that, we need to talk about how the Internet works. All of the network traffic that computers send and receive — everything from web requests, to login sessions, to file sharing — is split up into messages called <strong class="theCode">packets.</strong> Each packet has the IP addresses of the computer that sent it, and the computer that receives it. And (with the exception of some low-level packets, such as ping) it also has the <strong class="theCode">port number</strong> for the sender and recipient. IP addresses distinguish computers; port numbers distinguish programs on those computers.</p>
+                 
+                 <p>We say that a server "listens on" a port, such as 80 or 8000. "Listening" means that when the server starts up, it tells its operating system that it wants to receive connections from clients on a particular port number. When a client (such as a web browser) "connects to" that port and sends a request, the operating system knows to forward that request to the server that's listening on that port.</p>
+                 
+                 <blockquote class="blockquote">Why do we use port 8000 instead of 80 for the demo server? For historical reasons, operating systems only allow the administrator (or root) account to listen on ports below 1024. This is fine for production web servers, but it's not convenient for learning.</blockquote>
+                 
+                 <p class="theCode">The URI in the question is an HTTPS URI. The default port for HTTPS is port 443.</p>
+                 
+			</div>
+		</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </div>
 
 </body>
