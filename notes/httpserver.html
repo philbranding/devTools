@@ -297,73 +297,126 @@
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">$self.wfile.write(self.path[1:].encode())</h5>
-		     <p class="card-text">path is the right answer. Which means that in do_GET, you'll need to access self.path to get the request path.</p>
+		     
+		     <p class="card-text">The only difference in the code between EchoHandler and HelloHandler is what they write in the response body. The hello server always writes the same message, while the echo server takes its message from the request path. Here's how I did it — a one-line change at the end of do_GET:</p>
+                 
+                 <h5 class="card-title theCode">$self.wfile.write(self.path[1:].encode())</h5>
+                 
+                 <p>What I'm doing here is taking the path (for instance "/bears"), using a string slice to remove the first character (which is always a slash), and then encoding the resulting string into bytes, then writing that to the HTTP response body.</p>
 
-                 <p>404 is the HTTP status code for "Not Found". On Highway 101, not far from the Udacity office in Mountain View, there's a sign that tells the distance to Los Angeles. As it happens, it's 404 miles from Mountain View to Los Angeles, so the sign says Los Angeles 404. And so, every web programmer in Silicon Valley has probably heard the "Los Angeles Not Found" joke at least once.</p>
-
-                 <p>For more information on the Http Status code check the <a href=" https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" class="theCode" target="_blank">Error Messages and other Status Codes</a></p>
+                 <p>message = self.path[1:]  # Extract 'bears' from '/bears', for instance </p>
+                 <p>message_bytes = message.encode()  # Make bytes from the string</p>
+                 <p>self.wfile.write(message_bytes)  # Send it over the network</p>
 
 			</div>
 		</div>
 		
 		<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Defining a Server
+		  	<div class="card-header">Queries and quoting
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">What's a server anyway? </h5>
+		     <h5 class="card-title theCode">Unpacking query parameters </h5>
 
-		      <p class="card-text">A server is just a program that accepts connections from other programs on the network.</p>
+		      <p class="card-text">When you take a look at a URI for a major web service, you'll often see several query parameters, which are a sort of variable assignment that occurs after a ? in the URI. For instance, here's a Google Image Search URI:</p>
+                 
+                 <a href="#" class="theCode">https://www.google.com/search?q=gray+squirrel&tbm=isch</a>
 
-                 <p> When you start a server program, it waits for clients to connect to it — like the demo server waiting for your web browser to ask it for a page. Then when a connection comes in, the server runs a piece of code — like calling a function — to handle each incoming connection. A connection in this sense is like a phone call: it's a channel through which the client and server can talk to each other. Web clients send requests over these connections, and servers send responses back.</p>
+                 <p> This will be sent to the web server as this HTTP request:</p>
+                 
+                 <p class="theCode">GET /search?q=gray+squirrel&tbm=isch HTTP/1.1</p>
+                 <p class="theCode">Host: www.google.com</p>
+                 
+                 <p>The query part of the URI is the part after the ? mark. Conventionally, query parameters are written as key=value and separated by <strong class="theCode">&amp;</strong> signs. So the above URI has two query parameters, q and tbm, with the values gray+squirrel and isch.</p>
+                 
+                 <p>(isch stands for Image Search.)</p>
+                 
+                 <p>There is a Python library called urllib.parse that knows how to unpack query parameters and other parts of an HTTP URL. (The library doesn't work on all URIs, only on some URLs.)</p>
+                 
+                 <a href="https://docs.python.org/3/library/urllib.parse.html" target="_blank"><button type="button" class="btn-lg btn-danger "s>urllib.parse</button></a>
+                 
+                 
+                 <p>A query parameter may show up multiple times in the query string, so parse_qs returns a dictionary of lists with all the values it's associated with.</p>
+                 
+                 <p class="theCode">>>> from urllib.parse import urlparse, parse_qs</p>
+                 <p class="theCode">>>> address = 'https://www.google.com/search?q=gray+squirrel&tbm=isch'</p>
+                 <p class="theCode">>>> parts = urlparse(address)</p>
+                 <p class="theCode">>>> print(parts)</p>
+                 
+                 <p>As a result you will get:</p>
+                 
+                 <blockquote class="blockquote">
+                 ParseResult(scheme='https', netloc='www.google.com', path='/search', params='', query='q=gray+squirrel&tbm=isch', fragment='')
+                 </blockquote>
+                 
+                 <p>Then</p>
+                 
+                 <p class="theCode">>>> print(parts.query)</p>
+                 
+                 <p>And will get:</p>
+                 <blockquote class="blockquote">
+                 q=gray+squirrel&tbm=isch
+                 </blockquote>
+                 
+                 
+                 <p class="theCode">>>>query = parse_qs(parts.query)</p>
+                 <p class="theCode">>>> query </p>
+                 <p class="theCode">{'q': ['gray squirrel'], 'tbm': ['isch']}</p>
+                 
+                  <p> As a result, you are getting a dictionary with the values passed in the Url:</p>
+
+                  <blockquote class="blockquote">{'q': ['gray squirrel'], 'tbm': ['isch']}</blockquote>
+                 
+                 <p>If you want to read each parameter you can use:</p>
+                 
+                 <p class="theCode">>>>query['q']</p>
+                 
+                 <p>To get as the result: ['gray squirrel']</p>
+                 
+                 
+                 
 
 		</div>
 	</div>
 
 	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Parts of URI
+		  	<div class="card-header"> URI Quoting
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">Parts of a URI </h5>
-		     <p class="card-text">A web address is also called a URI for Uniform Resource Identifier. You've seen plenty of these before. From a web user's view, a URI is a piece of text that you put into your web browser that tells it what page to go to. From a web developer's view, it's a little bit more complicated.</p>
+		     <h5 class="card-title">URI Quoting </h5>
+		     <p class="card-text">Did you notice that 'gray+squirrel' in the query string became 'gray squirrel' in the output of parse_qs?</p>
                  
-                 <blockquote class="blockquote">You've probably also seen the term URL or Uniform Resource Locator. These are pretty close to the same thing; specifically, a URL is a URI for a resource on the network. Since URI is slightly more precise, we'll use that term in this course. But don't worry too much about the distinction.</blockquote>
+                 <p>HTTP URLs aren't allowed to contain spaces or certain other characters. So if you want to send these characters in an HTTP request, they have to be translated into a "URL-safe" or "URL-quoted" format.</p>
 
-		     <p class="card-text">A URI is a name for a resource — such as this lesson page, or a Wikipedia article, or a data source like the Google Maps API. URIs are made out of several different parts, each of which has its own syntax. Many of these parts are optional, which is why URIs for different services look so different from one another.</p>
+                 <p>"Quoting" in this sense doesn't have to do with quotation marks, the kind you find around Python strings. It means translating a string into a form that doesn't have any special characters in it, but in a way that can be reversed (unquoted) later.</p>
 
-		      <p class="card-text"><strong>This URI has three visible parts, separated by a little bit of punctuation:</strong>
-		      </p>
-                 
-                <a class="theCode" target="_blank" href="https://en.wikipedia.org/wiki/Fish" > https://en.wikipedia.org/wiki/Fish </a>
+                 <p>(And if that isn't confusing enough, it's sometimes also referred to as URL-encoding or URL-escaping).</p>
 
-                 
-                 <ul>
-                     <li> <strong class="theCode"> https</strong> is the <strong> scheme;</strong></li>
-                    <li><strong class="theCode"> en.wikipedia.org </strong> is the <strong>hostname;</strong></li>
-                     <li>and <strong class="theCode">/wiki/Fish</strong> is the <strong> path. </strong></li>
-                 
-                 </ul>
+                 <p>One of the features of the URL-quoted format is that spaces are sometimes translated into plus signs. Other special characters are translated into hexadecimal codes that begin with the percent sign.</p>
+
+                 <p>Take a look at the documentation for urllib.parse.quote and related functions.</p>
+
+                <p>Later in the course when you want to construct a URI in your code, you'll need to use appropriate quoting. More generally, whenever you're working on a web application and you find spaces or percent-signs in places you don't expect them to be, it means that something needs to be quoted or unquoted. </p>
 
 			</div>
 		</div>
 
 	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Scheme
+		  	<div class="card-header">POST METHOD
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
-		  	  </div>
+		  	  </div> 
 		     </div>
 		 	 <div class="card-body">
 		     <h5 class="card-title theCode">The SCHEME Parts of a URI </h5>
