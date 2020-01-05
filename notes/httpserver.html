@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>Tools</title>
+	<link rel="stylesheet" type="text/css" href="external/css/bootstrap.css">
+	<script type="text/javascript" src="./external/js/bootstrap.js" rel="javascript"></script>
+    <script type="text/javascript" src="external/js/jquery.min.js" rel="javascript"></script>
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Courier+Prime&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<meta charset="utf-8">
+    <!--meta http-equiv="refresh" content="3.9"-->
+</head>
+<body>
+
+
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Phil Full-Stack Notes</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+        
+      <li class="nav-item">
+        <a class="nav-link" href="terminal.html">Terminal</a>
+      </li>
+        
+        <li class="nav-item">
+        <a class="nav-link" href="git.html">Git VCS</a>
+      </li>
+        
+         <li class="nav-item">
+        <a class="nav-link" href="database.html">Database</a>
+      </li>
+        
+        <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Tools
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="sql.html">SQL </a>
+        <a class="dropdown-item" href="#">Boostrap 4</a>
+        <a class="dropdown-item" href="#">Javascript</a>
+        <a class="dropdown-item" href="httpprotocol.html">HTTP Protocol</a>
+        <a class="dropdown-item" href="httpserver.html">HTTP Server</a>
+      </div>
+    </li>
+        
+         <li class="nav-item">
+        <a class="nav-link" href="github.html">Git Hub</a>
+      </li>
+        
+    </ul>
+      
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+    
+<div class="jumbotron">
+<div>
+	<h1>HTTP SERVER</h1>
+	<h3 class="notes">An introduction to the Web from Python </h3>
+    
+        <div>
+    <hr>
+    
+    </div>
+    <div>
+        
+        <h3> Learning Objectives</h3>
+        
+        <ul>
+            <li> Practise with http.server Python Module.</li>
+            <li>Use encode() to send data from the server.</li>
+            <li>Explain quies and quoting as a way to send data in a request. </li>
+            <li>Differentiate a GET Request from a POST Request</li>
+            <li>Demonstrate Post-Redirect-Get</li>
+            <li>Define JSON</li>
+        </ul>
+        
+    </div>
+    
+    <div>
+    <hr>
+    
+    </div>
+    
+    
+	</div>
+		
+    	<div class="card text-white bg-danger mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">>_. http.server Python's Module
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+                 <h2> http.server</h2>
+		     <p> http.server module defines classes for implementing HTTP servers (Web servers).</p>
+             
+                 <blockquote class="blockquote">Note: http.server is not recommended for production. It only implements basic security checks. But it is a first step to understand the lower level behavior of a Web server.</blockquote>
+                 
+                 <hr>
+		     <p class="card-text">These modules are written in object-oriented Python. You should already be familiar with creating class instances, defining subclasses, and defining methods on classes.</p>
+
+                 <p>If you need a refresher on the Python syntax for these object-oriented actions, you might want to browse:</p>
+             
+            <div class="theButton">  <button type="button" class="btn-lg btn-danger active "aria-pressed="true"><a href="https://docs.python.org/3/tutorial/classes.html" class="theButton" target="_blank">PYTHON CLASSES </a></button> </div>
+                 
+                 
+            <div class="theButton">  <button type="button" class="btn-lg btn-danger active "aria-pressed="true"><a href="https://classroom.udacity.com/courses/ud036/lessons/990110642/concepts/10079185740923" class="theButton" target="_blank">PYTHON </a></button> </div>
+                
+		</div>
+	</div>
+    
+    
+    
+    
+    
+		<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Servers and handlers
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">Webserver and Client</h5>
+		     <p class="card-text"> Web servers using http.server are made of two parts: the HTTPServer class, and a request handler class. The first part, the HTTPServer class, is built into the module and is the same for every web service. </p>
+                 
+            <p> It knows how to listen on a port and accept HTTP requests from clients. Whenever it receives a request, it hands that request off to the second part — a request handler — which is different for every web service.</p>
+                 
+            <p>Here's what your Python code will need to do in order to run a web service:</p>
+                 
+            <ul>
+                <li>Import http.server, or at least the pieces of it that you need.</li>     
+                <li>Create a subclass of http.server.BaseHTTPRequestHandler. This is your handler class.</li>     
+                <li>Define a method on the handler class for each HTTP verb you want to handle. (The only HTTP verb you've seen yet in this course is GET, but that will be changing soon.)</li>   
+                    <ul>
+                        <li>The method for GET requests has to be called do_GET. </li>
+                        <li>Inside the method, call built-in methods of the handler class to read the HTTP request and write the response </li>
+                    </ul>
+                <li>Create an instance of http.server.HTTPServer, giving it your handler class and server information — particularly, the port number.</li>     
+                <li>Call the HTTPServer instance's serve_forever method.</li>     
+                 
+                 
+            </ul>
+
+            <p>Once you call the HTTPServer instance's serve_forever method, the server does that — it runs forever until stopped.</p>
+            <p>if you have a Python server running and you want to stop it, type Ctrl-C into the terminal where it's running. (You may need to type it two or three times.)</p>
+		</div>
+	</div>
+
+
+
+	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Exercise: Running a Web Server
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$python3 -m http.server 8000</h5>
+		     <p class="card-text">from http.server import HTTPServer, BaseHTTPRequestHandler </p>
+
+<p>class HelloHandler(BaseHTTPRequestHandler):</p>
+    <p>def do_GET(self):</p>
+       <p> # First, send a 200 OK response.</p>
+       <p> self.send_response(200)</p>
+
+       <p> # Then send headers.</p>
+       <p> self.send_header('Content-type', 'text/plain; charset=utf-8')</p>
+       <p> self.end_headers()</p>
+
+       <p> # Now, write the response body.</p>
+        <p>self.wfile.write("Hello, HTTP!\n".encode())</p>
+
+<p>if __name__ == '__main__':</p>
+   <p> server_address = ('', 8000)  # Serve on all addresses, port 8000.</p>
+   <p> httpd = HTTPServer(server_address, HelloHandler)</p>
+   <p> httpd.serve_forever()</p>
+                 
+            <ul>
+                <li class="theCode">from http.server import HTTPServer, BaseHTTPRequestHandler</li>
+               <li> The http.server module has a lot of parts in it. For now, this program only needs these two. I'm using the from syntax of import so that I don't have to type http.server over and over in my code..</li>
+
+                <li class="theCode">class HelloHandler(BaseHTTPRequestHandler):</li>
+                    <ul>
+                    <li class="theCode">def do_GET(self):</li>
+                </ul>
+                <li>This is the handler class. It inherits from the BaseHTTPRequestHandler parent class, which is defined in http.server. I've defined one method, do_GET, which handles HTTP GET requests. When the web server receives a GET request, it will call this method to respond to it.</li>
+                
+
+                <li>As you saw in the previous lesson, there are three things the server needs to send in an HTTP response: a status code, some headers, and the response body. The handler parent class has methods for doing each of these things. Inside do_GET, I just call them in order.</li> 
+                 
+                <ul>
+                    <li class="theCode"> self.send_response(200)</li>
+                </ul>
+                
+                <li>The first thing the server needs to do is send a 200 OK status code; and the send_response method does this. I don't have to tell it that 200 means OK; the parent class already knows that.</li>
+                
+                  <ul>
+                    <li class="theCode"> self.send_header('Content-type', 'text/plain; charset=utf-8')
+                    </li>
+                    <li class="theCode"> self.end_headers()</li>
+                </ul>
+                
+                <li>The next thing the server needs to do is send HTTP headers. The parent class supplies the send_header and end_headers methods for doing this. For now, I'm just having the server send a single header line — the Content-type header telling the client that the response body will be in UTF-8 plain text.
+                </li>
+                
+                
+                <ul>
+                    <li class="theCode"> self.wfile.write("Hello, HTTP!\n".encode())</li>
+                </ul>
+                
+                <li>The last part of the do_GET method writes the response body.</li>
+                
+                
+                <li>The parent class gives us a variable called self.wfile, which is used to send the response. The name wfile stands for writeable file. Python, like many other programming languages, makes an analogy between network connections and open files: they're things you can read and write data to. Some file objects are read-only; some are write-only; and some are read/write.</li>
+                
+                <li>self.wfile represents the connection from the server to the client; and it is write-only; hence the name. Any binary data written to it with its write method gets sent to the client as part of the response. Here, I'm writing a friendly hello message.</li>
+                
+                
+                <li>What's going on with .encode() though? We'll get to that in a moment. Let's look at the rest of the code first.</li>
+                
+                <li class="theCode">if __name__ == '__main__': </li>
+                    <ul>
+                        <li class="theCode"> server_address = ('', 8000)</li>
+                        <li class="theCode">httpd = HTTPServer(server_address, HelloHandler)</li>
+                        <li class="theCode">httpd.serve_forever()</li>                    
+                    </ul>
+                
+               <li>This code will run when we run this module as a Python program, rather than importing it. The HTTPServer constructor needs to know what address and port to listen on; it takes these as a tuple that I'm calling server_address. I also give it the HelloHandler class, which it will use to handle each incoming client request.</li>
+                
+                <li>At the very end of the file, I call serve_forever on the HTTPServer, telling it to start handling HTTP requests. And that starts the web server running.</li>
+                
+                 </ul>
+            
+                 <p>When you start up the demo server, it will print a message telling you that it's serving HTTP. Leave it running, and leave the terminal open. Now try accessing <strong class="theCode">http://localhost:8000/</strong> from your browser.</p>
+		</div>
+	</div>
+
+	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">.encode() 
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">self.wfile.write("Hello, HTTP!\n".encode())
+ </h5>
+                 <p class="card-text ">An HTTP response could contain any kind of data, not only text. And so the self.wfile.write method in the handler class expects to be given a bytes object — a piece of arbitrary binary data — which it writes over the network in the HTTP response body.</p>
+
+                 <p>If you want to send a string over the HTTP connection, you have to encode the string into a bytes object. The encode method on strings translates the string into a bytes object, which is suitable for sending over the network. There is, similarly, a decode method for turning bytes objects into strings.</p>
+
+                 <p>Text strings look simple, but they are actually kind of complicated underneath. There are a lot of different ways that computers can represent text in memory and on the network.</p>
+                 
+                 <p>lder software — including older versions of Python — tended to assume that each character takes up only one byte of memory. That works fine for some human languages, like English and Russian, but it doesn't work at all for other human languages, like Chinese; and it really doesn't work if you want to handle text from multiple languages in the same program.</p>
+                 
+                 <p>The Web is international, so browsers and servers need to support all languages. This means that the old one-byte assumption is completely thrown out. But when programs use the network, they need to know how long a piece of data is in terms of bytes. That has to be figured out unambiguously at some point in time. The way Python does this is by making us encode strings into bytes objects when we want to send them over a binary channel (such as an HTTP connection).</p>
+                 
+                 <p>UTF-8 is the default encoding in Python. When you call the encode method on a string without passing it another encoding, it assumes you mean UTF-8. This is the right thing to do, so that's what the code in this course does.</p>
+                 
+                 <a href="https://docs.python.org/3.6/howto/unicode.html" target="_blank"><button type="button" class="btn-lg btn-danger "s>UNICODE</button></a>
+		</div>
+	</div>
+		
+		<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">  Path
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">$self.wfile.write(self.path[1:].encode())</h5>
+		     <p class="card-text">path is the right answer. Which means that in do_GET, you'll need to access self.path to get the request path.</p>
+
+                 <p>404 is the HTTP status code for "Not Found". On Highway 101, not far from the Udacity office in Mountain View, there's a sign that tells the distance to Los Angeles. As it happens, it's 404 miles from Mountain View to Los Angeles, so the sign says Los Angeles 404. And so, every web programmer in Silicon Valley has probably heard the "Los Angeles Not Found" joke at least once.</p>
+
+                 <p>For more information on the Http Status code check the <a href=" https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" class="theCode" target="_blank">Error Messages and other Status Codes</a></p>
+
+			</div>
+		</div>
+		
+		<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Defining a Server
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">What's a server anyway? </h5>
+
+		      <p class="card-text">A server is just a program that accepts connections from other programs on the network.</p>
+
+                 <p> When you start a server program, it waits for clients to connect to it — like the demo server waiting for your web browser to ask it for a page. Then when a connection comes in, the server runs a piece of code — like calling a function — to handle each incoming connection. A connection in this sense is like a phone call: it's a channel through which the client and server can talk to each other. Web clients send requests over these connections, and servers send responses back.</p>
+
+		</div>
+	</div>
+
+	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Parts of URI
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">Parts of a URI </h5>
+		     <p class="card-text">A web address is also called a URI for Uniform Resource Identifier. You've seen plenty of these before. From a web user's view, a URI is a piece of text that you put into your web browser that tells it what page to go to. From a web developer's view, it's a little bit more complicated.</p>
+                 
+                 <blockquote class="blockquote">You've probably also seen the term URL or Uniform Resource Locator. These are pretty close to the same thing; specifically, a URL is a URI for a resource on the network. Since URI is slightly more precise, we'll use that term in this course. But don't worry too much about the distinction.</blockquote>
+
+		     <p class="card-text">A URI is a name for a resource — such as this lesson page, or a Wikipedia article, or a data source like the Google Maps API. URIs are made out of several different parts, each of which has its own syntax. Many of these parts are optional, which is why URIs for different services look so different from one another.</p>
+
+		      <p class="card-text"><strong>This URI has three visible parts, separated by a little bit of punctuation:</strong>
+		      </p>
+                 
+                <a class="theCode" target="_blank" href="https://en.wikipedia.org/wiki/Fish" > https://en.wikipedia.org/wiki/Fish </a>
+
+                 
+                 <ul>
+                     <li> <strong class="theCode"> https</strong> is the <strong> scheme;</strong></li>
+                    <li><strong class="theCode"> en.wikipedia.org </strong> is the <strong>hostname;</strong></li>
+                     <li>and <strong class="theCode">/wiki/Fish</strong> is the <strong> path. </strong></li>
+                 
+                 </ul>
+
+			</div>
+		</div>
+
+	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Scheme
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">The SCHEME Parts of a URI </h5>
+		     <p class="card-text">The first part of a URI is the scheme, which tells the client how to go about accessing the resource. Some URI schemes you've seen before include http, https, and file. File URIs tell the client to access a file on the local filesystem. HTTP and HTTPS URIs point to resources served by a web server.</p>
+
+                 <p>HTTP and HTTPS URIs look almost the same. The difference is that when a client goes to access a resource with an HTTPS URI, it will use an encrypted connection to do it. Encrypted Web connections were originally used to protect passwords and credit-card transactions, but today many sites use them to help protect users' privacy.
+		      </p>
+                 
+                <a class="theCode" target="_blank" href="http://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml" > Uniform Resource Identifier (URI) Schemes </a>
+
+                 
+                 <blockquote class="blockquote">
+                     mailto is used for links to email addresses. data is used to put a piece of hardcoded data directly into a web page, for instance a small image. magnet is used for links to some file-sharing services such as BitTorrent. However, there is no such thing as a postal URI; if you want to send postal mail from the Web you still need to print it out and put it in the mailbox yourself.
+                 
+                 </blockquote>
+
+			</div>
+		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Hostname
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">The HOSTNAME Parts of a URI </h5>
+		     <p class="card-text">In an HTTP URI, the next thing that appears after the scheme is a hostname — something like www.udacity.com or localhost. This tells the client which server to connect to.</p>
+
+                <p>You'll often see web addresses written as just a hostname in print. But in the HTML code of a web page, you can't write <strong class="theCode">&lt;a href="www.google.com"&gt;this&lt;/a&gt;</strong> and get a working link to Google. A hostname can only appear after a URI scheme that supports it, such as http or https. In these URIs, there will always be a :// between the scheme and hostname.</p>
+
+                 <p>We'll see more about hostnames later on in the lesson. By the way, not every URI has a hostname. For instance, a mailto URI just has an email address: <strong class="theCode">mailto:spam@example.net</strong> is a well-formed mailto URI. This also reveals a bit more about the punctuation in URIs: the : goes after the scheme, but the // goes before the hostname. Mailto links don't have a hostname part, so they don't have a //.
+		      </p>
+                 
+                
+
+			</div>
+		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Path
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">The PATH Parts of a URI </h5>
+		     <p class="card-text">In an HTTP URI (and many others), the next thing that appears is the path, which identifies a particular resource on a server. A server can have many resources on it — such as different web pages, videos, or APIs. The path tells the server which resource the client is looking for.</p>
+
+                <p>On the demo server, the paths you see will correspond to files on your filesystem. But that's just the demo server. In the real world, URI paths don't necessarily equate to specific filenames. For instance, if you do a Google search, you'll see a URI path such as <strong class="theCode">/search?q=ponies</strong>. This doesn't mean that there's literally a file on a server at Google with a filename of <strong class="theCode">search?q=ponies</strong>. The server interprets the path to figure out what resource to send. In the case of a search query, it sends back a search result page that maybe never existed before.</p>
+
+                 <p>When you write a URI without a path, such as <strong class="theCode">http://udacity.com,</strong>  the browser fills in the default path, which is written with a single slash. That's why <strong class="theCode">http://udacity.com </strong> is the same as <strong class="theCode">http://udacity.com/ </strong>(with a slash on the end).//.
+		      </p>
+                 
+                 <blockquote class="blockquote">
+                 The path written with just a single slash is also called the root. When you look at the root URI of the demo server — <strong class="theCode"> http://localhost:8000/ </strong>— you're not looking at the root of your computer's whole filesystem. It's just the root of the resources served by the web server. The demo server won't let a web browser access files outside the directory that it's running in.
+                 </blockquote>
+                
+
+			</div>
+		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Relative URI references
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode"> &lt;a href="cliffsofinsanity.png"&gt;cliffsofinsanity.png&lt;/a&gt;</h5>
+		     <p class="card-text">URIs like this one don't have a scheme, or a hostname — just a path. This is a relative URI reference. It's "relative" to the context in which it appears — specifically, the page it's on. This URI doesn't include the hostname or port of the server it's on, but the browser can figure that out from context. If you click on one of those links, the browser knows from context that it needs to fetch it from the same server that it got the original page from.</p>
+
+
+			</div>
+		</div>
+    
+    
+        <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Other URI Parts
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>There are many other parts that can occur in a URI. Consider the difference between these two Wikipedia URIs:</p>
+                 <u>
+		         <li> <a class="card-title theCode" href="https://en.wikipedia.org/wiki/Oxygen " target="_blank"> https://en.wikipedia.org/wiki/Oxygen </a></li>
+                <li> <a class="card-title theCode" href="https://en.wikipedia.org/wiki/Oxygen#Discovery" target="_blank"> https://en.wikipedia.org/wiki/Oxygen#Discovery </a></li>
+                 </u>
+		     <p class="card-text">If you follow these links in your browser, it will fetch the same page from Wikipedia's web server. But the second one displays the page scrolled to the section about the discovery of oxygen. The part of the URI after the <strong class="theCode">#</strong> sign is called a <strong class="theCode">fragment</strong>. The browser doesn't even send it to the web server. It lets a link point to a specific named part of a resource; in HTML pages it links to an element by id.</p>
+                 
+                 <p>In contrast, consider this Google Search URI:</p>
+                 
+                 <ul>
+                     <li> <a href="https://www.google.com/search?q=fish" target="_blank" class="theCode">https://www.google.com/search?q=fish  </a></li>
+                 </ul>
+                 <p>The <strong class="theCode">?q=fish</strong> is a query part of the URI. This does get sent to the server.</p>
+                 
+                 <p>There are a few other possible parts of a URI. For way more detail than you need for this course, take a look at this Wikipedia article:</p>
+                 
+                 <ul>
+                     <li> <a href="hhttps://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Generic_syntax" target="_blank" class="theCode">Uniform_Resource_Identifier#Generic_syntax </a></li>
+                 </ul>
+			</div>
+		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Hostname and Ports
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+            <h5 class="card-title theCode">Hostnames </h5>
+                 
+                 <p>A full HTTP or HTTPS URI includes the hostname of the web server, like  <strong class="theCode">www.udacity.com </strong>or  <strong class="theCode">www.un.int </strong>or <strong class="theCode">www.cheeseboardcollective.coop</strong> (my favorite pizza place in the world, in Berkeley CA). A hostname in a URI can also be an IP address: for instance, if you put <a class="theCode" href="http://216.58.194.174/" target="_blank">http://216.58.194.174/</a> in your browser, you'll end up at Google.</p>
+                 
+                 <blockquote class="blockquote">Why is it called a hostname? In network terminology, a host is a computer on the network; one that could host services.</blockquote>
+                 
+                 
+		     <p class="card-text">The Internet tells computers apart by their <strong class="theCode">IP Addresses</strong>; every piece of network traffic on the Internet is labeled with the IP addresses of the sending and receiving computers. In order to connect to a web server such as www.udacity.com, a client needs to translate the hostname into an IP address. Your operating system's network configuration uses the Domain Name Service (DNS) — a set of servers maintained by Internet Service Providers (ISPs) and other network users — to look up hostnames and get back IP addresses.</p>
+                 
+                 <p class="theCode">$ host www.google.com</p>
+                 <p class="theCode">$ nslookup www.google.com</p>
+                 
+                 <ul>
+                     <li> <a href="https://www.google.com/search?q=fish" target="_blank" class="theCode">https://www.google.com/search?q=fish  </a></li>
+                 </ul>
+                 <p><strong class="theCode">$ nslookup localhost </strong></p>
+                 
+                 <p>Localhost is 127.0.0.1. Well, that's IPv4 localhost, anyway. IPv6 localhost is ::1, which is short for 0000:0000:0000:0000:0000:0000:0000:0001.</p>
+                 
+                 <h2>IPv4 or IPv6</h2>
+                 
+                 <p>IP addresses come in two different varieties: the older IPv4 and the newer IPv6. When you see an address like 127.0.0.1 or 216.58.194.164, those are IPv4 addresses. IPv6 addresses are much longer, such as 2607:f8b0:4005:804::2004, although they can also be abbreviated.</p>
+                 
+                 <h2>Localhost</h2>
+                 
+                 <p> The IPv4 address 127.0.0.1 and the IPv6 address ::1 are special addresses that mean "this computer itself" — for when a client (like your browser) is accessing a server on your own computer. The hostname localhost refers to these special addresses.</p>
+                 
+                 <p>When you run the demo server, it prints a message saying that it's listening on 0.0.0.0. This is not a regular IP address. Instead, it's a special code for "every IPv4 address on this computer". That includes the localhost address, but it also includes your computer's regular IP address.</p>
+                 
+                 <blockquote class="blockquote">A single web server can have lots of different web sites running on it, each with their own hostname. When a client asks the server for a resource, it has to specify what hostname it intends to be talking to. </blockquote>
+                 
+                 <h2>Ports</h2>
+                 
+                 <p>When you told your browser to connect to the demo server, you gave it the URI http://localhost:8000/. This URI has a port number of 8000. But most of the web addresses you see in the wild don't have a port number on them. This is because the client usually figures out the port number from the URI scheme.</p>
+                 
+                 <p>For instance, HTTP URIs imply a port number of 80, whereas HTTPS URIs imply a port number of 443. Your Python demo web server is running on port 8000. Since this isn't the default port, you have to write the port number in URIs for it.</p>
+                 
+                 <p> <strong class="theCode">What's a port number, anyway?</strong> To get into that, we need to talk about how the Internet works. All of the network traffic that computers send and receive — everything from web requests, to login sessions, to file sharing — is split up into messages called <strong class="theCode">packets.</strong> Each packet has the IP addresses of the computer that sent it, and the computer that receives it. And (with the exception of some low-level packets, such as ping) it also has the <strong class="theCode">port number</strong> for the sender and recipient. IP addresses distinguish computers; port numbers distinguish programs on those computers.</p>
+                 
+                 <p>We say that a server "listens on" a port, such as 80 or 8000. "Listening" means that when the server starts up, it tells its operating system that it wants to receive connections from clients on a particular port number. When a client (such as a web browser) "connects to" that port and sends a request, the operating system knows to forward that request to the server that's listening on that port.</p>
+                 
+                 <blockquote class="blockquote">Why do we use port 8000 instead of 80 for the demo server? For historical reasons, operating systems only allow the administrator (or root) account to listen on ports below 1024. This is fine for production web servers, but it's not convenient for learning.</blockquote>
+                 
+                 <p class="theCode">The URI in the question is an HTTPS URI. The default port for HTTPS is port 443.</p>
+                 
+			</div>
+		</div>
+    
+     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">HTTP GET Request
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>There are a lot of different types of HTTP requests. Every HTTP Request contains a VERB or Method which tels the server what kind of request the client is requesting  </p>
+                 
+            <h2>GET </h2>
+                
+            <p>What browser use when they ask a server to send them a copy of a resource.</p>
+                 
+		     <p class="card-text">Take a look back at the server logs on your terminal, where the demo server is running. When you request a page from the demo server, an entry appears in the logs with a message like this:</p>
+                 
+                 <p class="theCode">127.0.0.1 - - [03/Oct/2016 15:45:50] "GET /readme.png HTTP/1.1" 200 -</p>
+                
+                 <p>Take a look at the part right after the date and time. Here, it says "GET /readme.png HTTP/1.1". This is the text of the request line that the browser sent to the server. This log entry is the server telling you that it received a request that said, literally, GET /readme.png HTTP/1.1.</p>
+                 
+                 <p>TThis request has three parts.</p>
+                 
+                 <ul>
+                     <li>The word GET is the method or HTTP verb being used; this says what kind of request is being made. GET is the verb that clients use when they want a server to send a resource, such as a web page or image. Later, we'll see other verbs that are used when a client wants to do other things, such as submit a form or make changes to a resource. </li>
+                     
+                     <li>/readme.png is the path of the resource being requested. Notice that the client does not send the whole URI of the resource here. It doesn't say https://localhost:8000/readme.png. It just sends the path. </li>
+                     
+                     <li>/Finally, HTTP/1.1 is the protocol of the request. Over the years, there have been several changes to the way HTTP works. Clients have to tell servers which dialect of HTTP they're speaking. HTTP/1.1 is the most common version today. </li>
+                 </ul>
+                 
+                 
+                 <hr>
+                 
+                 <h2>Exercise: Send a request manually</h2>
+                 
+                 <p>You can use ncat to connect to the demo server and send it an HTTP request by hand. (Make sure the demo server is still running!)</p>
+                 
+                 <p>Use <strong class="theCode"> $python3 -m http.server 8000  </strong> in your terminal to run the demo server.</p>
+                 <p>Use <strong class="theCode"> $ncat 127.0.0.1 8000 </strong> (in a second ternimal)to connect your terminal to the demo server.</p>
+                 
+                 <p> Type the following and dopple press Enter afterwards</p>
+                 <p>GET / HTTP/1.1</p>
+                 <p>Host: localhost</p>
+                 
+                 <hr>
+                 <h2>Results of the Request</h2>
+                 <ul>
+                    <li>HTTP/1.0 200 OK</li>
+                    <li>Server: SimpleHTTP/0.6 Python/3.7.5 </li>
+                    <li>Date: Sun, 05 Jan 2020 00:21:50 GMT</li>
+                    <li>Content-type: text/html</li>
+                    <li>Content-Length: 127</li>
+                    <li>Last-Modified: Sat, 04 Jan 2020 21:46:26 GMT</li>
+                    <li>and an HTML code</li>
+                 </ul>
+                 
+                 
+                 
+			</div>
+		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">HTTP Response
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>After you typed Host: localhost and pressed Enter twice, the server sent back a lot of text. This is an HTTP response. One of these exchanges — a request and response — is happening every time your browser asks a server for a page, an image, or anything else. </p>
+                 
+            <p>Here's another one to try. Use ncat to connect to google.com port 80, and send a request for the path / on the host google.com:</p>
+                 
+                 <p>GEGT / HTTP/1.1</p>
+                 <p>Host: google.com</p>
+
+                 
+                 
+            <h2>HTTP RESPONSE </h2>
+                
+            <p>The HTTP response is made up of three parts: </p>
+                 <ul>
+                     <li> the status line</li>
+                     <li> some headers</li>
+                     <li> a response body</li>
+                 </ul>
+                 
+		     <p class="card-text">The status line is the first line of text that the server sends back. The headers are the other lines up until the first blank line. The response body is the rest — in this case, it's a piece of HTML.</p>
+
+                 
+                 
+			</div>
+		</div>
+    
+    
+    
+        <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">STATUS LINE
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>In the response you got from your demo server, the status line said <strong class="theCode">HTTP/1.0 200 OK</strong>. In the one from Google, it says <strong class="theCode">HTTP/1.1 301 Moved Permanently </strong>. The status line tells the client whether the server understood the request, whether the server has the resource the client asked for, and how to proceed next. It also tells the client which dialect of HTTP the server is speaking.</p>
+                 
+            <p>The numbers 200 and 301 here are HTTP status codes. There are dozens of different status codes. The first digit of the status code indicates the general success of the request. As a shorthand, web developers describe all of the codes starting with 2 as "2xx" codes, for instance — the x's mean "any digit".</p>
+                 
+                
+            <p>The STATUS CODES: </p>
+                 <ul>
+                     <li> <strong class="theCode">1xx — Informational.</strong> The request is in progress or there's another step to take.</li> 
+                     <li> <strong class="theCode">2xx — Success! </strong> The request succeeded. The server is sending the data the client asked for.</li>
+                     <li> <strong class="theCode">3xx — Redirection. </strong> The server is telling the client a different URI it should redirect to. The headers will usually contain a Location header with the updated URI. Different codes tell the client whether a redirect is permanent or temporary.</li>
+                     <li> <strong class="theCode">4xx — Client error. </strong> The server didn't understand the client's request, or can't or won't fill it. Different codes tell the client whether it was a bad URI, a permissions problem, or another sort of error.</li>
+                     <li> <strong class="theCode">5xx — Server error. </strong> Something went wrong on the server side.</li>
+                     
+                 </ul>
+                 
+		     <p class="card-text">The server response here is an example of good user interface on the Web. Google wants browsers to use www.google.com instead of google.com. But instead of showing the user an error message, they send a redirect. Browsers will automatically follow the redirect and end up on the right site.</p>
+
+                 
+                 
+			</div>
+		</div>
+    
+    
+        <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">HEADERS and BODY RESPONSE
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>IAn HTTP response can include many headers. Each header is a line that starts with a keyword, such as Location or Content-type, followed by a colon and a value. Headers are a sort of metadata for the response. They aren't displayed by browsers or other clients; instead, they tell the client various information about the response.</p>
+                 
+            <p>Many, many features of the Web are implemented using headers. For instance, cookies are a Web feature that lets servers store data on the browser, for instance to keep a user logged in. To set a cookie, the server sends the Set-Cookie header. The browser will then send the cookie data back in a Cookie header on subsequent requests. You'll see more about cookies later in this course.</p>
+                 
+            <p class="theCode">Content-type: text/html; charset=utf-8</p>
+                 
+                
+            <h2>Content-type</h2>
+                 
+		     <p class="card-text">A Content-type header indicates the kind of data that the server is sending. It includes a general category of content as well as the specific format. For instance, a PNG image file will come with the Content-type image/png. If the content is text (including HTML), the server will also tell what encoding it's written in. UTF-8 is a very common choice here, and it's the default for Python text anyway.</p>
+
+            <p> Very often, the headers will contain more metadata about the response body. For instance, both the demo server and Google also send a Content-Length header, which tells the client how long (in bytes) the response body will be. If the server sends this, then the client can reuse the connection to send another request after it's read the first response. Browsers use this so they can fetch multiple pieces of data (such as images on a web page) without having to reconnect to the server.</p>
+                 
+            <h2>Body Response</h2>
+                 
+		     <p class="card-text">The headers end with a blank line. Everything after that blank line is part of the response body. If the request was successful (a 200 OK status, for instance), this is a copy of whatever resource the client asked for — such as a web page, image, or other pieces of data.</p>
+
+            <p> But in the case of an error, the response body is where the error message goes! If you request a page that doesn't exist, and you get a 404 Not Found error, the actual error message shows up in the response body.</p>
+                 
+                 
+			</div>
+		</div>
+    
+    
+    
+</div>
+
+</body>
+</html>
