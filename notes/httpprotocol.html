@@ -451,11 +451,167 @@
 			</div>
 		</div>
     
+     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">HTTP GET Request
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>There are a lot of different types of HTTP requests. Every HTTP Request contains a VERB or Method which tels the server what kind of request the client is requesting  </p>
+                 
+            <h2>GET </h2>
+                
+            <p>What browser use when they ask a server to send them a copy of a resource.</p>
+                 
+		     <p class="card-text">Take a look back at the server logs on your terminal, where the demo server is running. When you request a page from the demo server, an entry appears in the logs with a message like this:</p>
+                 
+                 <p class="theCode">127.0.0.1 - - [03/Oct/2016 15:45:50] "GET /readme.png HTTP/1.1" 200 -</p>
+                
+                 <p>Take a look at the part right after the date and time. Here, it says "GET /readme.png HTTP/1.1". This is the text of the request line that the browser sent to the server. This log entry is the server telling you that it received a request that said, literally, GET /readme.png HTTP/1.1.</p>
+                 
+                 <p>TThis request has three parts.</p>
+                 
+                 <ul>
+                     <li>The word GET is the method or HTTP verb being used; this says what kind of request is being made. GET is the verb that clients use when they want a server to send a resource, such as a web page or image. Later, we'll see other verbs that are used when a client wants to do other things, such as submit a form or make changes to a resource. </li>
+                     
+                     <li>/readme.png is the path of the resource being requested. Notice that the client does not send the whole URI of the resource here. It doesn't say https://localhost:8000/readme.png. It just sends the path. </li>
+                     
+                     <li>/Finally, HTTP/1.1 is the protocol of the request. Over the years, there have been several changes to the way HTTP works. Clients have to tell servers which dialect of HTTP they're speaking. HTTP/1.1 is the most common version today. </li>
+                 </ul>
+                 
+                 
+                 <hr>
+                 
+                 <h2>Exercise: Send a request manually</h2>
+                 
+                 <p>You can use ncat to connect to the demo server and send it an HTTP request by hand. (Make sure the demo server is still running!)</p>
+                 
+                 <p>Use <strong class="theCode"> $python3 -m http.server 8000  </strong> in your terminal to run the demo server.</p>
+                 <p>Use <strong class="theCode"> $ncat 127.0.0.1 8000 </strong> (in a second ternimal)to connect your terminal to the demo server.</p>
+                 
+                 <p> Type the following and dopple press Enter afterwards</p>
+                 <p>GET / HTTP/1.1</p>
+                 <p>Host: localhost</p>
+                 
+                 <hr>
+                 <h2>Results of the Request</h2>
+                 <ul>
+                    <li>HTTP/1.0 200 OK</li>
+                    <li>Server: SimpleHTTP/0.6 Python/3.7.5 </li>
+                    <li>Date: Sun, 05 Jan 2020 00:21:50 GMT</li>
+                    <li>Content-type: text/html</li>
+                    <li>Content-Length: 127</li>
+                    <li>Last-Modified: Sat, 04 Jan 2020 21:46:26 GMT</li>
+                    <li>and an HTML code</li>
+                 </ul>
+                 
+                 
+                 
+			</div>
+		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">HTTP Response
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>After you typed Host: localhost and pressed Enter twice, the server sent back a lot of text. This is an HTTP response. One of these exchanges — a request and response — is happening every time your browser asks a server for a page, an image, or anything else. </p>
+                 
+            <p>Here's another one to try. Use ncat to connect to google.com port 80, and send a request for the path / on the host google.com:</p>
+                 
+                 <p>GEGT / HTTP/1.1</p>
+                 <p>Host: google.com</p>
+
+                 
+                 
+            <h2>HTTP RESPONSE </h2>
+                
+            <p>The HTTP response is made up of three parts: </p>
+                 <ul>
+                     <li> the status line</li>
+                     <li> some headers</li>
+                     <li> a response body</li>
+                 </ul>
+                 
+		     <p class="card-text">The status line is the first line of text that the server sends back. The headers are the other lines up until the first blank line. The response body is the rest — in this case, it's a piece of HTML.</p>
+
+                 
+                 
+			</div>
+		</div>
     
     
     
+        <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">STATUS LINE
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>In the response you got from your demo server, the status line said <strong class="theCode">HTTP/1.0 200 OK</strong>. In the one from Google, it says <strong class="theCode">HTTP/1.1 301 Moved Permanently </strong>. The status line tells the client whether the server understood the request, whether the server has the resource the client asked for, and how to proceed next. It also tells the client which dialect of HTTP the server is speaking.</p>
+                 
+            <p>The numbers 200 and 301 here are HTTP status codes. There are dozens of different status codes. The first digit of the status code indicates the general success of the request. As a shorthand, web developers describe all of the codes starting with 2 as "2xx" codes, for instance — the x's mean "any digit".</p>
+                 
+                
+            <p>The STATUS CODES: </p>
+                 <ul>
+                     <li> <strong class="theCode">1xx — Informational.</strong> The request is in progress or there's another step to take.</li> 
+                     <li> <strong class="theCode">2xx — Success! </strong> The request succeeded. The server is sending the data the client asked for.</li>
+                     <li> <strong class="theCode">3xx — Redirection. </strong> The server is telling the client a different URI it should redirect to. The headers will usually contain a Location header with the updated URI. Different codes tell the client whether a redirect is permanent or temporary.</li>
+                     <li> <strong class="theCode">4xx — Client error. </strong> The server didn't understand the client's request, or can't or won't fill it. Different codes tell the client whether it was a bad URI, a permissions problem, or another sort of error.</li>
+                     <li> <strong class="theCode">5xx — Server error. </strong> Something went wrong on the server side.</li>
+                     
+                 </ul>
+                 
+		     <p class="card-text">The server response here is an example of good user interface on the Web. Google wants browsers to use www.google.com instead of google.com. But instead of showing the user an error message, they send a redirect. Browsers will automatically follow the redirect and end up on the right site.</p>
+
+                 
+                 
+			</div>
+		</div>
     
     
+        <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">HEADERS and BODY RESPONSE
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+             <p>IAn HTTP response can include many headers. Each header is a line that starts with a keyword, such as Location or Content-type, followed by a colon and a value. Headers are a sort of metadata for the response. They aren't displayed by browsers or other clients; instead, they tell the client various information about the response.</p>
+                 
+            <p>Many, many features of the Web are implemented using headers. For instance, cookies are a Web feature that lets servers store data on the browser, for instance to keep a user logged in. To set a cookie, the server sends the Set-Cookie header. The browser will then send the cookie data back in a Cookie header on subsequent requests. You'll see more about cookies later in this course.</p>
+                 
+            <p class="theCode">Content-type: text/html; charset=utf-8</p>
+                 
+                
+            <h2>Content-type</h2>
+                 
+		     <p class="card-text">A Content-type header indicates the kind of data that the server is sending. It includes a general category of content as well as the specific format. For instance, a PNG image file will come with the Content-type image/png. If the content is text (including HTML), the server will also tell what encoding it's written in. UTF-8 is a very common choice here, and it's the default for Python text anyway.</p>
+
+            <p> Very often, the headers will contain more metadata about the response body. For instance, both the demo server and Google also send a Content-Length header, which tells the client how long (in bytes) the response body will be. If the server sends this, then the client can reuse the connection to send another request after it's read the first response. Browsers use this so they can fetch multiple pieces of data (such as images on a web page) without having to reconnect to the server.</p>
+                 
+            <h2>Body Response</h2>
+                 
+		     <p class="card-text">The headers end with a blank line. Everything after that blank line is part of the response body. If the request was successful (a 200 OK status, for instance), this is a copy of whatever resource the client asked for — such as a web page, image, or other pieces of data.</p>
+
+            <p> But in the case of an error, the response body is where the error message goes! If you request a page that doesn't exist, and you get a 404 Not Found error, the actual error message shows up in the response body.</p>
+                 
+                 
+			</div>
+		</div>
     
     
     
