@@ -419,40 +419,107 @@
 		  	  </div> 
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">The SCHEME Parts of a URI </h5>
-		     <p class="card-text">The first part of a URI is the scheme, which tells the client how to go about accessing the resource. Some URI schemes you've seen before include http, https, and file. File URIs tell the client to access a file on the local filesystem. HTTP and HTTPS URIs point to resources served by a web server.</p>
+		     <h5 class="card-title theCode">Form methods: GET and POST </h5>
+		     <p class="card-text">In the last lesson, I mentioned that GET is only one of many HTTP verbs or methods.</p>
 
-                 <p>HTTP and HTTPS URIs look almost the same. The difference is that when a client goes to access a resource with an HTTPS URI, it will use an encrypted connection to do it. Encrypted Web connections were originally used to protect passwords and credit-card transactions, but today many sites use them to help protect users' privacy.
+                 <p>When a browser submits a form via GET, it puts all of the form fields into the URI that it sends to the server. These are sent as a query, in the request path — just like search engines do. They're all jammed together into a single line. Since they're in the URI, the user can bookmark the resulting page, reload it, and so forth.
 		      </p>
                  
-                <a class="theCode" target="_blank" href="http://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml" > Uniform Resource Identifier (URI) Schemes </a>
+                 <p>This is fine for search engine queries, but it's not quite what we would want for (say) a form that adds an item to your shopping cart on an e-commerce site, or posts a new message on a comments board. GET methods are good for search forms and other actions that are intended to look something up or ask the server for a copy of some resource. But GET is not recommended for actions that are intended to alter or create a resource. For this sort of action, HTTP has a different verb, POST.</p>
+                 
+                <h3>Idempotence</h3>
 
                  
                  <blockquote class="blockquote">
-                     mailto is used for links to email addresses. data is used to put a piece of hardcoded data directly into a web page, for instance a small image. magnet is used for links to some file-sharing services such as BitTorrent. However, there is no such thing as a postal URI; if you want to send postal mail from the Web you still need to print it out and put it in the mailbox yourself.
+                    <p>Vocabulary word of the day: idempotent. An action is idempotent if doing it twice (or more) produces the same result as doing it once. "Show me the search results for 'polar bear'" is an idempotent action, because doing it a second time just shows you the same results. "Add a polar bear to my shopping cart" is not, because if you do it twice, you end up with two polar bears.</p>
+
+                    <p> POST requests are not idempotent. If you've ever seen a warning from your browser asking you if you really mean to resubmit a form, what it's really asking is if you want to do a non-idempotent action a second time.</p>
                  
                  </blockquote>
+                 
+                 <p>(Important note if you're ever asked about this in a job interview: idempotent is pronounced like "eye-dem-poe-tent", or rhyming with "Hide 'em, Joe Tent" — not like "id impotent".)</p>
+                 
+                 <p>When a browser submits a form as a POST request, it doesn't encode the form data in the URI path, the way it does with a GET request. Instead, it sends the form data in the request body, underneath the headers. The request also includes Content-Type and Content-Length headers, which we've previously only seen on HTTP responses.</p>
+                 
+                 <blockquote class="blockquote">By the way, the names of HTTP headers are case-insensitive. So there's no difference between writing Content-Length or content-length or even ConTent-LeNgTh … except, of course, that humans will read your code and be confused by that last one.</blockquote>
 
 			</div>
 		</div>
     
     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Hostname
+		  	<div class="card-header">A server for POST
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">The HOSTNAME Parts of a URI </h5>
-		     <p class="card-text">In an HTTP URI, the next thing that appears after the scheme is a hostname — something like www.udacity.com or localhost. This tells the client which server to connect to.</p>
+		     <h5 class="card-title theCode">A server for POST </h5>
+                 <p class="card-text">n the next few exercises, you'll be building a messageboard server. </p>
 
-                <p>You'll often see web addresses written as just a hostname in print. But in the HTML code of a web page, you can't write <strong class="theCode">&lt;a href="www.google.com"&gt;this&lt;/a&gt;</strong> and get a working link to Google. A hostname can only appear after a URI scheme that supports it, such as http or https. In these URIs, there will always be a :// between the scheme and hostname.</p>
+                 <p>When a user goes to the main page in their browser, it'll display a form for writing messages, as well as a list of the previously written messages.</p>
 
-                 <p>We'll see more about hostnames later on in the lesson. By the way, not every URI has a hostname. For instance, a mailto URI just has an email address: <strong class="theCode">mailto:spam@example.net</strong> is a well-formed mailto URI. This also reveals a bit more about the punctuation in URIs: the : goes after the scheme, but the // goes before the hostname. Mailto links don't have a hostname part, so they don't have a //.
+                 <p>Submitting the form will send a request to the server, which stores the submitted message and then re-displays the main page.</p>
+
+                 <p>In order to test your messageboard server, you'll need to install the requests module, which is a Python module for making HTTP requests.</p>
+
+                <p>We'll see much more about this module later in this lesson. For now, just run <strong class="theCode">pip3 install requests</strong> in your terminal to install it.
 		      </p>
                  
+                 <p>We'll be using a GET request to display the messageboard's existing contents, and POST to update the contents by creating new messages. Creating new messages is not idempotent — we don't want duplicates.</p>
+                 
+                 
+                 <h3>Why don't we want to use GET for submitting the form?</h3>
+                 
+                 <p> Imagine if a user did this. They write a message and press the submit button … and the message text shows up in their URL bar. If they press reload, it sends the message again. If they bookmark that URL and go back to it, it sends the message again.</p>
+
+                 <p>This doesn't seem like such a great experience. So we'll use POST for message submission, and GET to display the main page.</p>
+                 
+                 <hr>
+                 
+                 <h3>POST handlers read the request body</h3>
+                 
+                 <p>Previously in the HelloServer exercise, you've written handler classes that have just a single method, do_GET.</p>
+
+                 <p>But a handler class can have do_POST as well, to support GET and POST requests. This is exactly how the messageboard server will work.</p>
+
+                 <p>When a GET request comes in, the server will send the HTML form and current messages. When a POST request comes in with a new message, the server will store the message in a list, and then return all the messages it's seen so far.</p>
+
+                 <p>The code for a do_POST method will need to do some pretty different things from a do_GET method. When we're handling a GET request, all the user data in the request is in the URI path. But in a POST request, it's in the request body.</p>
+
+                 <p>Inside do_POST, our code can read the request body by calling the self.rfile.read method. self.rfile is a file object, like the self.wfile we saw earlier — but rfile is for reading the request, rather than writing the response.</p>
+
+                 <p>However, self.rfile.read needs to be told how many bytes to read … in other words, how long the request body is.</p>
+                 
+                <p>If there's a request body at all, the browser will send the length of the request body in the Content-Length header.</p>
+
+			</div>
+		</div>
+    
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+		  <div class=" ">
+		  	<div class="card-header">Headers are strings (or missing)
+			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
+			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
+		  	  </div>
+		     </div>
+		 	 <div class="card-body">
+		     <h5 class="card-title theCode">Still under POST </h5>
+		     <p class="card-text">The handler class gives us access to the HTTP headers as the instance variable self.headers, which is an object that acts a lot like a Python dictionary. The keys of this dictionary are the header names, but they're case-insensitive: it doesn't matter if you look up 'content-length' or 'Content-Length'. The values in this dictionary are strings: if the request body is 140 bytes long, the value of the Content-length entry will be the string "140". We need to call self.rfile.read(140) to read 140 bytes; so once we read the header, we'll need to convert it to an integer.</p>
+
+                <p>But in an HTTP request, it's also possible that the body will be empty, in which case the browser might not send a Content-length header at all. This means we have to be a little careful when accessing the headers from the self.headers object. If we do self.headers['content-length'] and there's no such header, our code will crash with a KeyError. Instead, we'll use the .get dictionary method to get the header value safely.</p>
+
+                 <p>So here's a little bit of code that can go in the do_POST handler to find the length of the request body and read it:
+		      </p>
+                 
+                 <p class="theCode">length = int(self.headers.get('Content-length', 0))</p>
+                <p class="theCode">data = self.rfile.read(length).decode()</p>
+                 
+                 <blockquote class="blockquote">
+                 Once you read the message body, you can use urllib.parse.parse_qs to extract the POST parameters from it.
+                 </blockquote>
                 
 
 			</div>
@@ -460,32 +527,7 @@
     
     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Path
-			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
-			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
-			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
-		  	  </div>
-		     </div>
-		 	 <div class="card-body">
-		     <h5 class="card-title theCode">The PATH Parts of a URI </h5>
-		     <p class="card-text">In an HTTP URI (and many others), the next thing that appears is the path, which identifies a particular resource on a server. A server can have many resources on it — such as different web pages, videos, or APIs. The path tells the server which resource the client is looking for.</p>
-
-                <p>On the demo server, the paths you see will correspond to files on your filesystem. But that's just the demo server. In the real world, URI paths don't necessarily equate to specific filenames. For instance, if you do a Google search, you'll see a URI path such as <strong class="theCode">/search?q=ponies</strong>. This doesn't mean that there's literally a file on a server at Google with a filename of <strong class="theCode">search?q=ponies</strong>. The server interprets the path to figure out what resource to send. In the case of a search query, it sends back a search result page that maybe never existed before.</p>
-
-                 <p>When you write a URI without a path, such as <strong class="theCode">http://udacity.com,</strong>  the browser fills in the default path, which is written with a single slash. That's why <strong class="theCode">http://udacity.com </strong> is the same as <strong class="theCode">http://udacity.com/ </strong>(with a slash on the end).//.
-		      </p>
-                 
-                 <blockquote class="blockquote">
-                 The path written with just a single slash is also called the root. When you look at the root URI of the demo server — <strong class="theCode"> http://localhost:8000/ </strong>— you're not looking at the root of your computer's whole filesystem. It's just the root of the resources served by the web server. The demo server won't let a web browser access files outside the directory that it's running in.
-                 </blockquote>
-                
-
-			</div>
-		</div>
-    
-    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
-		  <div class=" ">
-		  	<div class="card-header">Relative URI references
+		  	<div class="card-header">Post-Redirect-Get
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
@@ -493,75 +535,112 @@
 		     </div>
 		 	 <div class="card-body">
 		     <h5 class="card-title theCode"> &lt;a href="cliffsofinsanity.png"&gt;cliffsofinsanity.png&lt;/a&gt;</h5>
-		     <p class="card-text">URIs like this one don't have a scheme, or a hostname — just a path. This is a relative URI reference. It's "relative" to the context in which it appears — specifically, the page it's on. This URI doesn't include the hostname or port of the server it's on, but the browser can figure that out from context. If you click on one of those links, the browser knows from context that it needs to fetch it from the same server that it got the original page from.</p>
+		     <p class="card-text">There's a very common design pattern for interactive HTTP applications and APIs, called the PRG or Post-Redirect-Get pattern. A client POSTs to a server to create or update a resource; on success, the server replies not with a 200 OK but with a 303 redirect. The redirect causes the client to GET the created or updated resource.</p>
 
-
+             <p>This is just one of many, many ways to architect a web application, but it's one that makes good use of HTTP methods to accomplish specific goals. For instance, wiki sites such as Wikipedia often use Post-Redirect-Get when you edit a page.</p>
+                 
+            <p>For the messageboard server, Post-Redirect-Get means:</p>
+            <ol>
+                <li>You go to http://localhost:8000/ in your browser. Your browser sends a GET request to the server, which replies with a 200 OK and a piece of HTML. You see a form for posting comments, and a list of the existing comments. (But at the beginning, there are no comments posted yet.) </li>
+                <li>You write a comment in the form and submit it. Your browser sends it via POST to the server.</li>
+                <li>The server updates the list of comments, adding your comment to the list. Then it replies with a 303 redirect, setting the Location: / header to tell the browser to request the main page via GET.</li>
+                <li>The redirect response causes your browser to go back to the same page you started with, sending a GET request, which replies with a 200 OK and a piece of HTML …</li>
+                 
+            </ol>
+                <p>One big advantage of Post-Redirect-Get is that as a user, every page you actually see is the result of a GET request, which means you can bookmark it, reload it, and so forth — without ever accidentally resubmitting a form.</p>
+                 
 			</div>
 		</div>
     
     
         <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Other URI Parts
+		  	<div class="card-header">Making requests
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-             <p>There are many other parts that can occur in a URI. Consider the difference between these two Wikipedia URIs:</p>
-                 <u>
-		         <li> <a class="card-title theCode" href="https://en.wikipedia.org/wiki/Oxygen " target="_blank"> https://en.wikipedia.org/wiki/Oxygen </a></li>
-                <li> <a class="card-title theCode" href="https://en.wikipedia.org/wiki/Oxygen#Discovery" target="_blank"> https://en.wikipedia.org/wiki/Oxygen#Discovery </a></li>
-                 </u>
+                <p class="theCode"> requests.get("http://localhost:8000/")</p>
+                 
+                 <p>The requests function for performing GET requests is requests.get, and it takes the URI as an argument.</p>
+                 
+                    <p>The requests library is a Python library for sending requests to web servers and interpreting the responses. It's not included in the Python standard library, though; you'll need to install it. In your terminal, run pip3 install requests to fetch and install the requests library.</p>
+                 
+		         <a href="https://2.python-requests.org//en/master/user/quickstart/" target="_blank"><button type="button" class="btn-lg btn-danger "s>Requests</button></a>
+                <hr>
+                
 		     <p class="card-text">If you follow these links in your browser, it will fetch the same page from Wikipedia's web server. But the second one displays the page scrolled to the section about the discovery of oxygen. The part of the URI after the <strong class="theCode">#</strong> sign is called a <strong class="theCode">fragment</strong>. The browser doesn't even send it to the web server. It lets a link point to a specific named part of a resource; in HTML pages it links to an element by id.</p>
                  
                  <p>In contrast, consider this Google Search URI:</p>
                  
                  <ul>
-                     <li> <a href="https://www.google.com/search?q=fish" target="_blank" class="theCode">https://www.google.com/search?q=fish  </a></li>
+                     <li class="theCode">>>> import requests
+                     <li class="theCode">>>> a = requests.get("http://udacity.com")</li>
+                     <li class="theCode">>>> a</li>
+                     <li class="theCode">Response [200]</li>
+                     <li class="theCode">>>> type(a)</li>
+                     <li class="theCode"> class 'requests.models.Response'</li>            
                  </ul>
-                 <p>The <strong class="theCode">?q=fish</strong> is a query part of the URI. This does get sent to the server.</p>
                  
-                 <p>There are a few other possible parts of a URI. For way more detail than you need for this course, take a look at this Wikipedia article:</p>
+                
+                 <h3>r.content or r.text</h3>
+                 <p>Both, but they're different. r.content is a bytes object representing the literal binary data that the server sent. r.text is the same data but interpreted as a str object, a Unicode string.</p>
                  
-                 <ul>
-                     <li> <a href="hhttps://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Generic_syntax" target="_blank" class="theCode">Uniform_Resource_Identifier#Generic_syntax </a></li>
-                 </ul>
+                 
+                 <h3>Handling errors</h3>
+                 
+                 <p>If the requests.get call can reach an HTTP server at all, it will give you a Response object. If the request failed, the Response object has a status_code data member — either 200, or 404, or some other code.</p>
+
+                 <p>But if it wasn't able to get to an HTTP server, for instance because the site doesn't exist, then requests.get should raise an exception.</p>
+
+                 <p>However: Some Internet service providers will try to redirect browsers to an advertising site if you try to access a site that doesn't exist. This is called DNS hijacking, and it's nonstandard behavior, but some do it anyway. If your ISP hijacks DNS, you won't get exceptions when you try to access nonexistent sites. Standards-compliant DNS services such as Google Public DNS don't hijack.</p>
+                 
 			</div>
 		</div>
     
     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Hostname and Ports
+		  	<div class="card-header">Using a JSON API
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-            <h5 class="card-title theCode">Hostnames </h5>
+            <h5 class="card-title theCode">Using a JSON API </h5>
                  
-                 <p>A full HTTP or HTTPS URI includes the hostname of the web server, like  <strong class="theCode">www.udacity.com </strong>or  <strong class="theCode">www.un.int </strong>or <strong class="theCode">www.cheeseboardcollective.coop</strong> (my favorite pizza place in the world, in Berkeley CA). A hostname in a URI can also be an IP address: for instance, if you put <a class="theCode" href="http://216.58.194.174/" target="_blank">http://216.58.194.174/</a> in your browser, you'll end up at Google.</p>
-                 
-                 <blockquote class="blockquote">Why is it called a hostname? In network terminology, a host is a computer on the network; one that could host services.</blockquote>
+                 <p>As a web developer, you will deal with data in a lot of different formats, especially when your code calls out to APIs provided by other developers. It's not uncommon for a large software system to have parts that deal with a dozen or more different data formats. Fortunately, usually, someone else has already written libraries to help you read and write these formats.</p>
                  
                  
-		     <p class="card-text">The Internet tells computers apart by their <strong class="theCode">IP Addresses</strong>; every piece of network traffic on the Internet is labeled with the IP addresses of the sending and receiving computers. In order to connect to a web server such as www.udacity.com, a client needs to translate the hostname into an IP address. Your operating system's network configuration uses the Domain Name Service (DNS) — a set of servers maintained by Internet Service Providers (ISPs) and other network users — to look up hostnames and get back IP addresses.</p>
+		          <p class="card-text">JSON is a data format based on the syntax of JavaScript, often used for web-based APIs. There are a lot of services that let you send HTTP queries and get back structured data in JSON format. You can read more about the JSON format at http://www.json.org/.</p>
+
+                 <p>Python has a built-in json module; and as it happens, the requests module makes use of it. A Response object has a .json method; if the response data is JSON, you can call this method to translate the JSON data into a Python dictionary.</p>
+
+                 <p>Try it out! Here, I'm using it to access the Star Wars API, a classic JSON demonstration that contains information about characters and settings in the Star Wars movies:</p>
                  
-                 <p class="theCode">$ host www.google.com</p>
-                 <p class="theCode">$ nslookup www.google.com</p>
+                 <p class="theCode">>>> a = requests.get('http://swapi.co/api/people/1/')</p>
+                 <p class="theCode">>>> a.json()['name']</p>
+                 <p class="theCode">'Luke Skywalker'</p>
                  
-                 <ul>
-                     <li> <a href="https://www.google.com/search?q=fish" target="_blank" class="theCode">https://www.google.com/search?q=fish  </a></li>
-                 </ul>
-                 <p><strong class="theCode">$ nslookup localhost </strong></p>
+                 <hr>
                  
-                 <p>Localhost is 127.0.0.1. Well, that's IPv4 localhost, anyway. IPv6 localhost is ::1, which is short for 0000:0000:0000:0000:0000:0000:0000:0001.</p>
+                 <h2>Extract data from a JSON response</h2>
                  
-                 <h2>IPv4 or IPv6</h2>
+                 <p>There's a great example of an API on the site http://uinames.com/, a service that makes up fake names and user account information. You can find the full API documentation under the little menu at the top right.</p>
+
+                 <p>For this exercise, all you'll need is this URI and a couple of query parameters:</p>
+
+                 <p class="theCode">http://uinames.com/api/</p>
+
+                 <p>The query parameters to use are ext, which gives you a record with more fields, and region, which lets you specify which country you want your imaginary person to come from. For instance, to have the API invent a person from Italy:</p>
+
+                 <p class="theCode">http://uinames.com/api?ext&region=Italy</p>
+
+                 <p>(It's not perfect. For instance, currently it makes up North American phone numbers for everyone, regardless of where they live.)</p>
                  
-                 <p>IP addresses come in two different varieties: the older IPv4 and the newer IPv6. When you see an address like 127.0.0.1 or 216.58.194.164, those are IPv4 addresses. IPv6 addresses are much longer, such as 2607:f8b0:4005:804::2004, although they can also be abbreviated.</p>
+                 <hr>
                  
                  <h2>Localhost</h2>
                  
