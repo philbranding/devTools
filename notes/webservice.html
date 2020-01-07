@@ -117,27 +117,32 @@
 		
     	<div class="card text-white bg-info mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">>_. http.server Python's Module
+		  	<div class="card-header">>_. Check in your code
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-                 <h2> http.server</h2>
-		     <p> http.server module defines classes for implementing HTTP servers (Web servers).</p>
+                 <h2> Check in your code </h2>
+		     <p> Heroku (and many other web hosting services) works closely with Git: you can deploy a particular version of your code to Heroku by pushing it with the <strong class="theCode"> git push </strong> command. So in order to deploy your code, it first needs to be checked into a local Git repository.</p>
              
-                 <blockquote class="blockquote">Note: http.server is not recommended for production. It only implements basic security checks. But it is a first step to understand the lower level behavior of a Web server.</blockquote>
+                 <blockquote class="blockquote">This Git repository should be separate from the one created when you downloaded the exercise code (the course-ud303 directory). Create a new directory outside of that directory and copy the bookmark server code (the file BookmarkServer.py from last lesson) into it. Then set this new directory up as a Git repository:</blockquote>
                  
                  <hr>
-		     <p class="card-text">These modules are written in object-oriented Python. You should already be familiar with creating class instances, defining subclasses, and defining methods on classes.</p>
+                                  
+                 <ul>
+                 <li class="theCode"> git init </li>
+                 <li class="theCode"> git add BookmarkServer.py </li>
+                 <li class="theCode"> git commit -m "Checking in my Bookmark server!" </li>                 
+                 
+                 </ul>
+                 
 
-                 <p>If you need a refresher on the Python syntax for these object-oriented actions, you might want to browse:</p>
+                 <p>First, visit this link and follow the instructions to sign up for a free Heroku account:</p>
              
-            <div class="theButton">  <button type="button" class="btn-lg btn-danger active "aria-pressed="true"><a href="https://docs.python.org/3/tutorial/classes.html" class="theButton" target="_blank">PYTHON CLASSES </a></button> </div>
+            <div class="theButton">  <button type="button" class="btn-lg btn-danger active "aria-pressed="true"><a href="https://signup.heroku.com/dc" class="theButton" target="_blank">SIGNUP </a></button> </div>
                  
-                 
-            <div class="theButton">  <button type="button" class="btn-lg btn-danger active "aria-pressed="true"><a href="https://classroom.udacity.com/courses/ud036/lessons/990110642/concepts/10079185740923" class="theButton" target="_blank">PYTHON </a></button> </div>
                 
 		</div>
 	</div>
@@ -148,36 +153,63 @@
     
 		<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Servers and handlers
+		  	<div class="card-header">Create configuration files
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">Webserver and Client</h5>
-		     <p class="card-text"> Web servers using http.server are made of two parts: the HTTPServer class, and a request handler class. The first part, the HTTPServer class, is built into the module and is the same for every web service. </p>
+		     <h5 class="card-title theCode">Create configuration files</h5>
+		     <p class="card-text"> There are a few configuration files that Heroku requires for deployment, to tell its servers how to run your application. For the case of the bookmark server, I'll just give you the required content for these files. These are just plain text files and can be created in your favorite text editor. </p>
                  
-            <p> It knows how to listen on a port and accept HTTP requests from clients. Whenever it receives a request, it hands that request off to the second part — a request handler — which is different for every web service.</p>
+            <p> <strong class="theCode"> runtime.txt </strong> tells Heroku what version of Python you want to run. <a href="https://devcenter.heroku.com/articles/python-runtimes" target="_blank">Check the currently supported runtimes in the Heroku documentation; this will change over time!</a> As of early 2020, the currently supported version of Python 3 is python-3.7.2; so this file just needs to contain the text python-3.7.2. </p>
                  
-            <p>Here's what your Python code will need to do in order to run a web service:</p>
+            <p><strong class="theCode">requirements.txt</strong> is used by Heroku (through <strong class="theCode">pip</strong>) to install dependencies of your application that aren't in the Python standard library. The bookmark server has one of these: the <strong class="theCode">requests</strong> module. We'd like a recent version of that, so this file can contain the text <strong class="theCode">requests>=2.12</strong>. This will install version 2.12 or a later version, if one has been released.</p>
                  
-            <ul>
-                <li>Import http.server, or at least the pieces of it that you need.</li>     
-                <li>Create a subclass of http.server.BaseHTTPRequestHandler. This is your handler class.</li>     
-                <li>Define a method on the handler class for each HTTP verb you want to handle. (The only HTTP verb you've seen yet in this course is GET, but that will be changing soon.)</li>   
-                    <ul>
-                        <li>The method for GET requests has to be called do_GET. </li>
-                        <li>Inside the method, call built-in methods of the handler class to read the HTTP request and write the response </li>
-                    </ul>
-                <li>Create an instance of http.server.HTTPServer, giving it your handler class and server information — particularly, the port number.</li>     
-                <li>Call the HTTPServer instance's serve_forever method.</li>     
+            <p><strong class="theCode">Procfile</strong> is used by Heroku to specify the command line for running your application. It can support running multiple servers, but in this case we're only going to run a web server. Check the Heroku documentation about process types for more details. If your bookmark server is in <strong class="theCode">BookmarkServer.py</strong>, then the contents of Procfile should be <strong class="theCode">web: python BookmarkServer.py</strong>.</p>
                  
+            <hr>
                  
-            </ul>
+            <h3>Listen on a configurable port</h3>
 
-            <p>Once you call the HTTPServer instance's serve_forever method, the server does that — it runs forever until stopped.</p>
-            <p>if you have a Python server running and you want to stop it, type Ctrl-C into the terminal where it's running. (You may need to type it two or three times.)</p>
+            <p>There's one small change that you have to make to your server code to make it run on Heroku. The bookmark server from Lesson 2 listens on port 8000. But Heroku runs many users' processes on the same computer, and multiple processes can't (normally) listen on the same port. So Heroku needs to be able to tell your server what port to listen on.</p>
+        
+            <p>The way it does this is through an <strong class="theCode">environment variable</strong> — a configuration variable that is passed to your server from the program that starts it, usually the shell. Python code can access environment variables in the <strong class="theCode">os.environ</strong> dictionary. The names of environment variables are usually capitalized; and the environment variable we need here is called, unsurprisingly, <strong class="theCode">PORT</strong>.</p>
+                 
+            <p>The port your server listens on is configured when it creates the <strong class="theCode">HTTPServer</strong> instance, near the bottom of the server code. We can make it work with or without the <strong class="theCode">PORT</strong> environment variable, like so:</p>
+                 
+                 <ul>
+                    <li class="theCode">if __name__ == '__main__':</li>
+                        <ul>
+                            <li class="theCode">port = int(os.environ.get('PORT', 8000))</li>
+                            <li class="theCode">server_address = ('', port)</li>
+                            <li class="theCode">httpd = http.server.HTTPServer(server_address, Shortener)</li>
+                            <li class="theCode"> httpd.serve_forever()</li>
+                        </ul>
+                 
+                 </ul>
+            
+            <p> To access <strong class="theCode">os.environ </strong>, you will also need to <strong class="theCode"> import os </strong>at the top of the file. </p>
+                 
+            <p>Make these changes to your server code, run the server locally to test that it still works, then commit it to your Git repository:</p>
+
+                  
+             <ul>
+                <li class="theCode">git add BookmarkServer.py</li>
+                <li class="theCode">git commit -m "Use PORT from environment."</li>
+            </ul>
+            
+             <hr>
+                 
+            <h3>Create and push your app</h3>
+
+            <p>Before you can put your service on the web, you have to give it a name. You can call it whatever you want, as long as the name is not already taken by another user! Your app's name will appear in the URI of your deployed service. For instance, if you name your app silly-pony, it will appear on the web at https://silly-pony.herokuapp.com/.</p>
+        
+            <p> Use <strong class="theCode">heroku create your-app-name</strong> to tell Heroku about your app and give it a name. Again, you can choose any name you like, but it will have to be unique — the service will tell you if you're choosing a name that someone else has already claimed.</p>
+                 
+            <p>Finally, use <strong class="theCode"> git push heroku master </strong> to deploy the app!</p>
+                 
 		</div>
 	</div>
 
@@ -185,7 +217,7 @@
 
 	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Exercise: Running a Web Server
+		  	<div class="card-header">Accessing server logs
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
@@ -193,82 +225,9 @@
 		     </div>
 		 	 <div class="card-body">
 		     <h5 class="card-title theCode">$python3 -m http.server 8000</h5>
-		     <p class="card-text">from http.server import HTTPServer, BaseHTTPRequestHandler </p>
+                 <p class="card-text">If your app doesn't work quite right as deployed, one resource that can be very helpful is the server log. Since your service isn't running on your own local machine any more, those logs aren't going to show up in your terminal! Instead, they're available from the Heroku dashboard.</p>
 
-<p>class HelloHandler(BaseHTTPRequestHandler):</p>
-    <p>def do_GET(self):</p>
-       <p> # First, send a 200 OK response.</p>
-       <p> self.send_response(200)</p>
-
-       <p> # Then send headers.</p>
-       <p> self.send_header('Content-type', 'text/plain; charset=utf-8')</p>
-       <p> self.end_headers()</p>
-
-       <p> # Now, write the response body.</p>
-        <p>self.wfile.write("Hello, HTTP!\n".encode())</p>
-
-<p>if __name__ == '__main__':</p>
-   <p> server_address = ('', 8000)  # Serve on all addresses, port 8000.</p>
-   <p> httpd = HTTPServer(server_address, HelloHandler)</p>
-   <p> httpd.serve_forever()</p>
-                 
-            <ul>
-                <li class="theCode">from http.server import HTTPServer, BaseHTTPRequestHandler</li>
-               <li> The http.server module has a lot of parts in it. For now, this program only needs these two. I'm using the from syntax of import so that I don't have to type http.server over and over in my code..</li>
-
-                <li class="theCode">class HelloHandler(BaseHTTPRequestHandler):</li>
-                    <ul>
-                    <li class="theCode">def do_GET(self):</li>
-                </ul>
-                <li>This is the handler class. It inherits from the BaseHTTPRequestHandler parent class, which is defined in http.server. I've defined one method, do_GET, which handles HTTP GET requests. When the web server receives a GET request, it will call this method to respond to it.</li>
-                
-
-                <li>As you saw in the previous lesson, there are three things the server needs to send in an HTTP response: a status code, some headers, and the response body. The handler parent class has methods for doing each of these things. Inside do_GET, I just call them in order.</li> 
-                 
-                <ul>
-                    <li class="theCode"> self.send_response(200)</li>
-                </ul>
-                
-                <li>The first thing the server needs to do is send a 200 OK status code; and the send_response method does this. I don't have to tell it that 200 means OK; the parent class already knows that.</li>
-                
-                  <ul>
-                    <li class="theCode"> self.send_header('Content-type', 'text/plain; charset=utf-8')
-                    </li>
-                    <li class="theCode"> self.end_headers()</li>
-                </ul>
-                
-                <li>The next thing the server needs to do is send HTTP headers. The parent class supplies the send_header and end_headers methods for doing this. For now, I'm just having the server send a single header line — the Content-type header telling the client that the response body will be in UTF-8 plain text.
-                </li>
-                
-                
-                <ul>
-                    <li class="theCode"> self.wfile.write("Hello, HTTP!\n".encode())</li>
-                </ul>
-                
-                <li>The last part of the do_GET method writes the response body.</li>
-                
-                
-                <li>The parent class gives us a variable called self.wfile, which is used to send the response. The name wfile stands for writeable file. Python, like many other programming languages, makes an analogy between network connections and open files: they're things you can read and write data to. Some file objects are read-only; some are write-only; and some are read/write.</li>
-                
-                <li>self.wfile represents the connection from the server to the client; and it is write-only; hence the name. Any binary data written to it with its write method gets sent to the client as part of the response. Here, I'm writing a friendly hello message.</li>
-                
-                
-                <li>What's going on with .encode() though? We'll get to that in a moment. Let's look at the rest of the code first.</li>
-                
-                <li class="theCode">if __name__ == '__main__': </li>
-                    <ul>
-                        <li class="theCode"> server_address = ('', 8000)</li>
-                        <li class="theCode">httpd = HTTPServer(server_address, HelloHandler)</li>
-                        <li class="theCode">httpd.serve_forever()</li>                    
-                    </ul>
-                
-               <li>This code will run when we run this module as a Python program, rather than importing it. The HTTPServer constructor needs to know what address and port to listen on; it takes these as a tuple that I'm calling server_address. I also give it the HelloHandler class, which it will use to handle each incoming client request.</li>
-                
-                <li>At the very end of the file, I call serve_forever on the HTTPServer, telling it to start handling HTTP requests. And that starts the web server running.</li>
-                
-                 </ul>
-            
-                 <p>When you start up the demo server, it will print a message telling you that it's serving HTTP. Leave it running, and leave the terminal open. Now try accessing <strong class="theCode">http://localhost:8000/</strong> from your browser.</p>
+                 <p>Take a look at https://dashboard.heroku.com/apps/little-bookmarks/logs, but replace "little-bookmarks" with your own app's name. </p>
 		</div>
 	</div>
 
