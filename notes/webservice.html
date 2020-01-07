@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-	<title>Tools</title>
+	<title>WebServices</title>
 	<link rel="stylesheet" type="text/css" href="external/css/bootstrap.css">
 	<script type="text/javascript" src="./external/js/bootstrap.js" rel="javascript"></script>
     <script type="text/javascript" src="external/js/jquery.min.js" rel="javascript"></script>
@@ -233,50 +233,94 @@
 
 	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">.encode() 
+		  	<div class="card-header">Concurrency
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">self.wfile.write("Hello, HTTP!\n".encode())
- </h5>
-                 <p class="card-text ">An HTTP response could contain any kind of data, not only text. And so the self.wfile.write method in the handler class expects to be given a bytes object — a piece of arbitrary binary data — which it writes over the network in the HTTP response body.</p>
-
-                 <p>If you want to send a string over the HTTP connection, you have to encode the string into a bytes object. The encode method on strings translates the string into a bytes object, which is suitable for sending over the network. There is, similarly, a decode method for turning bytes objects into strings.</p>
-
-                 <p>Text strings look simple, but they are actually kind of complicated underneath. There are a lot of different ways that computers can represent text in memory and on the network.</p>
+                 <p class="card-text ">Being able to handle two ongoing tasks at the same time is called concurrency, and the basic http.server.HTTPServer doesn't have it. It's pretty straightforward to plug concurrency support into an HTTPServer, though. The Python standard library supports doing this by adding a mixin to the HTTPServer class. A mixin is a sort of helper class, one that adds extra behavior the original class did not have. To do this, you'll need to add this code to your bookmark server:</p>
                  
-                 <p>lder software — including older versions of Python — tended to assume that each character takes up only one byte of memory. That works fine for some human languages, like English and Russian, but it doesn't work at all for other human languages, like Chinese; and it really doesn't work if you want to handle text from multiple languages in the same program.</p>
+                <ul>
+                    <li class="theCode">import threading</li>
+                    <li class="theCode">from socketserver import ThreadingMixIn</li>
+                    <li class="theCode">class ThreadHTTPServer(ThreadingMixIn, http.server.HTTPServer):</li>
+                    <li class="theCode">"This is an HTTPServer that supports thread-based concurrency."</li>
+                </ul>
                  
-                 <p>The Web is international, so browsers and servers need to support all languages. This means that the old one-byte assumption is completely thrown out. But when programs use the network, they need to know how long a piece of data is in terms of bytes. That has to be figured out unambiguously at some point in time. The way Python does this is by making us encode strings into bytes objects when we want to send them over a binary channel (such as an HTTP connection).</p>
+                 <p>Then look at the bottom of your bookmark server code, where it creates an HTTPServer. Have it create a ThreadHTTPServer instead:</p>
                  
-                 <p>UTF-8 is the default encoding in Python. When you call the encode method on a string without passing it another encoding, it assumes you mean UTF-8. This is the right thing to do, so that's what the code in this course does.</p>
+                  <ul>
+                    <li class="theCode">if __name__ == '__main__':</li>
+                        <ul>
+                            <li class="theCode">port = int(os.environ.get('PORT', 8000))</li>
+                            <li class="theCode">server_address = ('', port)</li>
+                            <li class="theCode">httpd = ThreadHTTPServer(server_address, Shortener)</li>
+                            <li class="theCode"> httpd.serve_forever()</li>
+                        </ul>
                  
-                 <a href="https://docs.python.org/3.6/howto/unicode.html" target="_blank"><button type="button" class="btn-lg btn-danger "s>UNICODE</button></a>
+                 </ul>
+                 
+                 <p>Commit this change to your Git repository, and push it to Heroku. Now when you test it out, you should be able to add an entry that points to the service itself.</p>
 		</div>
 	</div>
 		
 		<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">  Path
+		  	<div class="card-header">  What's an Apache or Nginx?
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     
-		     <p class="card-text">The only difference in the code between EchoHandler and HelloHandler is what they write in the response body. The hello server always writes the same message, while the echo server takes its message from the request path. Here's how I did it — a one-line change at the end of do_GET:</p>
                  
-                 <h5 class="card-title theCode">$self.wfile.write(self.path[1:].encode())</h5>
+                 <h2 class="card-title">What's an Apache or Nginx?</h2>
                  
-                 <p>What I'm doing here is taking the path (for instance "/bears"), using a string slice to remove the first character (which is always a slash), and then encoding the resulting string into bytes, then writing that to the HTTP response body.</p>
+                 <h3>Static content and more</h3>
+                 
+                 <p>The Web was originally designed to serve documents, not to deliver applications. Even today, a large amount of the data presented on any web site is static content — images, HTML files, videos, downloadable files, and other media stored on disk.</p>
 
-                 <p>message = self.path[1:]  # Extract 'bears' from '/bears', for instance </p>
-                 <p>message_bytes = message.encode()  # Make bytes from the string</p>
-                 <p>self.wfile.write(message_bytes)  # Send it over the network</p>
+                 <p>Specialized web server programs — like <a class="theCode" href="https://httpd.apache.org/" target="_blank">Apache</a>, <a href="https://www.nginx.com/resources/wiki/" target="_blank" class="theCode">Nginx</a>, or <a href="https://www.iis.net/" target="_blank" class="theCode">IIS</a> — can serve static content from disk storage very quickly and efficiently. They can also provide access control, allowing only authenticated users to download particular static content.</p>
+                 
+                 <h3>Routing and load balancing </h3>
+                 
+                 <p>Some web applications have several different server components, each running as a separate process. One thing a specialized web server can do is dispatch requests to the particular backend servers that need to handle each request. There are a lot of names for this, including request routing and reverse proxying.</p>
+                 
+                 <p>Some web applications need to do a lot of work on the server side for each request, and need many servers to handle the load. Splitting requests up among several servers is called load balancing.</p>
+                 
+                 <p> Load balancing also helps handle conditions where one server becomes unavailable, allowing other servers to pick up the slack. A reverse proxy can health check the backend servers, only sending requests to the ones that are currently up and running. This also makes it possible to do updates to the backend servers without having an outage.</p>  
+                 
+                 <h3>Concurrent users</h3>
+                 
+                 <p>Handling a large number of network connections at once turns out to be complicated — even more so than plugging concurrency support into your Python web service.</p>
+                 
+                 <p>As you may have noticed in your own use of the web, it takes time for a server to respond to a request. The server has to receive and parse the request, come up with the data that it needs to respond, and transmit the response back to the client. The network itself is not instantaneous; it takes time for data to travel from the client to the server.</p>
+                 
+                 <p>In addition, a browser is totally allowed to open up multiple connections to the same server, for instance to request resources such as images, or to perform API queries.</p>
+                 
+                 <p> All of this means that if a server is handling many requests per second, there will be many requests in progress at once — literally, at any instant in time. We sometimes refer to these as in-flight requests, meaning that the request has "taken off" from the client, but the response has not "landed" again back at the client. A web service can't just handle one request at a time and then go on to the next one; it has to be able to handle many at once.</p>
+                 
+                 <h3>Caching</h3>
+                 
+                 <p>Imagine a web service that does a lot of complicated processing for each request — something like calculating the best route for a trip between two cities on a map. Pretty often, users make the same request repeatedly: imagine if you load up that map, and then you reload the page — or if someone else loads the same map. It's useful if the service can avoid recalculating something it just figured out a second ago. It's also useful if the service can avoid re-sending a large object (such as an image) if it doesn't have to.</p>
+                 
+                 <p>One way that web services avoid this is by making use of a cache, a temporary storage for resources that are likely to be reused. Web systems can perform caching in a number of places — but all of them are under control of the server that serves up a particular resource. That server can set HTTP headers indicating that a particular resource is not intended to change quickly, and can safely be cached.</p>
+                 
+                 <p>There are a few places that caching usually can happen. Every user's browser maintains a browser cache of cacheable resources — such as images from recently-viewed web pages. The browser can also be configured to pass requests through a web proxy, which can perform caching on behalf of many users. Finally, a web site can use a reverse proxy to cache results so they don't need to be recomputed by a slower application server or database.</p>
+                 
+                 <p> All HTTP caching is supposed to be governed by cache control headers set by the server. You can read a lot more about them in this article by Google engineer Ilya Grigorik.</p>
+                 
+                 <h3>Capacity</h3>
+                 
+                 <p>hy serve static requests out of cache (or a static web server) rather than out of your application server? Python code is totally capable of sending images or video via HTTP, after all. The reason is that — all else being equal — handling a request faster provides a better user experience, but also makes it possible for your service to support more requests.</p>
+                 
+                 <p>If your web service becomes popular, you don't want it to bog down under the strain of more traffic. So it helps to handle different kinds of request with software that can perform that function quickly and efficiently.</p>
+                 
+                 
+                 
+                 <p> All HTTP caching is supposed to be governed by cache control headers set by the server. You can read a lot more about them in this article by Google engineer Ilya Grigorik.</p>
 
 			</div>
 		</div>
