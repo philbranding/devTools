@@ -56,6 +56,7 @@
         <a class="dropdown-item" href="#">Javascript</a>
         <a class="dropdown-item" href="httpprotocol.html">HTTP Protocol</a>
         <a class="dropdown-item" href="httpserver.html">HTTP Server</a>
+        <a class="dropdown-item" href="webservice.html">WebServices</a>
       </div>
     </li>
         
@@ -74,25 +75,35 @@
     
 <div class="jumbotron">
 <div>
-	<h1>HTTP SERVER</h1>
-	<h3 class="notes">An introduction to the Web from Python </h3>
+	<h1>Deploying to a Hosting Service</h1>
+	<h3 class="notes">Can I just host my web service at home? </h3>
+    <p> Maybe! Plenty of people do, but not everyone can. It's a common hobbyist activity, but not something that people would usually do for a job.</p>
+    
+    <p> There's nothing fundamentally special about the computers that run web servers. They're just computers running an operating system such as Linux, Mac OS, or Windows (usually Linux). Their connection to the Internet is a little different from a typical home or mobile Internet connection, though. A server usually needs to have a stable (static) IP address so that clients can find it and connect to it. Most home and mobile systems don't assign your computer a static IP address.</p>
+    
+    <p> Also, most home Internet routers don't allow incoming connections by default. You would need to reconfigure your router to allow it. This is totally possible, but way beyond the scope of this course (and I don't know what kind of router you have).</p>
+    
+    <p> Lastly, if you run a web service at home, your computer has to be always on.</p>
+    
+    <p> So, for the next exercise in this course, you'll be deploying one of your existing web services to <a href="https://www.heroku.com/" target="_blank" class="theCode">Heroku </a>, a commercial service that will host it on the web where it will be publicly accessible. </p>
     
         <div>
     <hr>
     
     </div>
-    <div>
-        
-        <h3> Learning Objectives</h3>
-        
-        <ul>
-            <li> Practise with http.server Python Module.</li>
-            <li>Use encode() to send data from the server.</li>
-            <li>Explain quies and quoting as a way to send data in a request. </li>
-            <li>Differentiate a GET Request from a POST Request</li>
-            <li>Demonstrate Post-Redirect-Get</li>
-            <li>Define JSON</li>
-        </ul>
+    <div class="card text-white bg-dark mb-3">
+       
+        <h3 class="card-header"> Steps to Heroku deployment</h3>
+        <ol>
+            <li> Check your server code into a new local Git repository.</li>
+            <li> Sign up for a free Heroku account.</li>
+            <li> Download the Heroku <a href="https://devcenter.heroku.com/articles/heroku-cli"> command-line interface</a> (CLI).</li>
+            <li>Authenticate the Heroku CLI with your account: <strong class="theCode"> heroku login</strong></li>
+            <li>Create configuration files <strong class="theCode">Procfile </strong>, <strong class="theCode">requirements.txt</strong>, and <strong class="theCode">runtime.txt</strong> and check them into your Git repository.</li>
+            <li>Modify your server to listen on a configurable port.</li>
+            <li>Create your Heroku app: <strong class="theCode">heroku create your-app-name</strong> </li>
+            <li>Push your code to Heroku with Git: <strong class="theCode">git push heroku master</strong> </li>
+        </ol>
         
     </div>
     
@@ -104,7 +115,7 @@
     
 	</div>
 		
-    	<div class="card text-white bg-danger mb-3" style="max-width: 30rem;">
+    	<div class="card text-white bg-info mb-3" style="max-width: 30rem;">
 		  <div class=" ">
 		  	<div class="card-header">>_. http.server Python's Module
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
