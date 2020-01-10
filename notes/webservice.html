@@ -318,8 +318,6 @@
                  
                  <p>If your web service becomes popular, you don't want it to bog down under the strain of more traffic. So it helps to handle different kinds of request with software that can perform that function quickly and efficiently.</p>
                  
-                 
-                 
                  <p> All HTTP caching is supposed to be governed by cache control headers set by the server. You can read a lot more about them in this article by Google engineer Ilya Grigorik.</p>
 
 			</div>
@@ -327,69 +325,89 @@
 		
 		<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Queries and quoting
+		  	<div class="card-header">Cookies
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">Unpacking query parameters </h5>
+		     <h3 class="card-title">Cookies </h3>
 
-		      <p class="card-text">When you take a look at a URI for a major web service, you'll often see several query parameters, which are a sort of variable assignment that occurs after a ? in the URI. For instance, here's a Google Image Search URI:</p>
-                 
-                 <a href="#" class="theCode">https://www.google.com/search?q=gray+squirrel&tbm=isch</a>
+		          <p class="card-text">Cookies are a way that a server can ask a browser to retain a piece of information, and send it back to the server when the browser makes subsequent requests. Every cookie has a name and a value, much like a variable in your code; it also has rules that specify when the cookie should be sent back.</p>
 
-                 <p> This will be sent to the web server as this HTTP request:</p>
-                 
-                 <p class="theCode">GET /search?q=gray+squirrel&tbm=isch HTTP/1.1</p>
-                 <p class="theCode">Host: www.google.com</p>
-                 
-                 <p>The query part of the URI is the part after the ? mark. Conventionally, query parameters are written as key=value and separated by <strong class="theCode">&amp;</strong> signs. So the above URI has two query parameters, q and tbm, with the values gray+squirrel and isch.</p>
-                 
-                 <p>(isch stands for Image Search.)</p>
-                 
-                 <p>There is a Python library called urllib.parse that knows how to unpack query parameters and other parts of an HTTP URL. (The library doesn't work on all URIs, only on some URLs.)</p>
-                 
-                 <a href="https://docs.python.org/3/library/urllib.parse.html" target="_blank"><button type="button" class="btn-lg btn-danger "s>urllib.parse</button></a>
+                 <p> What are cookies for? A few different things. If the server sends each client a unique cookie value, it can use these to tell clients apart. This can be used to implement higher-level concepts on top of HTTP requests and responses — things like sessions and login. Cookies are used by analytics and advertising systems to track user activity from site to site. Cookies are also sometimes used to store user preferences for a site.</p>
                  
                  
-                 <p>A query parameter may show up multiple times in the query string, so parse_qs returns a dictionary of lists with all the values it's associated with.</p>
+                 <h3>How cookies happen</h3>
                  
-                 <p class="theCode">>>> from urllib.parse import urlparse, parse_qs</p>
-                 <p class="theCode">>>> address = 'https://www.google.com/search?q=gray+squirrel&tbm=isch'</p>
-                 <p class="theCode">>>> parts = urlparse(address)</p>
-                 <p class="theCode">>>> print(parts)</p>
+                 <p>The first time the client makes a request to the server, the server sends back the response with a Set-Cookie header. This header contains three things: a cookie name, a value, and some attributes. Every subsequent time the browser makes a request to the server, it will send that cookie back to the server. The server can update cookies, or ask the browser to expire them.</p>
                  
-                 <p>As a result you will get:</p>
+                 <h3>Seeing cookies in your browser</h3>
                  
+                 <p>Browsers don't make it easy to find cookies that have been set, because removing or altering cookies can affect the expected behavior of web services you use. However, it is possible to inspect cookies from sites you use in every major browser. Do some research on your own to find out how to view the cookies that your browser is storing.</p>
+                 
+
                  <blockquote class="blockquote">
-                 ParseResult(scheme='https', netloc='www.google.com', path='/search', params='', query='q=gray+squirrel&tbm=isch', fragment='')
+                 By the way, if you try to research "cookie fields" with a web search, you may get a lot of results from the Mrs. Fields cookie company. Try "HTTP cookie fields" for more relevant results.
                  </blockquote>
                  
-                 <p>Then</p>
+                 <p>The first two, the cookie's name and content, are also called its key and value. They're analogous to a dictionary key and value in Python — or a variable's name and value for that matter. They will both be sent back to the server. There are some syntactic rules for which characters are allowed in a cookie name; for instance, they can't have spaces in them. The value of the cookie is where the "real data" of the cookie goes — for instance, a unique token representing a logged-in user's session.</p>
                  
-                 <p class="theCode">>>> print(parts.query)</p>
+                 <p>The next two fields, Domain and Path, describe the scope of the cookie — that is to say, which queries will include it. By default, the domain of a cookie is the hostname from the URI of the response that set the cookie. But a server can also set a cookie on a broader domain, within limits. For instance, a response from <strong class="theCode">www.udacity.com</strong> can set a cookie for <strong class="theCode">udacity.com</strong>, but not for <strong class="theCode">com</strong>.</p>
                  
-                 <p>And will get:</p>
-                 <blockquote class="blockquote">
-                 q=gray+squirrel&tbm=isch
-                 </blockquote>
+                 <p>The fields that Chrome describes as "Send for" and "Accessible to script" are internally called Secure and HttpOnly, and they are boolean flags (true or false values). The internal names are a little bit misleading. If the Secure flag is set, then the cookie will only be sent over HTTPS (encrypted) connections, not plain HTTP. If the HttpOnly flag is set, then the cookie will not be accessible to JavaScript code running on the page.</p>
+                 
+                 <p>Finally, the last two fields deal with the lifetime of the cookie — how long it should last. The creation time is just the time of the response that set the cookie. The expiration time is when the server wants the browser to stop saving the cookie. There are two different ways a server can set this: it can set an Expires field with a specific date and time, or a Max-Age field with a number of seconds. If no expiration field is set, then a cookie is expired when the browser closes.</p>
+                 
+                 <h3> Using cookies in Python </h3>
+                 
+                 <p>To set a cookie from a Python HTTP server, all you need to do is set the <strong class="theCode"> Set-Cookie</strong> header on an HTTP response. Similarly, to read a cookie in an incoming request, you read the <strong class="theCode">Cookie</strong> header. However, the format of these headers is a little bit tricky; I don't recommend formatting them by hand. Python's <strong class="theCode">http.cookies</strong> module provides handy utilities for doing so. </p>
+                 
+                 <p>To create a cookie on a Python server, use the <strong class="theCode">SimpleCookie</strong> class. This class is based on a dictionary, but has some special behavior once you create a key within it:</p>
+                 
+                 <ul>
+                     <li class="theCode"> from http.cookies import SimpleCookie, CookieError </li>
+                     <p></p>
+                     <li class="theCode"> out_cookie = SimpleCookie()</li>
+                     <li class="theCode">out_cookie["bearname"] = "Smokey Bear"</li>
+                     <li class="theCode">out_cookie["bearname"]["max-age"] = 600</li>
+                     <li class="theCode">out_cookie["bearname"]["httponly"] = True</li>
+                 </ul>
                  
                  
-                 <p class="theCode">>>>query = parse_qs(parts.query)</p>
-                 <p class="theCode">>>> query </p>
-                 <p class="theCode">{'q': ['gray squirrel'], 'tbm': ['isch']}</p>
+                 <p>Then you can send the cookie as a header from your request handler:</p>
+                 
+                 <p class="theCode">self.send_header("Set-Cookie", out_cookie["bearname"].OutputString())</p>
+                 
+                 <p>To read incoming cookies, create a <strong class="theCode">SimpleCookie</strong> from the <strong class="theCode">Cookie</strong> header:</p>
                  
                   <p> As a result, you are getting a dictionary with the values passed in the Url:</p>
+                 
+                   <ul>
+                     <li class="theCode"> in_cookie = SimpleCookie(self.headers["Cookie"]) </li>
+                     <li class="theCode"> in_data = in_cookie["bearname"].value </li>
+                 </ul>
+                 
+                 <p>Be aware that a request might not have a cookie on it, in which case accessing the <strong class="theCode">Cookie</strong> header will raise a <strong class="theCode">KeyError</strong> exception; or the cookie might not be valid, in which case the <strong class="theCode">SimpleCookie</strong> constructor will raise <strong class="theCode">http.cookies.CookieError</strong>.</p>
 
-                  <blockquote class="blockquote">{'q': ['gray squirrel'], 'tbm': ['isch']}</blockquote>
+                  <blockquote class="blockquote">Important safety tip: Even though browsers make it difficult for users to modify cookies, it's possible for a user to modify a cookie value. Higher-level web toolkits, such as Flask (in Python) or Rails (in Ruby) will cryptographically sign your cookies so that they won't be accepted if they are modified. Quite often, high-security web applications use a cookie just to store a session ID, which is a key to a server-side database containing user information.</blockquote>
                  
-                 <p>If you want to read each parameter you can use:</p>
+                 <blockquote class="blockquote">Another important safety tip: If you're displaying the cookie data as HTML, you need to be careful to escape any HTML special characters that might be in it. An easy way to do this in Python is to use the html.escape function, from the built-in html module!</blockquote>
                  
-                 <p class="theCode">>>>query['q']</p>
+                 <p>A server that remembers you</p>
                  
-                 <p>To get as the result: ['gray squirrel']</p>
+                 <p>In this exercise, you'll build a server that asks for your name, and then stores your name in a cookie on your browser. You'll be able to see that cookie in your browser's cookie data. Then when you visit the server again, it'll already know your name.</p>
+                 
+                 <h3>DNS domains and cookie security</h3>
+                 
+                 <p>Back in Lesson 1, you used the host or nslookup command to look up the IP addresses of a few different web services, such as Wikipedia and your own localhost. But domain names play a few other roles in HTTP besides just being easier to remember than IP addresses. A DNS domain links a particular hostname to a computer's IP address. But it also indicates that the owner of that domain intends for that computer to be treated as part of that domain.</p>
+                 
+                 <p> Imagine what a bad guy could do if they could convince your browser that their server evilbox was part of (say) Facebook, and get you to request a Facebook URL from evilbox instead of from Facebook's real servers. Your browser would send your facebook.com cookies to evilbox along with that request. But these cookies are what prove your identity to Facebook … so then the bad guy could use those cookies to access your Facebook account and send spam messages to all your friends.</p>
+                 
+                 <p>In the immortal words of Dr. Egon Spengler: It would be bad.</p>
+                 
+                 <p>This is just one reason that DNS is essential to web security. If a bad guy can take control of your site's DNS domain, they can send all your web traffic to their evil server … and if the bad guy can fool users' browsers into sending that traffic their way, they can steal the users' cookies and reuse them to break into those users' accounts on your site.</p>
                  
                  
                  
