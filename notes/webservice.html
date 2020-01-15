@@ -504,31 +504,28 @@
     
     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">A server for POST
+		  	<div class="card-header">All of the other methods
+
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">A server for POST </h5>
-                 <p class="card-text">n the next few exercises, you'll be building a messageboard server. </p>
-
-                 <p>When a user goes to the main page in their browser, it'll display a form for writing messages, as well as a list of the previously written messages.</p>
-
-                 <p>Submitting the form will send a request to the server, which stores the submitted message and then re-displays the main page.</p>
-
-                 <p>In order to test your messageboard server, you'll need to install the requests module, which is a Python module for making HTTP requests.</p>
-
-                <p>We'll see much more about this module later in this lesson. For now, just run <strong class="theCode">pip3 install requests</strong> in your terminal to install it.
-		      </p>
+		     <h5 class="card-title theCode">API exposes the Server Side Parts </h5>
                  
-                 <p>We'll be using a GET request to display the messageboard's existing contents, and POST to update the contents by creating new messages. Creating new messages is not idempotent — we don't want duplicates.</p>
+                 <p class="card-text">APIs are a huge part of the morden web. A lot of web application makes use of a server side part that exposes an API and a client side that sends queries to that API, but not every API call makes sense as a GET or POST query </p>
+                 
+                 <p>The GET Method is really for requesting a copy of a resource and Post is for things that act more or less like form submission. </p>
+
+                 <p>The different HTTP methods each stand for different actions that a client might need to perform upon a server-hosted resource. Unlike <strong class="theCode"> GET </strong> and <strong class="theCode">POST</strong>, their usage isn't built into the normal operation of web browsers; following a link is always going to be a GET request, and the default action for submitting an HTML form will always be a <strong class="theCode">GET</strong> or <strong class="theCode">POST</strong> request.</p>
+
+                 <p>However, other methods are available for web APIs to use, for instance from client code in JavaScript. If you want to use other methods in your own full-stack applications, you'll have to write both server-side code to accept them, and client-side JavaScript code to make use of them.</p>
                  
                  
-                 <h3>Why don't we want to use GET for submitting the form?</h3>
+                 <h3>PUT for creating resources </h3>
                  
-                 <p> Imagine if a user did this. They write a message and press the submit button … and the message text shows up in their URL bar. If they press reload, it sends the message again. If they bookmark that URL and go back to it, it sends the message again.</p>
+                 <p> The HTTP <strong class="theCode">PUT</strong> method can be used for creating a new resources. The client sends the URI path that it wants to create, and a piece of data in the request body. A server could implement <strong class="theCode">PUT</strong> in a number of different ways — such as storing a file on disk, or adding records to a database. A server should respond to a <strong class="theCode">PUT </strong>request with a <strong class="theCode">201 Created</strong> status code, if the PUT action completed successfully. After a successful <strong class="theCode">PUT</strong>, a <strong class="theCode">GET</strong> request to the same URI should return the newly created resource.</p>
 
                  <p>This doesn't seem like such a great experience. So we'll use POST for message submission, and GET to display the main page.</p>
                  
