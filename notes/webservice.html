@@ -417,15 +417,22 @@
 
 	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header"> URI Quoting
+		  	<div class="card-header"> HTTPS 
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title">URI Quoting </h5>
-		     <p class="card-text">Did you notice that 'gray+squirrel' in the query string became 'gray squirrel' in the output of parse_qs?</p>
+		     <h2>What HTTPS does for you </h2>
+		     <p class="card-text">When a browser and a server speak HTTPS, they're just speaking HTTP, but over an encrypted connection. The encryption follows a standard protocol called Transport Layer Security, or TLS for short. TLS provides some important guarantees for web security:</p>
+                 
+                 <ul>
+                     <li>It keeps the connection <strong class="theCode"> private </strong>by encrypting everything sent over it. Only the server and browser should be able to read what's being sent.</li>
+                     <li>It lets the browser <strong class="theCode">authenticate</strong> the server. For instance, when a user accesses <strong class="theCode">https://www.udacity.com/</strong>, they can be sure that the response they're seeing is really from Udacity's servers and not from an impostor.</li>
+                     <li>It helps protect the <strong class="theCode">integrity</strong> of the data sent over that connection — checking that it has not been (accidentally or deliberately) modified or replaced.</li>
+                 </ul>
+                 
                  
                  <p>HTTP URLs aren't allowed to contain spaces or certain other characters. So if you want to send these characters in an HTTP request, they have to be translated into a "URL-safe" or "URL-quoted" format.</p>
 
