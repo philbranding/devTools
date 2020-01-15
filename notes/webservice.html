@@ -455,29 +455,49 @@
 		  	  </div> 
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">Form methods: GET and POST </h5>
-		     <p class="card-text">In the last lesson, I mentioned that GET is only one of many HTTP verbs or methods.</p>
+		     <h2>SSL and TLS </h2>
+		     <p class="card-text">Note: In some browser documentation you'll see references to SSL certificates. These are the same as TLS certificates. Remember, SSL is just the older version of the encryption standard.</p>
 
-                 <p>When a browser submits a form via GET, it puts all of the form fields into the URI that it sends to the server. These are sent as a query, in the request path — just like search engines do. They're all jammed together into a single line. Since they're in the URI, the user can bookmark the resulting page, reload it, and so forth.
-		      </p>
+                 <p> Most Browsers have a lock icon next to the URI when you're viewing an HTTPS web site.</p>
+                 <p> Clicking on the lock is how you start exploring the details of the HTTPS connection.</p>
                  
-                 <p>This is fine for search engine queries, but it's not quite what we would want for (say) a form that adds an item to your shopping cart on an e-commerce site, or posts a new message on a comments board. GET methods are good for search forms and other actions that are intended to look something up or ask the server for a copy of some resource. But GET is not recommended for actions that are intended to alter or create a resource. For this sort of action, HTTP has a different verb, POST.</p>
-                 
-                <h3>Idempotence</h3>
+                <h3>What does it mean?</h3>
 
                  
                  <blockquote class="blockquote">
-                    <p>Vocabulary word of the day: idempotent. An action is idempotent if doing it twice (or more) produces the same result as doing it once. "Show me the search results for 'polar bear'" is an idempotent action, because doing it a second time just shows you the same results. "Add a polar bear to my shopping cart" is not, because if you do it twice, you end up with two polar bears.</p>
-
-                    <p> POST requests are not idempotent. If you've ever seen a warning from your browser asking you if you really mean to resubmit a form, what it's really asking is if you want to do a non-idempotent action a second time.</p>
-                 
+                    <p>Those are how the browser indicates to the user that their connection is being protected by TLS. However, these dialogs also show a little about the server's TLS setup.</p>
                  </blockquote>
                  
-                 <p>(Important note if you're ever asked about this in a job interview: idempotent is pronounced like "eye-dem-poe-tent", or rhyming with "Hide 'em, Joe Tent" — not like "id impotent".)</p>
                  
-                 <p>When a browser submits a form as a POST request, it doesn't encode the form data in the URI path, the way it does with a GET request. Instead, it sends the form data in the request body, underneath the headers. The request also includes Content-Type and Content-Length headers, which we've previously only seen on HTTP responses.</p>
+                <h3>Keys and Certificates</h3>
                  
-                 <blockquote class="blockquote">By the way, the names of HTTP headers are case-insensitive. So there's no difference between writing Content-Length or content-length or even ConTent-LeNgTh … except, of course, that humans will read your code and be confused by that last one.</blockquote>
+                 
+                 <p>The server-side configuration for TLS includes two important pieces of data: <strong class="theCode"> a private key </strong> and <strong class="theCode"> a public certificate </strong>. The private key is secret; it's held on the server and never leaves there. The certificate is sent to every browser that connects to that server via TLS. These two pieces of data are mathematically related to each other in a way that makes the encryption of TLS possible.</p>
+                 
+                 <p>The server's certificate is issued by an organization called a <strong class="theCode">certificate authority (CA) </strong>. The certificate authority's job is to make sure that the server really is who it says it is — for instance, that a certificate issued in the name of Heroku is actually being used by the Heroku organization and not by someone else.</p>
+                 
+                 <blockquote class="blockquote">The role of a certificate authority is kind of like getting a document notarized. A notary public checks your ID and witnesses you sign a document, and puts their stamp on it to indicate that they did so.</blockquote>
+                 
+                 
+                  <h3>How does TLS assure privacy?</h3>
+                 
+                 <p>The data in the TLS certificate and the server's private key are mathematically related to each other through a system called <a href="https://en.wikipedia.org/wiki/Public-key_cryptography" target="_blank" class="theCode"> public-key cryptography</a>. The details of how this works are way beyond the scope of this course. The important part is that the two endpoints (the browser and server) can securely agree on a shared secret which allows them to scramble the data sent between them so that only the other endpoint — and not any eavesdropper — can unscramble it.</p>
+                
+                 <h3>How does TLS assure authentication?</h3>
+                 
+                 <p>A server certificate indicates that an encryption key belongs to a particular organization responsible for that service. It's the job of a certificate authority to make sure that they don't issue a cert for (say) udacity.com to someone other than the company who actually runs that domain.</p>
+                 
+                 <p>But the cert also contains metadata that says what DNS domain the certificate is good for. The cert in the picture above is only good for sites in the .herokuapp.com domain. When the browser connects to a particular server, if the TLS domain metadata doesn't match the DNS domain, the browser will reject the certificate and put up a big scary warning to tell the user that something fishy is going on </p>
+                 
+                 <h3>How does TLS assure integrity?</h3>
+                 
+                 <blockquote class="blockquote">Every request and response sent over a TLS connection is sent with a message authentication code (MAC) that the other end of the connection can verify to make sure that the message hasn't been altered or damaged in transit.</blockquote>
+                 
+                 <p>If your browser believes the attacker's server is udacity.com, it will send your udacity.com authentication cookies to the attacker's server. They can then put those cookies in their own web client and masquerade as you when talking to the real site. Also, if your browser is fetching content from the attacker's server, the attacker can put whatever they want in that content. They could even forward most of the content from the real server.</p>
+
+                 <p>However, compromising Udacity's site would not allow an attacker to break into your Gmail or Facebook accounts, and fortunately it wouldn't let the attacker blow up your computer either.</p>
+                 
+                 <p>HTTPS only protects your data in transit. It doesn't protect it from an attacker who has taken over your computer, or the computer that's running your service.</p>
 
 			</div>
 		</div>
