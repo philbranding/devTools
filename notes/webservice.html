@@ -433,25 +433,22 @@
                      <li>It helps protect the <strong class="theCode">integrity</strong> of the data sent over that connection — checking that it has not been (accidentally or deliberately) modified or replaced.</li>
                  </ul>
                  
+                 <blockquote class="blockquote">Note: TLS is also very often referred to by the older name SSL (Secure Sockets Layer). Technically, SSL is an older version of the encryption protocol. This course will talk about TLS because that's the current standard.</blockquote>
                  
-                 <p>HTTP URLs aren't allowed to contain spaces or certain other characters. So if you want to send these characters in an HTTP request, they have to be translated into a "URL-safe" or "URL-quoted" format.</p>
-
-                 <p>"Quoting" in this sense doesn't have to do with quotation marks, the kind you find around Python strings. It means translating a string into a form that doesn't have any special characters in it, but in a way that can be reversed (unquoted) later.</p>
-
-                 <p>(And if that isn't confusing enough, it's sometimes also referred to as URL-encoding or URL-escaping).</p>
-
-                 <p>One of the features of the URL-quoted format is that spaces are sometimes translated into plus signs. Other special characters are translated into hexadecimal codes that begin with the percent sign.</p>
-
-                 <p>Take a look at the documentation for urllib.parse.quote and related functions.</p>
-
-                <p>Later in the course when you want to construct a URI in your code, you'll need to use appropriate quoting. More generally, whenever you're working on a web application and you find spaces or percent-signs in places you don't expect them to be, it means that something needs to be quoted or unquoted. </p>
-
+                 <h2> Examples of Attacks</h2>
+                 
+                 <p> <strong class="theCode"> Privacy : </strong>You're reading your email in a coffee shop, and the shop owner can read your email off of their Wi-Fi network you're using.</p>
+                 
+                 <p> <strong class="theCode"> Authenticity : </strong>You think you're logging into Facebook, but actually you're sending your Facebook password to a server in the coffee shop's back room.</p>
+                 
+                 <p> <strong class="theCode"> Integrity : </strong>The coffee shop owner doesn't like cat pictures, so they replace all the cat pictures on the web pages you're looking at with pictures of celery.</p>
+                 
 			</div>
 		</div>
 
 	<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">POST METHOD
+		  	<div class="card-header">Inspecting TLS on your service
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
