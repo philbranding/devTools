@@ -527,13 +527,11 @@
                  
                  <p> The HTTP <strong class="theCode">PUT</strong> method can be used for creating a new resources. The client sends the URI path that it wants to create, and a piece of data in the request body. A server could implement <strong class="theCode">PUT</strong> in a number of different ways — such as storing a file on disk, or adding records to a database. A server should respond to a <strong class="theCode">PUT </strong>request with a <strong class="theCode">201 Created</strong> status code, if the PUT action completed successfully. After a successful <strong class="theCode">PUT</strong>, a <strong class="theCode">GET</strong> request to the same URI should return the newly created resource.</p>
 
-                 <p>This doesn't seem like such a great experience. So we'll use POST for message submission, and GET to display the main page.</p>
-                 
                  <hr>
                  
-                 <h3>POST handlers read the request body</h3>
+                 <h3>DELETE for, well, deleting things</h3>
                  
-                 <p>Previously in the HelloServer exercise, you've written handler classes that have just a single method, do_GET.</p>
+                 <p>The destructive counterpart to <strong class="theCode">PUT</strong> is <strong class="theCode">DELETE</strong>, for removing a resource from the server. After a <strong class="theCode">DELETE</strong> has happened successfully, further <strong class="theCode">GET</strong> requests for that resource will yield <strong class="theCode">404 Not Found</strong> ... unless, of course, a new resource is later created with the same name!</p>
 
                  <p>But a handler class can have do_POST as well, to support GET and POST requests. This is exactly how the messageboard server will work.</p>
 
