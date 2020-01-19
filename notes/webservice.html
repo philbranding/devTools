@@ -97,7 +97,7 @@
         <ol>
             <li> Check your server code into a new local Git repository.</li>
             <li> Sign up for a free Heroku account.</li>
-            <li> Download the Heroku <a href="https://devcenter.heroku.com/articles/heroku-cli"> command-line interface</a> (CLI).</li>
+            <li> Download the Heroku <a href="https://devcenter.heroku.com/articles/heroku-cli" class="theCode" target="_blank"> command-line interface</a> (CLI).</li>
             <li>Authenticate the Heroku CLI with your account: <strong class="theCode"> heroku login</strong></li>
             <li>Create configuration files <strong class="theCode">Procfile </strong>, <strong class="theCode">requirements.txt</strong>, and <strong class="theCode">runtime.txt</strong> and check them into your Git repository.</li>
             <li>Modify your server to listen on a configurable port.</li>
@@ -163,7 +163,7 @@
 		     <h5 class="card-title theCode">Create configuration files</h5>
 		     <p class="card-text"> There are a few configuration files that Heroku requires for deployment, to tell its servers how to run your application. For the case of the bookmark server, I'll just give you the required content for these files. These are just plain text files and can be created in your favorite text editor. </p>
                  
-            <p> <strong class="theCode"> runtime.txt </strong> tells Heroku what version of Python you want to run. <a href="https://devcenter.heroku.com/articles/python-runtimes" target="_blank">Check the currently supported runtimes in the Heroku documentation; this will change over time!</a> As of early 2020, the currently supported version of Python 3 is python-3.7.2; so this file just needs to contain the text python-3.7.2. </p>
+            <p> <strong class="theCode"> runtime.txt </strong> tells Heroku what version of Python you want to run. <a href="https://devcenter.heroku.com/articles/python-runtimes" target="_blank" class="theCode">Check the currently supported runtimes in the Heroku documentation; this will change over time!</a> As of early 2020, the currently supported version of Python 3 is python-3.7.2; so this file just needs to contain the text python-3.7.2. </p>
                  
             <p><strong class="theCode">requirements.txt</strong> is used by Heroku (through <strong class="theCode">pip</strong>) to install dependencies of your application that aren't in the Python standard library. The bookmark server has one of these: the <strong class="theCode">requests</strong> module. We'd like a recent version of that, so this file can contain the text <strong class="theCode">requests>=2.12</strong>. This will install version 2.12 or a later version, if one has been released.</p>
                  
@@ -542,7 +542,7 @@
                  
                  <p>The <strong class="theCode">PATCH</strong> method is a relatively new addition to HTTP. It expresses the idea of patching a resource, or changing it in some well-defined way. (If you've used Git, you can think of patching as what applying a Git commit does to the files in a repository.)</p>
                  
-                 <p>However, just as HTTP doesn't specify what format a resource has to be in, it also doesn't specify in what format a patch can be in: how it should represent the changes that are intended to be applied. That's up to the application to decide. An application could send diffs over HTTP <strong class="theCode">PATCH</strong> requests, for instance. One standardized format for <strong class="theCode">PATCH</strong> requests is the <a href="http://jsonpatch.com/" target="_blank"> JSON Patch</a> format, which expresses changes to a piece of JSON data. A different one is <a href="https://tools.ietf.org/html/rfc7386" target="_blank"> JSON Merge Patch</a>.</p>
+                 <p>However, just as HTTP doesn't specify what format a resource has to be in, it also doesn't specify in what format a patch can be in: how it should represent the changes that are intended to be applied. That's up to the application to decide. An application could send diffs over HTTP <strong class="theCode">PATCH</strong> requests, for instance. One standardized format for <strong class="theCode">PATCH</strong> requests is the <a href="http://jsonpatch.com/" target="_blank" class="theCode"> JSON Patch</a> format, which expresses changes to a piece of JSON data. A different one is <a href="https://tools.ietf.org/html/rfc7386" target="_blank" class="theCode"> JSON Merge Patch</a>.</p>
                  
                  <hr>
                  
@@ -562,13 +562,13 @@
                  
                  <h3>Great responsibility</h3>
                  
-                 <p>HTTP can't prevent a service from using methods to mean something different from what they're intended to mean, but this can have some surprising effects. For instance, you could create a service that used a GET request to delete content. However, web clients don't expect GET requests to have side-effects like that. In one famous case from 2006, an organization put up a web site where "edit" and "delete" actions happened through GET requests, and <a href="http://thedailywtf.com/articles/The_Spider_of_Doom" target="_blank" >the result was that the next search-engine web crawler to come along deleted the whole site</a>.</p>
+                 <p>HTTP can't prevent a service from using methods to mean something different from what they're intended to mean, but this can have some surprising effects. For instance, you could create a service that used a GET request to delete content. However, web clients don't expect GET requests to have side-effects like that. In one famous case from 2006, an organization put up a web site where "edit" and "delete" actions happened through GET requests, and <a href="http://thedailywtf.com/articles/The_Spider_of_Doom" target="_blank" class="theCode">the result was that the next search-engine web crawler to come along deleted the whole site</a>.</p>
                  
                  <hr>
                  
                  <h3>Great responsibility</h3>
                  
-                 <p>For much more about HTTP methods, consult the <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html" target="_blank">HTTP standards documents</a>.</p>
+                 <p>For much more about HTTP methods, consult the <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html" target="_blank" class="theCode">HTTP standards documents</a>.</p>
 
 			</div>
 		</div>
@@ -587,7 +587,7 @@
 
                 <p>Unfortunately, we can't show you very much about HTTP/2 in Python, because the libraries for it are not very mature yet (as of early 2017). We'll still take a look at the motivations for the changes that HTTP/2 brings, though.</p>
 
-                 <p>Some other languages are a little bit more up to the minute; one of the best demonstrations of HTTP/2's advantages is in <a href="https://http2.golang.org/gophertiles" target="_blank">the Gophertiles demo </a> from the makers of the Go programming language. In order to see the effects, you'll need to be using a browser that supports HTTP/2. Check <a href="https://caniuse.com/#feat=http2" target="_blank"> CanIUse.com</a> to check that your browser does!</p>
+                 <p>Some other languages are a little bit more up to the minute; one of the best demonstrations of HTTP/2's advantages is in <a href="https://http2.golang.org/gophertiles" target="_blank" class="theCode">the Gophertiles demo </a> from the makers of the Go programming language. In order to see the effects, you'll need to be using a browser that supports HTTP/2. Check <a href="https://caniuse.com/#feat=http2" target="_blank" class="theCode"> CanIUse.com</a> to check that your browser does!</p>
                  
                  <blockquote class="blockquote">
                  This demo lets you load the same web page over HTTP/1.1 and HTTP/2. It also lets you add extra latency (delay) to each request, simulating what happens when you access a server that's far away or when you're on a slow network. The latency options are zero (no extra latency), 30 milliseconds, 200 milliseconds, and one second. Try it out!
@@ -609,7 +609,7 @@
 		 	 <div class="card-body">
 		     <h2>Other HTTP/2 demos</h2>
                  
-		     <p class="card-text">You don't have to take the Go folks' word for it, either; there's <a href="http://www.http2demo.io/" target="_blank"> http://www.https2demo.io/</a> too, and also <a href="https://http2.akamai.com/demo" target ="_blank" >https://http2.akamai.com/demo </a>. Each of these demos works similarly to the Gophertiles demo, and will show you much the same effects. The HTTP/2 one is (on average) a whole lot faster, especially with high latency.</p>
+		     <p class="card-text">You don't have to take the Go folks' word for it, either; there's <a href="http://www.http2demo.io/" target="_blank"> http://www.https2demo.io/</a> too, and also <a href="https://http2.akamai.com/demo" target ="_blank" class="theCode">https://http2.akamai.com/demo </a>. Each of these demos works similarly to the Gophertiles demo, and will show you much the same effects. The HTTP/2 one is (on average) a whole lot faster, especially with high latency.</p>
 
              <p>But why is it faster? To answer that, we first need to look at some browser behavior in HTTP/1.1.</p>
                  
@@ -619,7 +619,7 @@
                  
              <p>Since the early days of HTTP, browsers have kept open multiple connections to a server. This lets the browser fetch several resources (such as images, scripts, etc.) in parallel, with less waiting. However, the browser only opens up a small number of connections to each server. And in HTTP/1.1, each connection can only request a single resource at a time.</p>
                  
-            <p> As an exercise, take a look at the server in Lesson-3/3_Parallelometer. Try running this server on your computer and accessing it at <a href="http://localhost:8000/" target="_blank">http://localhost:8000</a>to see parallel requests happening. The code here is based on the threading server that you've seen earlier in this lesson. </p>
+            <p> As an exercise, take a look at the server in Lesson-3/3_Parallelometer. Try running this server on your computer and accessing it at <a href="http://localhost:8000/" target="_blank" class="theCode">http://localhost:8000</a>to see parallel requests happening. The code here is based on the threading server that you've seen earlier in this lesson. </p>
                 
             <p>Depending on your browser, you may see different numbers, but most likely the biggest one you'll see is 6. Common browsers such as Chrome, Firefox, and Safari open up as many as six connections to the same server. And under HTTP/1.1, only one request can effectively be in flight per connection, which means that they can only have up to six requests in flight with that server at a time.</p>
                  
@@ -650,7 +650,7 @@
                  
                  <h3>Server push</h3>
                 
-		        <p>When you load a web page, your browser first fetches the HTML, and then it goes back and fetches other resources such as stylesheets or images. But if the server already knows that you will want these other resources, why should it wait for your browser to ask for them in a separate request? HTTP/2 has a feature called <a href="https://en.wikipedia.org/wiki/HTTP/2_Server_Push" target="_blank" >server push</a> which allows the server to say, effectively, "If you're asking for <strong class="theCode"> index.html</strong>, I know you're going to ask for <strong class="theCode"> style.css </strong> too, so I'm going to send it along as well."</p>
+		        <p>When you load a web page, your browser first fetches the HTML, and then it goes back and fetches other resources such as stylesheets or images. But if the server already knows that you will want these other resources, why should it wait for your browser to ask for them in a separate request? HTTP/2 has a feature called <a href="https://en.wikipedia.org/wiki/HTTP/2_Server_Push" target="_blank" class="theCode">server push</a> which allows the server to say, effectively, "If you're asking for <strong class="theCode"> index.html</strong>, I know you're going to ask for <strong class="theCode"> style.css </strong> too, so I'm going to send it along as well."</p>
                  
                  
                 <hr>
@@ -663,7 +663,7 @@
                  
                  <h3>Many more features</h3>
                  
-                 <p>Now you have a sense of where HTTP development has been going in the past few years. You can read much more about HTTP/2 in the <a href="https://http2.github.io/faq/" target="_blank"></a></p>
+                 <p>Now you have a sense of where HTTP development has been going in the past few years. You can read much more about HTTP/2 in the <a href="https://http2.github.io/faq/" target="_blank" class="theCode"></a></p>
                  
 			</div>
 		</div>
@@ -683,13 +683,13 @@
                  <ul>
                     <li> <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank">Mozilla Developer Network's HTTP index page</a> contains a variety of tutorial and reference materials on every aspect of HTTP.</li>
                      
-                    <li>The standards documents for HTTP/1.1 start at <a href="https://tools.ietf.org/html/rfc7230" target="_blank">RFC 7230</a>. The language of Internet standards tends to be a little difficult, but these are the official description of how it's supposed to work.</li>
+                    <li>The standards documents for HTTP/1.1 start at <a href="https://tools.ietf.org/html/rfc7230" target="_blank" class="theCode">RFC 7230</a>. The language of Internet standards tends to be a little difficult, but these are the official description of how it's supposed to work.</li>
                      
-                    <li>The standards documents for HTTP/2 are at <a href="https://http2.github.io/" targe="_blank">https://http2.github.io/</a>.</li>
+                    <li>The standards documents for HTTP/2 are at <a href="https://http2.github.io/" targe="_blank" class="theCode">https://http2.github.io/</a>.</li>
                      
-                    <li>If you already run your own web site, <a href="https://letsencrypt.org/" target="_blank">Let's Encrypt</a> is a great site to learn about HTTPS in a hands-on way, by creating your own HTTPS certificates and installing them on your site.</li>
+                    <li>If you already run your own web site, <a href="https://letsencrypt.org/" target="_blank" class="theCode">Let's Encrypt</a> is a great site to learn about HTTPS in a hands-on way, by creating your own HTTPS certificates and installing them on your site.</li>
                      
-                    <li><a href="https://chrome.google.com/webstore/detail/http-header-spy/agnoocojkneiphkobpcfoaenhpjnmifb?hl=en">HTTP Spy</a> is a neat little Chrome extension that will show you the headers and request information for every request your browser makes.</li>
+                    <li><a href="https://chrome.google.com/webstore/detail/http-header-spy/agnoocojkneiphkobpcfoaenhpjnmifb?hl=en" target="_blank" class="theCode">HTTP Spy</a> is a neat little Chrome extension that will show you the headers and request information for every request your browser makes.</li>
                      
                  </ul>
                  
