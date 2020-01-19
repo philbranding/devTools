@@ -575,55 +575,49 @@
     
     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Headers are strings (or missing)
+		  	<div class="card-header">HTTP/2
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode">Still under POST </h5>
-		     <p class="card-text">The handler class gives us access to the HTTP headers as the instance variable self.headers, which is an object that acts a lot like a Python dictionary. The keys of this dictionary are the header names, but they're case-insensitive: it doesn't matter if you look up 'content-length' or 'Content-Length'. The values in this dictionary are strings: if the request body is 140 bytes long, the value of the Content-length entry will be the string "140". We need to call self.rfile.read(140) to read 140 bytes; so once we read the header, we'll need to convert it to an integer.</p>
+		     <h2>HTTP/2</h2>
+		          <p class="card-text">The new version of HTTP is called HTTP/2. It's based on earlier protocol work done at Google, under the name SPDY (pronounced "speedy").</p>
 
-                <p>But in an HTTP request, it's also possible that the body will be empty, in which case the browser might not send a Content-length header at all. This means we have to be a little careful when accessing the headers from the self.headers object. If we do self.headers['content-length'] and there's no such header, our code will crash with a KeyError. Instead, we'll use the .get dictionary method to get the header value safely.</p>
+                <p>Unfortunately, we can't show you very much about HTTP/2 in Python, because the libraries for it are not very mature yet (as of early 2017). We'll still take a look at the motivations for the changes that HTTP/2 brings, though.</p>
 
-                 <p>So here's a little bit of code that can go in the do_POST handler to find the length of the request body and read it:
-		      </p>
-                 
-                 <p class="theCode">length = int(self.headers.get('Content-length', 0))</p>
-                <p class="theCode">data = self.rfile.read(length).decode()</p>
+                 <p>Some other languages are a little bit more up to the minute; one of the best demonstrations of HTTP/2's advantages is in <a href="https://http2.golang.org/gophertiles" target="_blank">the Gophertiles demo </a> from the makers of the Go programming language. In order to see the effects, you'll need to be using a browser that supports HTTP/2. Check <a href="https://caniuse.com/#feat=http2" target="_blank"> CanIUse.com</a> to check that your browser does!</p>
                  
                  <blockquote class="blockquote">
-                 Once you read the message body, you can use urllib.parse.parse_qs to extract the POST parameters from it.
+                 This demo lets you load the same web page over HTTP/1.1 and HTTP/2. It also lets you add extra latency (delay) to each request, simulating what happens when you access a server that's far away or when you're on a slow network. The latency options are zero (no extra latency), 30 milliseconds, 200 milliseconds, and one second. Try it out!
                  </blockquote>
                 
+                 <p>HTTP/2 should load much faster than HTTP/1, if your browser is using it!</p>
 
 			</div>
 		</div>
     
     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Post-Redirect-Get
+		  	<div class="card-header">Other HTTP/2 demos
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-		     <h5 class="card-title theCode"> &lt;a href="cliffsofinsanity.png"&gt;cliffsofinsanity.png&lt;/a&gt;</h5>
-		     <p class="card-text">There's a very common design pattern for interactive HTTP applications and APIs, called the PRG or Post-Redirect-Get pattern. A client POSTs to a server to create or update a resource; on success, the server replies not with a 200 OK but with a 303 redirect. The redirect causes the client to GET the created or updated resource.</p>
+		     <h2>Other HTTP/2 demos</h2>
+                 
+		     <p class="card-text">You don't have to take the Go folks' word for it, either; there's <a href="http://www.http2demo.io/" target="_blank"> http://www.https2demo.io/</a> too, and also <a href="https://http2.akamai.com/demo" target ="_blank" >https://http2.akamai.com/demo </a>. Each of these demos works similarly to the Gophertiles demo, and will show you much the same effects. The HTTP/2 one is (on average) a whole lot faster, especially with high latency.</p>
 
-             <p>This is just one of many, many ways to architect a web application, but it's one that makes good use of HTTP methods to accomplish specific goals. For instance, wiki sites such as Wikipedia often use Post-Redirect-Get when you edit a page.</p>
+             <p>But why is it faster? To answer that, we first need to look at some browser behavior in HTTP/1.1.</p>
                  
-            <p>For the messageboard server, Post-Redirect-Get means:</p>
-            <ol>
-                <li>You go to http://localhost:8000/ in your browser. Your browser sends a GET request to the server, which replies with a 200 OK and a piece of HTML. You see a form for posting comments, and a list of the existing comments. (But at the beginning, there are no comments posted yet.) </li>
-                <li>You write a comment in the form and submit it. Your browser sends it via POST to the server.</li>
-                <li>The server updates the list of comments, adding your comment to the list. Then it replies with a 303 redirect, setting the Location: / header to tell the browser to request the main page via GET.</li>
-                <li>The redirect response causes your browser to go back to the same page you started with, sending a GET request, which replies with a 200 OK and a piece of HTML …</li>
+             <hr>
                  
-            </ol>
-                <p>One big advantage of Post-Redirect-Get is that as a user, every page you actually see is the result of a GET request, which means you can bookmark it, reload it, and so forth — without ever accidentally resubmitting a form.</p>
+             <h2> Exercise: Multiple connections </h2>
+                 
+                 
                  
 			</div>
 		</div>
