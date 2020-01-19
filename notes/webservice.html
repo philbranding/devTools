@@ -629,260 +629,73 @@
     
         <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Making requests
+		  	<div class="card-header">Multiplexing
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
+                 <h2>Multiplexing</h2>
                 <p class="theCode"> requests.get("http://localhost:8000/")</p>
                  
-                 <p>The requests function for performing GET requests is requests.get, and it takes the URI as an argument.</p>
+                <p>But if you're requesting hundreds of different tiny files from the server — as in this demo or the Gophertiles demo — it's kind of limiting to only be able to fetch six at a time. This is particularly true when the latency (delay) between the server and browser gets high. The browser can't start fetching the seventh image until it's fully loaded the first six. The greater the latency, the worse this affects the user experience.</p>
                  
-                    <p>The requests library is a Python library for sending requests to web servers and interpreting the responses. It's not included in the Python standard library, though; you'll need to install it. In your terminal, run pip3 install requests to fetch and install the requests library.</p>
+                <p>HTTP/2 changes this around by multiplexing requests and responses over a single connection. The browser can send several requests all at once, and the server can send responses as quickly as it can get to them. There's no limit on how many can be in flight at once.</p>
+		        
+                <p>And that's why the Gophertiles demo loads much more quickly over HTTP/2 than over HTTP/1.</p>
                  
-		         <a href="https://2.python-requests.org//en/master/user/quickstart/" target="_blank"><button type="button" class="btn-lg btn-danger "s>Requests</button></a>
+                 
+                <hr>
+                 
+                 <h3>Server push</h3>
+                
+		        <p>When you load a web page, your browser first fetches the HTML, and then it goes back and fetches other resources such as stylesheets or images. But if the server already knows that you will want these other resources, why should it wait for your browser to ask for them in a separate request? HTTP/2 has a feature called <a href="https://en.wikipedia.org/wiki/HTTP/2_Server_Push" target="_blank" >server push</a> which allows the server to say, effectively, "If you're asking for <strong class="theCode"> index.html</strong>, I know you're going to ask for <strong class="theCode"> style.css </strong> too, so I'm going to send it along as well."</p>
+                 
+                 
                 <hr>
                 
-		     <p class="card-text">If you follow these links in your browser, it will fetch the same page from Wikipedia's web server. But the second one displays the page scrolled to the section about the discovery of oxygen. The part of the URI after the <strong class="theCode">#</strong> sign is called a <strong class="theCode">fragment</strong>. The browser doesn't even send it to the web server. It lets a link point to a specific named part of a resource; in HTML pages it links to an element by id.</p>
+                 <h3>Encryption</h3>
                  
-                 <p>In contrast, consider this Google Search URI:</p>
+                 <p>The HTTP/2 protocol was being designed around the same time that web engineers were getting even more interested in encrypting all traffic on the web for privacy reasons. Early drafts of HTTP/2 proposed that encryption should be required for sites to use the new protocol. This ended up being removed from the official standard … but most of the browsers did it anyway! Chrome, Firefox, and other browsers will only attempt HTTP/2 with a site that is using TLS encryption.</p>
                  
-                 <ul>
-                     <li class="theCode">>>> import requests
-                     <li class="theCode">>>> a = requests.get("http://udacity.com")</li>
-                     <li class="theCode">>>> a</li>
-                     <li class="theCode">Response [200]</li>
-                     <li class="theCode">>>> type(a)</li>
-                     <li class="theCode"> class 'requests.models.Response'</li>            
-                 </ul>
+                 <hr>
                  
-                
-                 <h3>r.content or r.text</h3>
-                 <p>Both, but they're different. r.content is a bytes object representing the literal binary data that the server sent. r.text is the same data but interpreted as a str object, a Unicode string.</p>
+                 <h3>Many more features</h3>
                  
-                 
-                 <h3>Handling errors</h3>
-                 
-                 <p>If the requests.get call can reach an HTTP server at all, it will give you a Response object. If the request failed, the Response object has a status_code data member — either 200, or 404, or some other code.</p>
-
-                 <p>But if it wasn't able to get to an HTTP server, for instance because the site doesn't exist, then requests.get should raise an exception.</p>
-
-                 <p>However: Some Internet service providers will try to redirect browsers to an advertising site if you try to access a site that doesn't exist. This is called DNS hijacking, and it's nonstandard behavior, but some do it anyway. If your ISP hijacks DNS, you won't get exceptions when you try to access nonexistent sites. Standards-compliant DNS services such as Google Public DNS don't hijack.</p>
+                 <p>Now you have a sense of where HTTP development has been going in the past few years. You can read much more about HTTP/2 in the <a href="https://http2.github.io/faq/" target="_blank"></a></p>
                  
 			</div>
 		</div>
     
     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
 		  <div class=" ">
-		  	<div class="card-header">Using a JSON API
+		  	<div class="card-header">Resources
 			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
 			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
 		  	  </div>
 		     </div>
 		 	 <div class="card-body">
-            <h5 class="card-title theCode">Using a JSON API </h5>
+            <h2>Resources </h2>
                  
-                 <p>As a web developer, you will deal with data in a lot of different formats, especially when your code calls out to APIs provided by other developers. It's not uncommon for a large software system to have parts that deal with a dozen or more different data formats. Fortunately, usually, someone else has already written libraries to help you read and write these formats.</p>
-                 
-                 
-		          <p class="card-text">JSON is a data format based on the syntax of JavaScript, often used for web-based APIs. There are a lot of services that let you send HTTP queries and get back structured data in JSON format. You can read more about the JSON format at http://www.json.org/.</p>
-
-                 <p>Python has a built-in json module; and as it happens, the requests module makes use of it. A Response object has a .json method; if the response data is JSON, you can call this method to translate the JSON data into a Python dictionary.</p>
-
-                 <p>Try it out! Here, I'm using it to access the Star Wars API, a classic JSON demonstration that contains information about characters and settings in the Star Wars movies:</p>
-                 
-                 <p class="theCode">>>> a = requests.get('http://swapi.co/api/people/1/')</p>
-                 <p class="theCode">>>> a.json()['name']</p>
-                 <p class="theCode">'Luke Skywalker'</p>
-                 
-                 <hr>
-                 
-                 <h2>Extract data from a JSON response</h2>
-                 
-                 <p>There's a great example of an API on the site http://uinames.com/, a service that makes up fake names and user account information. You can find the full API documentation under the little menu at the top right.</p>
-
-                 <p>For this exercise, all you'll need is this URI and a couple of query parameters:</p>
-
-                 <p class="theCode">http://uinames.com/api/</p>
-
-                 <p>The query parameters to use are ext, which gives you a record with more fields, and region, which lets you specify which country you want your imaginary person to come from. For instance, to have the API invent a person from Italy:</p>
-
-                 <p class="theCode">http://uinames.com/api?ext&region=Italy</p>
-
-                 <p>(It's not perfect. For instance, currently it makes up North American phone numbers for everyone, regardless of where they live.)</p>
-                 
-                 <hr>
-                 
-			</div>
-		</div>
-    
-     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
-		  <div class=" ">
-		  	<div class="card-header">The bookmark server
-			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
-			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
-			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
-		  	  </div>
-		     </div>
-		 	 <div class="card-body">
-                 <p>You're almost to the end of this lesson! One more server to write …</p>
-
-                 <p>You've probably seen URL-shortening services such as TinyURL.</p>
-
-                 <p>They let you create short URI paths like https://tinyurl.com/jye5r6l that redirect to a longer URI on another site. It's easier to put a short URI into an email, text message, or tweet. In this exercise, you'll be writing a service similar to this.</p>
-
-                 <p>Like the messageboard server, this bookmark server will keep all of its data in memory. This means that it'll be reset if you restart it.</p>
-
-                 <p>Your server needs to do three things, depending on what kind of request it receives: </p>
-                 
+                 <p>Here are some handy resources for learning more about HTTP:</p>
                  <ul>
-                     <li>On a GET request to the / path, it displays an HTML form with two fields. One field is where you put the long URI you want to shorten. The other is where you put the short name you want to use for it. Submitting this form sends a POST to the server.</li>
+                    <li> <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank">Mozilla Developer Network's HTTP index page</a> contains a variety of tutorial and reference materials on every aspect of HTTP.</li>
                      
-                     <li>On a POST request, the server looks for the two form fields in the request body. If it has those, it first checks the URI with requests.get to make sure that it actually exists (returns a 200).</li>
+                    <li>The standards documents for HTTP/1.1 start at <a href="https://tools.ietf.org/html/rfc7230" target="_blank">RFC 7230</a>. The language of Internet standards tends to be a little difficult, but these are the official description of how it's supposed to work.</li>
                      
-                     <ul>
-                        <li>If the URI exists, the server stores a dictionary entry mapping the short name to the long URI, and returns an HTML page with a link to the short version. </li>
-                        <li>If the URI doesn't actually exist, the server returns a 404 error page saying so. </li>
-                        <li>If either of the two form fields is missing, the server returns a 400 error page saying so.</li>
-                     </ul>
+                    <li>The standards documents for HTTP/2 are at <a href="https://http2.github.io/" targe="_blank">https://http2.github.io/</a>.</li>
                      
-                     <li>On a GET request to an existing short URI, it looks up the corresponding long URI and serves a redirect to it.</li>
-                 </ul>
-                 
-                 
-                 <hr>
-                 
-                 <h2>Exercise: Send a request manually</h2>
-                 
-                 <p>You can use ncat to connect to the demo server and send it an HTTP request by hand. (Make sure the demo server is still running!)</p>
-                 
-                 <p>Use <strong class="theCode"> $python3 -m http.server 8000  </strong> in your terminal to run the demo server.</p>
-                 <p>Use <strong class="theCode"> $ncat 127.0.0.1 8000 </strong> (in a second ternimal)to connect your terminal to the demo server.</p>
-                 
-                 <p> Type the following and dopple press Enter afterwards</p>
-                 <p>GET / HTTP/1.1</p>
-                 <p>Host: localhost</p>
-                 
-                 <hr>
-                 <h2>Results of the Request</h2>
-                 <ul>
-                    <li>HTTP/1.0 200 OK</li>
-                    <li>Server: SimpleHTTP/0.6 Python/3.7.5 </li>
-                    <li>Date: Sun, 05 Jan 2020 00:21:50 GMT</li>
-                    <li>Content-type: text/html</li>
-                    <li>Content-Length: 127</li>
-                    <li>Last-Modified: Sat, 04 Jan 2020 21:46:26 GMT</li>
-                    <li>and an HTML code</li>
-                 </ul>
-                 
-                 
-                 
-			</div>
-		</div>
-    
-    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
-		  <div class=" ">
-		  	<div class="card-header">HTTP Response
-			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
-			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
-			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
-		  	  </div>
-		     </div>
-		 	 <div class="card-body">
-             <p>After you typed Host: localhost and pressed Enter twice, the server sent back a lot of text. This is an HTTP response. One of these exchanges — a request and response — is happening every time your browser asks a server for a page, an image, or anything else. </p>
-                 
-            <p>Here's another one to try. Use ncat to connect to google.com port 80, and send a request for the path / on the host google.com:</p>
-                 
-                 <p>GEGT / HTTP/1.1</p>
-                 <p>Host: google.com</p>
-
-                 
-                 
-            <h2>HTTP RESPONSE </h2>
-                
-            <p>The HTTP response is made up of three parts: </p>
-                 <ul>
-                     <li> the status line</li>
-                     <li> some headers</li>
-                     <li> a response body</li>
-                 </ul>
-                 
-		     <p class="card-text">The status line is the first line of text that the server sends back. The headers are the other lines up until the first blank line. The response body is the rest — in this case, it's a piece of HTML.</p>
-
-                 
-                 
-			</div>
-		</div>
-    
-    
-    
-        <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
-		  <div class=" ">
-		  	<div class="card-header">STATUS LINE
-			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
-			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
-			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
-		  	  </div>
-		     </div>
-		 	 <div class="card-body">
-             <p>In the response you got from your demo server, the status line said <strong class="theCode">HTTP/1.0 200 OK</strong>. In the one from Google, it says <strong class="theCode">HTTP/1.1 301 Moved Permanently </strong>. The status line tells the client whether the server understood the request, whether the server has the resource the client asked for, and how to proceed next. It also tells the client which dialect of HTTP the server is speaking.</p>
-                 
-            <p>The numbers 200 and 301 here are HTTP status codes. There are dozens of different status codes. The first digit of the status code indicates the general success of the request. As a shorthand, web developers describe all of the codes starting with 2 as "2xx" codes, for instance — the x's mean "any digit".</p>
-                 
-                
-            <p>The STATUS CODES: </p>
-                 <ul>
-                     <li> <strong class="theCode">1xx — Informational.</strong> The request is in progress or there's another step to take.</li> 
-                     <li> <strong class="theCode">2xx — Success! </strong> The request succeeded. The server is sending the data the client asked for.</li>
-                     <li> <strong class="theCode">3xx — Redirection. </strong> The server is telling the client a different URI it should redirect to. The headers will usually contain a Location header with the updated URI. Different codes tell the client whether a redirect is permanent or temporary.</li>
-                     <li> <strong class="theCode">4xx — Client error. </strong> The server didn't understand the client's request, or can't or won't fill it. Different codes tell the client whether it was a bad URI, a permissions problem, or another sort of error.</li>
-                     <li> <strong class="theCode">5xx — Server error. </strong> Something went wrong on the server side.</li>
+                    <li>If you already run your own web site, <a href="https://letsencrypt.org/" target="_blank">Let's Encrypt</a> is a great site to learn about HTTPS in a hands-on way, by creating your own HTTPS certificates and installing them on your site.</li>
+                     
+                    <li><a href="https://chrome.google.com/webstore/detail/http-header-spy/agnoocojkneiphkobpcfoaenhpjnmifb?hl=en">HTTP Spy</a> is a neat little Chrome extension that will show you the headers and request information for every request your browser makes.</li>
                      
                  </ul>
                  
-		     <p class="card-text">The server response here is an example of good user interface on the Web. Google wants browsers to use www.google.com instead of google.com. But instead of showing the user an error message, they send a redirect. Browsers will automatically follow the redirect and end up on the right site.</p>
-
-                 
                  
 			</div>
 		</div>
-    
-    
-        <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
-		  <div class=" ">
-		  	<div class="card-header">HEADERS and BODY RESPONSE
-			  	<i class="fa fa-circle theIcon01" style="font-size:20px"></i>
-			  	<i class="fa fa-circle theIcon02" style="font-size:20px"></i>
-			  	<i class="fa fa-circle theIcon03" style="font-size:20px"></i>
-		  	  </div>
-		     </div>
-		 	 <div class="card-body">
-             <p>IAn HTTP response can include many headers. Each header is a line that starts with a keyword, such as Location or Content-type, followed by a colon and a value. Headers are a sort of metadata for the response. They aren't displayed by browsers or other clients; instead, they tell the client various information about the response.</p>
-                 
-            <p>Many, many features of the Web are implemented using headers. For instance, cookies are a Web feature that lets servers store data on the browser, for instance to keep a user logged in. To set a cookie, the server sends the Set-Cookie header. The browser will then send the cookie data back in a Cookie header on subsequent requests. You'll see more about cookies later in this course.</p>
-                 
-            <p class="theCode">Content-type: text/html; charset=utf-8</p>
-                 
-                
-            <h2>Content-type</h2>
-                 
-		     <p class="card-text">A Content-type header indicates the kind of data that the server is sending. It includes a general category of content as well as the specific format. For instance, a PNG image file will come with the Content-type image/png. If the content is text (including HTML), the server will also tell what encoding it's written in. UTF-8 is a very common choice here, and it's the default for Python text anyway.</p>
-
-            <p> Very often, the headers will contain more metadata about the response body. For instance, both the demo server and Google also send a Content-Length header, which tells the client how long (in bytes) the response body will be. If the server sends this, then the client can reuse the connection to send another request after it's read the first response. Browsers use this so they can fetch multiple pieces of data (such as images on a web page) without having to reconnect to the server.</p>
-                 
-            <h2>Body Response</h2>
-                 
-		     <p class="card-text">The headers end with a blank line. Everything after that blank line is part of the response body. If the request was successful (a 200 OK status, for instance), this is a copy of whatever resource the client asked for — such as a web page, image, or other pieces of data.</p>
-
-            <p> But in the case of an error, the response body is where the error message goes! If you request a page that doesn't exist, and you get a 404 Not Found error, the actual error message shows up in the response body.</p>
-                 
-                 
-			</div>
-		</div>
-    
     
     
 </div>
