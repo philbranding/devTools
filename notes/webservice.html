@@ -617,7 +617,11 @@
                  
              <h2> Exercise: Multiple connections </h2>
                  
+             <p>Since the early days of HTTP, browsers have kept open multiple connections to a server. This lets the browser fetch several resources (such as images, scripts, etc.) in parallel, with less waiting. However, the browser only opens up a small number of connections to each server. And in HTTP/1.1, each connection can only request a single resource at a time.</p>
                  
+            <p> As an exercise, take a look at the server in Lesson-3/3_Parallelometer. Try running this server on your computer and accessing it at <a href="http://localhost:8000/" target="_blank">http://localhost:8000</a>to see parallel requests happening. The code here is based on the threading server that you've seen earlier in this lesson. </p>
+                
+            <p>Depending on your browser, you may see different numbers, but most likely the biggest one you'll see is 6. Common browsers such as Chrome, Firefox, and Safari open up as many as six connections to the same server. And under HTTP/1.1, only one request can effectively be in flight per connection, which means that they can only have up to six requests in flight with that server at a time.</p>
                  
 			</div>
 		</div>
